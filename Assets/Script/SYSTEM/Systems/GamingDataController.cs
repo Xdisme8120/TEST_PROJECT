@@ -14,24 +14,109 @@
 #endregion
 using UnityEngine;
 using System.Collections;
-
-public class GamingDataController :BaseSystemController
+using System.Collections.Generic;
+using LitJson;
+using System.Json;
+public class GamingDataController : BaseSystemController
 {
     //数据实体
     GamingData data;
-    public  GamingDataController(GameSystem _system):base(_system)
+    public GamingDataController(GameSystem _system) : base(_system)
     {
         //实例化数据实体
         data = new GamingData();
     }
     //初始化数据
-    public void InitData()
-    {}
+    public void InitData(JsonData _data)
+    {
+        JsonData json_HeroState = _data["charInfo"];
+        data.setHeroState(GetHeroStateData(json_HeroState));
+        JsonData json_bagInfo = _data["bagInfo"];
+        data.SetInventoryInfo(GetInventoryData(json_bagInfo));
+        JsonData json_itemInfo = _data["itemInfo"];
+        data.SetItemInfo(GetItemData(json_itemInfo));
+
+    }
     //存储数据
     public void SaveData()
-    {}
-    //获取数据
-    public void GetData()
-    {}
+    { }
+    //获取英雄状态数据
+    public HeroState GetHeroStateData(JsonData _data)
+    {
+        HeroState tempState = new HeroState();
+        tempState.hp = (float)_data["Hp"];
+        tempState.sp = (float)_data["Mp"];
+        tempState.cueeExp = (int)_data["CurrExp"];
+        tempState.level = (int)_data["level"];
+        return tempState;
 
+    }
+    //返回背包信息
+    public Dictionary<int, GridInfo> GetInventoryData(JsonData _data)
+    {
+        Dictionary<int, GridInfo> tempInventory = new Dictionary<int, GridInfo>();
+        for (int i = 1; i <= 8; i++)
+        {
+            string tempData = (string)_data["weapon" + i];
+            if (tempData != "-1")
+            {
+                string[] arrays = tempData.Split('|');
+                tempInventory.Add(i, new GridInfo(i, int.Parse(arrays[0]), int.Parse(arrays[1])));
+            }
+            else
+            {
+                tempInventory.Add(i, new GridInfo(i, -1, 0));
+            }
+        }
+        return tempInventory;
+    }
+    //返回装备信息
+    public Dictionary<int, int> GetItemData(JsonData _data)
+    {
+        Dictionary<int, int> tempItemInfo = new Dictionary<int, int>();
+        for (int i = 1; i <= 6; i++)
+        {
+            int tempID =(int)_data["weapon"+i];
+            if (tempID != -1)
+            {
+                tempItemInfo.Add(i, tempID);
+            }
+            else
+            {
+                tempItemInfo.Add(i, -1);
+            }
+        }
+        return tempItemInfo;
+    }
 }
+/*
+{
+    "errorcode":0,
+    "charInfo":{
+        "heroName":"bitch",
+        "level":null,
+        "CurrExp":null,
+        "Hp":null,
+        "Mp":null
+    },
+    "itemInfo":{
+        "heroName":"bitch",
+        "weapon1":"-1",
+        "weapon2":"-1",
+        "weapon3":"-1",
+        "weapon4":"-1",
+        "weapon5":"-1",
+        "weapon6":"-1"
+    },
+    "bagInfo":{
+        "heroName":"bitch",
+        "bagItem1":"-1",
+        "bagItem2":"-1",
+        "bagItem3":"-1",
+        "bagItem4":"-1",
+        "bagItem5":"-1",
+        "bagItem6":"-1",
+        "bagItem7":"-1",
+        "bagItem8":"-1"
+    }
+}*/

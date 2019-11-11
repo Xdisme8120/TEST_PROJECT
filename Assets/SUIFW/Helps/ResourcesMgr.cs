@@ -56,7 +56,6 @@ namespace SUIFW
         /// <returns></returns>
         public T LoadResource<T>(string path, bool isCatch) where T : UnityEngine.Object
         {
-//            Debug.Log(path);
             if (ht.Contains(path))
             {
                 return ht[path] as T;

@@ -12,9 +12,9 @@ public class GameSystem : MonoBehaviour
         get { return instance; }
     }
 
-    SceneStateController sceneStateController;//场景状态控制
-    GamingDataController gamingDataController;//数据控制器
-    CSInertactiveW cSInertactive;//客户端服务段交互控制
+    public SceneStateController sceneStateController;//场景状态控制
+    public GamingDataController gamingDataController;//数据控制器
+    public CSInertactiveW cSInertactive;//客户端服务段交互控制
     private void Awake()
     {
         if (instance != null)

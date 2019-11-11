@@ -26,7 +26,7 @@ namespace SUIFW
         /// <param name="goParent">父对象</param>
         /// <param name="chiildName">查找的子对象名称</param>
         /// <returns></returns>
-	    public static Transform  FindTheChildNode(GameObject goParent,string chiildName)
+	    public static Transform FindTheChildNode(GameObject goParent,string chiildName)
         {
             Transform searchTrans = null;                   //查找结果
 

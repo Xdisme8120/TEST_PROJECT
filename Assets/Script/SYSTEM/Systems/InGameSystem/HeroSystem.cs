@@ -25,8 +25,7 @@ public class HeroSystem : IMainGameSystem
     bool isDeath;
 
     public HeroSystem(InGameSystem _inGameSystem) : base(_inGameSystem)
-    {
-    }
+    {}
 
     //设置英雄信息
     public void SetHeroInfo(GamingData _data)
