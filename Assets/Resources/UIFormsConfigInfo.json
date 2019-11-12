@@ -1,16 +1,43 @@
 {
 "ConfigInfo":
-[
-{"Key":"本配置文件说明"},
-{"Key":"Login","Value":"UIPB\\LoginPanel"},
-{"Key":"Regiester","Value":"UIPB\\RegiesterPanel"},
-{"Key":"CreateHero","Value":"UIPB\\CreateHeroPanel"},
-{"Key":"SelectHero","Value":"UIPB\\SelectHeroPanel"},
+    [
+        { "Key": "本配置文件说明" },
+        {
+            "Key": "Login",
+            "Value": "UIPB\\LoginPanel"
+        },
+        {
+            "Key": "Register",
+            "Value": "UIPB\\RegisterPanel"
+        },
+        {
+            "Key": "Retrieve",
+            "Value": "UIPB\\RetrievePanel"
+        },
 
-{"Key":"MainPanel","Value":"UIPB\\MainPanel"},
-{"Key":"Inventory","Value":"UIPB\\Inventory"},
-{"Key":"Quest","Value":"UIPB\\Quest"},
-
-{"Key":"Message","Value":"UIPB\\MessagePanel"}
-]
+        {
+            "Key": "CreateHero",
+            "Value": "UIPB\\CreateHeroPanel"
+        },
+        {
+            "Key": "SelectHero",
+            "Value": "UIPB\\SelectHeroPanel"
+        },
+        {
+            "Key": "Main",
+            "Value": "UIPB\\MainPanel"
+        },
+        {
+            "Key": "Inventory",
+            "Value": "UIPB\\Inventory"
+        },
+        {
+            "Key": "Quest",
+            "Value": "UIPB\\Quest"
+        },
+        {
+            "Key": "Message",
+            "Value": "UIPB\\COMMON\\Message"
+        }
+    ]
 }

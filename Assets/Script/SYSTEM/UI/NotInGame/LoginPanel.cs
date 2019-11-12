@@ -16,6 +16,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using SUIFW;
+using System;
 //登陆界面
 public class LoginPanel : BaseUIForm
 {
@@ -34,6 +35,29 @@ public class LoginPanel : BaseUIForm
     private void Awake()
     {
         CurrentUIType.UIForms_ShowMode = UIFormShowMode.Normal;
-    }
+        RigisterButtonObjectEvent("Button(Login)", p => Login());
+        RigisterButtonObjectEvent("Button(Register)", p => Register());
+        RigisterButtonObjectEvent("Button(Retrieve)", p => Retrieve());
 
+    }
+    //忘记密码页面跳转
+    private void Retrieve()
+    {
+        UIManager.GetInstance().ShowUIForms("Retrieve");
+        Debug.Log("忘记密码");
+        //throw new NotImplementedException();
+    }
+    //注册页面跳转
+    private void Register()
+    {
+        Debug.Log("注册");
+        UIManager.GetInstance().ShowUIForms("Register");
+        //throw new NotImplementedException();
+    }
+    //登陆事件
+    private void Login()
+    {
+        Debug.Log("登陆");
+        //throw new NotImplementedException();
+    }
 }
