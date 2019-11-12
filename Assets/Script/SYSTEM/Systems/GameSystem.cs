@@ -39,6 +39,11 @@ public class GameSystem : MonoBehaviour
         //sceneStateUpdate函数调用
         sceneStateController.StateUpdate();
     }
+    //改变场景状态
+    public void SetNewSceneState(SceneState _state,int _sceneIndex)
+    {
+        sceneStateController.SetState(_state,_sceneIndex);
+    }
     //返回登陆状态
     public bool GetLoginState()
     {
