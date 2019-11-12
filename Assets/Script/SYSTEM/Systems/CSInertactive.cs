@@ -64,6 +64,7 @@ public class CSInertactiveW : MonoBehaviour
         }
         else
         {
+            isLogined = true;
             Debug.Log(www.text);
         }
     }

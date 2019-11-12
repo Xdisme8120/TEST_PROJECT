@@ -1,6 +1,5 @@
 {
-"ConfigInfo":
-    [
+    "ConfigInfo": [
         { "Key": "本配置文件说明" },
         {
             "Key": "Login",
@@ -14,7 +13,6 @@
             "Key": "Retrieve",
             "Value": "UIPB\\RetrievePanel"
         },
-
         {
             "Key": "CreateHero",
             "Value": "UIPB\\CreateHeroPanel"
