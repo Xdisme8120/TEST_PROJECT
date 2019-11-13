@@ -7,4 +7,6 @@
     ChangePassword,
     CreateHero,
     GetHeroInfo,
+    //UI事件标识
+    Message
 }

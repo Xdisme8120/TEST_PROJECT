@@ -1,18 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using System;
 using UnityEngine;
 using System.Json;
 using LitJson;
-public class CSInertactiveW : MonoBehaviour
+using SUIFW;
+enum CSType
 {
+    Login,
+    Register,
+    CreateHero,
+    GetHeroInfo,
+    ChangePassword
+}
+public class CSInertactive : MonoBehaviour
+{
+
     //主系统引用
     GameSystem system;
+    //反馈信息栏
+    Type messageInfos;
     private void Awake()
     {
+        messageInfos = typeof(CS_MESSAGE);
         //获取主系统引用
         system = GameSystem.Instance;
         //将功能注册进事件系统
         //注册 登陆 修改密码 创建英雄 获取英雄信息
+        Debug.Log("事件注册");
         EventCenter.AddListener<string>(EventDefine.GetHeroInfo, GetHeroInfo);
         EventCenter.AddListener<string, string>(EventDefine.Login, Login);
         EventCenter.AddListener<string, string>(EventDefine.CreateHero, CreateHero);
@@ -64,8 +80,9 @@ public class CSInertactiveW : MonoBehaviour
         }
         else
         {
-            isLogined = true;
-            Debug.Log(www.text);
+            int code = GetErrorCode(www.text);
+            if (code != 0)
+                ShowMessageByCode("Login",code);
         }
     }
     /////////////////////////////////////////////////////
@@ -226,7 +243,18 @@ public class CSInertactiveW : MonoBehaviour
         return json.ToString();
     }
 
-
+    //弹出消息框
+    public void ShowMessageByCode(string _type, int _code)
+    {
+        string message = messageInfos.GetField("MSG_" + _type + "_" + _code).GetValue(null).ToString();
+        UIManager.GetInstance().ShowMessage(message);
+    }
+    //处理ERRORCODE
+    int GetErrorCode(string _jsonText)
+    {
+        JsonData data = JsonMapper.ToObject(_jsonText);
+        return (int)data["errorcode"];
+    }
 }
 
 

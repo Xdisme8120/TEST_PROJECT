@@ -19,6 +19,10 @@ public class EventCenter
         {
             throw new Exception(string.Format("尝试为事件{0}添加不同类型的委托，当前事件所对应的委托是{1}，要添加的委托类型为{2}", eventType, d.GetType(), callBack.GetType()));
         }
+        else
+        {
+            Debug.Log("注册成功");
+        }
     }
     private static void OnListenerRemoving(EventDefine eventType, Delegate callBack)
     {

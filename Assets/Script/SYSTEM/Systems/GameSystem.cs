@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SUIFW;
@@ -14,7 +15,7 @@ public class GameSystem : MonoBehaviour
 
     public SceneStateController sceneStateController;//场景状态控制
     public GamingDataController gamingDataController;//数据控制器
-    public CSInertactiveW cSInertactive;//客户端服务段交互控制
+    public CSInertactive cSInertactive;//客户端服务段交互控制
     private void Awake()
     {
         if (instance != null)
@@ -22,9 +23,11 @@ public class GameSystem : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
+        DontDestroyOnLoad(this.gameObject);
         instance = this;
         //获取客户端服务端交互组件
-        gameObject.AddComponent(typeof(CSInertactiveW));
+        gameObject.AddComponent(typeof(CSInertactive));
+        cSInertactive = GetComponent<CSInertactive>();
         //初始化场景状态控制器
         sceneStateController = new SceneStateController(this);
         //初始化游戏数据控制器

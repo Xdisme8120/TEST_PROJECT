@@ -14,9 +14,46 @@
 #endregion
 using UnityEngine;
 using System.Collections;
+using Photon.Pun;
 //英雄系统_存储实时英雄信息
 public class HeroSystem : IMainGameSystem
 {
+    ///数值索引器
+    public bool IsControllable
+    {
+        get { return IsControllable; }
+        set { isControllable = value; }
+    }
+    public bool IsDeath
+    {
+        get { return isDeath; }
+        set { isDeath = value; }
+    }
+    public bool IsLeader
+    {
+        get { return isLeader; }
+        set { isLeader = value; }
+    }
+    public bool InLeady
+    {
+        get { return inLeady; }
+        set { inLeady = value; }
+    }
+    public PhotonView PhotonView
+    {
+        get { return photonView; }
+        set { photonView = value; }
+    }
+    public PhotonView ReceiveView
+    {
+        get { return receiveView; }
+        set { receiveView = value; }
+    }
+    public PhotonView ContrastView
+    {
+        get { return contrastView; }
+        set { contrastView = value; }
+    }
     //英雄实例
     GameObject hero;
     //英雄信息
@@ -24,12 +61,21 @@ public class HeroSystem : IMainGameSystem
     //背包信息
     Inventory inventory;
     //装备信息
-    Equips equips;    
+    Equips equips;
     //英雄是否处于可控状态
-    bool isController;
+    bool isControllable;
     //是否处于死亡状态
     bool isDeath;
-
+    //是否是队长
+    bool isLeader;
+    //是否在队伍中
+    bool inLeady;
+    //玩家自己的photonView
+    PhotonView photonView;
+    //接收用pv
+    PhotonView receiveView;
+    //对比用pv
+    PhotonView contrastView;
     public HeroSystem(InGameSystem _inGameSystem) : base(_inGameSystem)
     {}
 

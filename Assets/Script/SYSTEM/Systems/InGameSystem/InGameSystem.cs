@@ -23,8 +23,10 @@ public class InGameSystem
     }
     public SynopsisSystem SynopsisSystem
     {
-        get { return SynopsisSystem; }
+        get { return synopsisSystem; }
     }
+    //
+
 
     public InGameSystem()
     {

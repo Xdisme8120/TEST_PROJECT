@@ -20,7 +20,6 @@ using System;
 //登陆界面
 public class LoginPanel : BaseUIForm
 {
-
     //登陆按钮
     Button btn_Login;
     //注册按钮
@@ -38,7 +37,12 @@ public class LoginPanel : BaseUIForm
         RigisterButtonObjectEvent("Button(Login)", p => Login());
         RigisterButtonObjectEvent("Button(Register)", p => Register());
         RigisterButtonObjectEvent("Button(Retrieve)", p => Retrieve());
+        if_Username = UnityHelper.FindTheChildNode(gameObject,"Input Field (Username)").GetComponent<InputField>();
+        if_Password = UnityHelper.FindTheChildNode(gameObject,"Input Field (Password)").GetComponent<InputField>();
 
+    }
+    private void Start()
+    {
     }
     //忘记密码页面跳转
     private void Retrieve()
@@ -58,6 +62,6 @@ public class LoginPanel : BaseUIForm
     private void Login()
     {
         Debug.Log("登陆");
-        //throw new NotImplementedException();
+        EventCenter.Broadcast(EventDefine.Login, if_Username.text, if_Password.text);
     }
 }

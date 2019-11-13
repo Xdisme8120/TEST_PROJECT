@@ -81,6 +81,12 @@ namespace SUIFW
 	        //初始化“UI窗体预设”路径数据
 	        InitUIFormsPathData();
 	    }
+        //弹出消息框
+        public void ShowMessage(string _message)
+        {
+            ShowUIForms("Message");
+            EventCenter.Broadcast(EventDefine.Message,_message);
+        }
 
         /// <summary>
         /// 显示（打开）UI窗体

@@ -10,7 +10,7 @@ public enum ItemType
 public class Item
 {
     //物品ID
-    public int ID;
+    public string ID;
     //物品名称
     public string name;
     // 物品描述
