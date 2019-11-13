@@ -1,16 +1,14 @@
 ﻿<Properties StartupConfiguration="{99B16E61-87CD-E74B-33EE-BC2DB79DDD27}|">
-  <MonoDevelop.Ide.ItemProperties.TEST__PROJECT PreferredExecutionTarget="10d18fd6-17f0-4b5a-8fed-3db60058a7ef" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Resources/UIFormsConfigInfo.json">
+  <MonoDevelop.Ide.ItemProperties.TEST__PROJECT PreferredExecutionTarget="6862c16e-aa68-4780-82f8-bc3a44a56b7a" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/SYSTEM/UI/NotInGame/LoginPanel.cs">
     <Files>
-      <File FileName="Assets/Script/UITEST.cs" Line="14" Column="59" />
-      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/LoginPanel.cs" />
-      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/RegisterPanel.cs" />
-      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/RetrievePanel.cs" />
-      <File FileName="Assets/SUIFW/Config/SysDefine.cs" />
-      <File FileName="Assets/SUIFW/Config/ConfigManagerByJson.cs" />
-      <File FileName="Assets/SUIFW/BaseUIForm.cs" />
-      <File FileName="Assets/Resources/UIFormsConfigInfo.json" Line="12" Column="39" />
-      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/Common/Message.cs" />
+      <File FileName="Assets/SUIFW/BaseUIForm.cs" Line="1" Column="1" />
+      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/Common/PlayerInventory.cs" Line="4" Column="1" />
+      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/Common/PlayerInventory.cs" Line="4" Column="13" />
+      <File FileName="Assets/Resources/UIFormsConfigInfo.json" Line="46" Column="50" />
+      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/Common/CharacterInfo.cs" Line="6" Column="27" />
+      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/LoginPanel.cs" Line="63" Column="59" />
+      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/Common/Message.cs" Line="13" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -26,8 +26,8 @@
             "Value": "UIPB\\MainPanel"
         },
         {
-            "Key": "Inventory",
-            "Value": "UIPB\\Inventory"
+            "Key": "PlayerInventory",
+            "Value": "UIPB\\COMMON\\PlayerInventory"
         },
         {
             "Key": "Quest",
@@ -36,6 +36,14 @@
         {
             "Key": "Message",
             "Value": "UIPB\\COMMON\\Message"
+        },
+        {
+            "Key": "PlayerInfo",
+            "Value": "UIPB\\COMMON\\PlayerInfo"
+        },
+        {
+            "Key": "CharacterInfo",
+            "Value": "UIPB\\COMMON\\CharacterInfo"
         }
     ]
 }

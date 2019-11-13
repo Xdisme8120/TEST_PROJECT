@@ -61,6 +61,14 @@ public class LoginPanel : BaseUIForm
     //登陆事件
     private void Login()
     {
+        //打开头像信息固定窗口
+        UIManager.GetInstance().ShowUIForms("PlayerInfo");
+        //打开人物信息固定窗口
+        UIManager.GetInstance().ShowUIForms("CharacterInfo");
+        //打开背包窗口
+        UIManager.GetInstance().ShowUIForms("PlayerInventory");
+        //关闭登陆界面
+        UIManager.GetInstance().CloseUIForms("Login");
         Debug.Log("登陆");
         EventCenter.Broadcast(EventDefine.Login, if_Username.text, if_Password.text);
     }
