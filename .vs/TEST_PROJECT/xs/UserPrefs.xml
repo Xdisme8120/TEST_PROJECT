@@ -1,18 +1,19 @@
-﻿<Properties StartupConfiguration="{99B16E61-87CD-E74B-33EE-BC2DB79DDD27}|">
-  <MonoDevelop.Ide.ItemProperties.TEST__PROJECT PreferredExecutionTarget="6862c16e-aa68-4780-82f8-bc3a44a56b7a" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/SYSTEM/UI/NotInGame/LoginPanel.cs">
+﻿<Properties StartupConfiguration="{C2E4545A-CFD8-1C54-CC06-23208DF43373}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/SYSTEM/BaseClass&amp;Interface/SceneState.cs">
     <Files>
-      <File FileName="Assets/SUIFW/BaseUIForm.cs" Line="1" Column="1" />
-      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/Common/PlayerInventory.cs" Line="4" Column="1" />
-      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/Common/PlayerInventory.cs" Line="4" Column="13" />
-      <File FileName="Assets/Resources/UIFormsConfigInfo.json" Line="46" Column="50" />
-      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/Common/CharacterInfo.cs" Line="6" Column="27" />
-      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/LoginPanel.cs" Line="63" Column="59" />
-      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/Common/Message.cs" Line="13" Column="1" />
+      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/Common/PlayerInventory.cs" Line="58" Column="17" IsPinned="True" />
+      <File FileName="Assets/Script/EventCenter/EventCenter.cs" />
+      <File FileName="Assets/Script/SYSTEM/UI/UIEvent/BagGrid.cs" />
+      <File FileName="Assets/Script/SYSTEM/Systems/GameSystem.cs" />
+      <File FileName="Assets/Script/DL.cs" />
+      <File FileName="Assets/Script/EventCenter/EventDefine.cs" />
+      <File FileName="Assets/Script/DLTEST.cs" />
+      <File FileName="Assets/Script/SYSTEM/BaseClass&amp;Interface/SceneState.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.PhotonChat PreferredExecutionTarget="5d4167d6-bdba-410d-9c6d-af96d69a3871" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

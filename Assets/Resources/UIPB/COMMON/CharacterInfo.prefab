@@ -3693,6 +3693,7 @@ GameObject:
   - component: {fileID: 224966442187892420}
   - component: {fileID: 222657915410729380}
   - component: {fileID: 114252516642473738}
+  - component: {fileID: 114375042491243732}
   m_Layer: 5
   m_Name: Header
   m_TagString: Untagged
@@ -13560,6 +13561,17 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &114375042491243732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1637029573054738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98aa0a50a5624c52990ea56a2c1ba07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114375889321985778
 MonoBehaviour:
   m_ObjectHideFlags: 1
