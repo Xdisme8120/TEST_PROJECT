@@ -24,7 +24,7 @@ public class GamingDataController : BaseSystemController
     public GamingDataController(GameSystem _system) : base(_system)
     {
         //实例化数据实体
-        data = new GamingData();
+        data = GamingData.INSTANCE();
     }
     //初始化数据
     public void InitData(JsonData _data)

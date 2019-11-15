@@ -23,6 +23,12 @@ public class GridInfo  {
         itemID = _itemID;
         itemCount = _itemCount;
     }
+    //物品信息初始化
+    public void Reset()
+    {
+        itemID = -1;
+        itemCount = 0;
+    }
     //格子ID
     public int gridID;
     //物品ID

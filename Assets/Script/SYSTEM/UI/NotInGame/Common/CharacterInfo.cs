@@ -9,7 +9,7 @@ public class CharacterInfo : BaseUIForm
     private void Awake()
     {
 
-        CurrentUIType.UIForms_Type = UIFormType.PopUp;
+        CurrentUIType.UIForms_Type = UIFormType.Normal;
         RigisterButtonObjectEvent("Btn_CloseChar", p => CloseCharInfo());
 
     }
