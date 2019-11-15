@@ -15,5 +15,6 @@
     InitBag,
     //拿到背包信息
     SetBagInfo,
-
+    //Sned,
+    Test_GetImage
 }

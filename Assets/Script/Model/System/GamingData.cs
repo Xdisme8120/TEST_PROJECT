@@ -1,11 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LitJson;
 
+public enum ItemType
+{
+    Consumables,//消耗品
+    Equip//装备
+}
 public class GamingData
 {
     //游戏数据单例
     static GamingData instance;
+
     public static GamingData INSTANCE()
     {
         if (instance == null)
@@ -15,18 +22,22 @@ public class GamingData
         }
         return instance;
     }
-//数据获取索引器
+    public GamingData()
+    {
+        GetIMInfo();
+    }
+    //数据获取索引器
     public HeroState HeroState
     {
-        get{return data_HeroState;}
+        get { return data_HeroState; }
     }
     public Dictionary<int, GridInfo> InvenrotyInfo
     {
-        get{return data_InvenrotyInfo;}
+        get { return data_InvenrotyInfo; }
     }
     public Dictionary<int, int> EquipsInfo
     {
-        get{return data_EquipsInfo;}
+        get { return data_EquipsInfo; }
     }
     //英雄状态
     HeroState data_HeroState;
@@ -35,6 +46,11 @@ public class GamingData
     //装备信息
     Dictionary<int, int> data_EquipsInfo;
     //TODO任务状态
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //所有物品信息存储
+    Dictionary<int, Item> itemsInfo;
+    //材料信息存储
+    Dictionary<int, Materials> materialsInfo;
     //设置英雄状态信息
     public void setHeroState(HeroState _stateData)
     {
@@ -50,6 +66,41 @@ public class GamingData
     {
         data_EquipsInfo = _equipsData;
     }
+    //初始化物品和材料的信息
+    public void GetIMInfo()
+    {
+        itemsInfo = new Dictionary<int, Item>();
+        materialsInfo = new Dictionary<int, Materials>();
 
+        JsonData allData = GAMETOOLS.GetJson("Item.json");
+        JsonData itemInfo = allData["Items"];
+        JsonData equipInfo = allData["Equips"];
+        JsonData materialInfo = allData["Materials"];
+        List<Item> tempItems = JsonMapper.ToObject<List<Item>>(itemInfo.ToJson());
+        List<Item> tempEquips = JsonMapper.ToObject<List<Item>>(equipInfo.ToJson());
+        List<Materials> tempMaterial = JsonMapper.ToObject<List<Materials>>(materialInfo.ToJson());
+        foreach (var obj in tempItems)
+        {
+            itemsInfo.Add(obj.ID, obj);
+        }
+        foreach (var obj in tempEquips)
+        {
+            itemsInfo.Add(obj.ID, obj);
+        }
+        foreach (var obj in tempMaterial)
+        {
+            materialsInfo.Add(obj.ID, obj);
+        }
+    }
+    //根据ID返回物品信息
+    public Item GetItemByID(int _ID)
+    {
+        return itemsInfo[_ID];
+    }
+    //根据ID返回材料信息
+    public Materials GetMaterialByID(int _ID)
+    {
+        return materialsInfo[_ID];
+    }
 
 }

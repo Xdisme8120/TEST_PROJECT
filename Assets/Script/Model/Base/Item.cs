@@ -1,18 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum ItemType
-{
-    Consumables,//消耗品
-    Matirial,//材料
-    Equip//装备
-}
 public class Item
 {
     //物品ID
-    public string ID;
+    public int ID;
+    //图片路径
+    public string Path;
     //物品名称
-    public string name;
+    public string Name;
+    //效果类型
+    public int UseType;
+    //物品类型
+    public int ItemType;
+    //效果数值
+    public int Value;
     // 物品描述
-    public string description;
+    public string Description;
 }

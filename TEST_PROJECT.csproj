@@ -443,6 +443,7 @@
     <Compile Include="Assets\Script\EventCenter\EventCenter.cs" />
     <Compile Include="Assets\Script\EventCenter\EventDefine.cs" />
     <Compile Include="Assets\Script\Model\Base\Item.cs" />
+    <Compile Include="Assets\Script\Model\Base\Materials.cs" />
     <Compile Include="Assets\Script\Model\Hero\HeroInfo.cs" />
     <Compile Include="Assets\Script\Model\Hero\HeroState.cs" />
     <Compile Include="Assets\Script\Model\Inventory\GridInfo.cs" />
@@ -478,6 +479,7 @@
     <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\SelectHeroPanel.cs" />
     <Compile Include="Assets\Script\SYSTEM\UI\UIEvent\BagGrid.cs" />
     <Compile Include="Assets\Script\SYSTEM\UI\UIEvent\CardsMove.cs" />
+    <Compile Include="Assets\Script\Tools\GAMETOOLS.cs" />
     <Compile Include="Assets\Script\UITEST.cs" />
     <Compile Include="Assets\SUIFW\BaseUIForm.cs" />
     <Compile Include="Assets\SUIFW\Config\ConfigManagerByJson.cs" />
@@ -494,6 +496,7 @@
     <Compile Include="Assets\SUIFW\Test\Test.cs" />
     <Compile Include="Assets\SUIFW\UIManager.cs" />
     <Compile Include="Assets\SUIFW\UIType.cs" />
+    <Compile Include="Assets\Test_Image.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Photon\PhotonChat\Code\PhotonChat.asmdef" />
