@@ -194,6 +194,7 @@
      <Compile Include="Assets\Script\EventCenter\EventCenter.cs" />
      <Compile Include="Assets\Script\EventCenter\EventDefine.cs" />
      <Compile Include="Assets\Script\Model\Base\Item.cs" />
+     <Compile Include="Assets\Script\Model\Base\Materials.cs" />
      <Compile Include="Assets\Script\Model\Hero\HeroInfo.cs" />
      <Compile Include="Assets\Script\Model\Hero\HeroState.cs" />
      <Compile Include="Assets\Script\Model\Inventory\GridInfo.cs" />
@@ -217,12 +218,16 @@
      <Compile Include="Assets\Script\SYSTEM\UI\InGame\InventoryPanel.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\InGame\MainPanel.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\InGame\QuestPanel.cs" />
+     <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\Common\CharacterInfo.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\Common\Message.cs" />
+     <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\Common\PlayerInfo.cs" />
+     <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\Common\PlayerInventory.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\CreateHeroPanel.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\LoginPanel.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\RegisterPanel.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\RetrievePanel.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\SelectHeroPanel.cs" />
+     <Compile Include="Assets\Script\Tools\GAMETOOLS.cs" />
      <Compile Include="Assets\Script\UITEST.cs" />
      <Compile Include="Assets\SUIFW\BaseUIForm.cs" />
      <Compile Include="Assets\SUIFW\Config\ConfigManagerByJson.cs" />
@@ -239,6 +244,7 @@
      <Compile Include="Assets\SUIFW\Test\Test.cs" />
      <Compile Include="Assets\SUIFW\UIManager.cs" />
      <Compile Include="Assets\SUIFW\UIType.cs" />
+     <Compile Include="Assets\Test_Image.cs" />
      <None Include="Assets\RPG and MMO UI 6\Readme.txt" />
      <None Include="Assets\RPG and MMO UI 6\Shaders\UITribalEffect.shader" />
      <None Include="Assets\Photon\PhotonUnityNetworking\link.xml" />

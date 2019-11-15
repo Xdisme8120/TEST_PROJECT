@@ -6,9 +6,9 @@ using System;
 
 public class PlayerInventory : BaseUIForm
 {
+    
     private void Awake()
     {
-        //UIManager.GetInstance().CloseUIForms("PlayerInventory");
         CurrentUIType.UIForms_Type = UIFormType.PopUp;
         RigisterButtonObjectEvent("Btn_CloseInv", p => ClosePlayerInventory());
     }

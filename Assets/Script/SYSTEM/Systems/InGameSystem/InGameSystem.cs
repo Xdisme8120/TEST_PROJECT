@@ -38,6 +38,8 @@ public class InGameSystem
     HeroSystem heroSystem;
     //剧情系统
     SynopsisSystem synopsisSystem;
+
+  
     //初始化游戏内部系统
     public void Init(IMainGameSystem _system)
     {

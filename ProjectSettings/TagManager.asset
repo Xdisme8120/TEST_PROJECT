@@ -6,6 +6,7 @@ TagManager:
   tags:
   - _TagCanvas
   - _TagUICamera
+  - Test_Image
   layers:
   - Default
   - TransparentFX

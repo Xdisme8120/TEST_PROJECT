@@ -8,5 +8,7 @@
     CreateHero,
     GetHeroInfo,
     //UI事件标识
-    Message
+    Message,
+    Sned,
+    Test_GetImage
 }
