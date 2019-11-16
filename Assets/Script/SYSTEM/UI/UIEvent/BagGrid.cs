@@ -109,8 +109,6 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
 
             }
         }
-
-
         if (tempGame.tag == "Item"|| tempGame.name== "Item")
         {
             
@@ -133,9 +131,9 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
 
     //设置物品ID,并通过ID拿到相应的图片
     //设置物品数量,并设置Text
-    public void SetGoodInfo(int ID, int Count)
+    public void SetGoodInfo(Item item, int Count)
     {
-        this.item.ID = ID;
+        this.item = item;
         this.goodCount = Count;
         textCount.text = goodCount.ToString();
         image.sprite = Resources.Load<Sprite>("Item/" + item.ID.ToString());
