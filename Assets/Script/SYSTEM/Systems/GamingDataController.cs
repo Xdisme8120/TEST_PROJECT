@@ -29,12 +29,13 @@ public class GamingDataController : BaseSystemController
     //初始化数据
     public void InitData(JsonData _data)
     {
+        Debug.Log(Time.time);
         JsonData json_HeroState = _data["charInfo"];
-        data.setHeroState(GetHeroStateData(json_HeroState));
+        data.setHeroState(GetHeroStateData(JsonMapper.ToObject(json_HeroState.ToJson())));
         JsonData json_bagInfo = _data["bagInfo"];
-        data.SetInventoryInfo(GetInventoryData(json_bagInfo));
+        data.SetInventoryInfo(GetInventoryData(JsonMapper.ToObject(json_bagInfo.ToJson())));
         JsonData json_itemInfo = _data["itemInfo"];
-        data.SetItemInfo(GetItemData(json_itemInfo));
+        data.SetItemInfo(GetItemData(JsonMapper.ToObject(json_itemInfo.ToJson())));
 
     }
     //存储数据
@@ -43,11 +44,12 @@ public class GamingDataController : BaseSystemController
     //获取英雄状态数据
     public HeroState GetHeroStateData(JsonData _data)
     {
+        
         HeroState tempState = new HeroState();
-        tempState.hp = (float)_data["Hp"];
-        tempState.sp = (float)_data["Mp"];
-        tempState.cueeExp = (int)_data["CurrExp"];
-        tempState.level = (int)_data["level"];
+        tempState.hp = int.Parse((string)_data["Hp"]);
+        tempState.sp = int.Parse((string)_data["Mp"]);
+        tempState.cueeExp = int.Parse((string)_data["CurrExp"]);
+        tempState.level = int.Parse((string)_data["level"]);
         return tempState;
 
     }
@@ -57,15 +59,16 @@ public class GamingDataController : BaseSystemController
         Dictionary<int, GridInfo> tempInventory = new Dictionary<int, GridInfo>();
         for (int i = 1; i <= 8; i++)
         {
-            string tempData = (string)_data["weapon" + i];
+            string tempData = (string)_data["bagItem" + i];
             if (tempData != "-1")
             {
                 string[] arrays = tempData.Split('|');
                 //tempInventory.Add(i, new GridInfo(i, int.Parse(arrays[0]), int.Parse(arrays[1])));
             }
+            
             else
             {
-                //tempInventory.Add(i, new GridInfo(i, -1, 0));
+                tempInventory.Add(i, new GridInfo(i, null, 0));
             }
         }
         return tempInventory;
@@ -76,7 +79,7 @@ public class GamingDataController : BaseSystemController
         Dictionary<int, int> tempItemInfo = new Dictionary<int, int>();
         for (int i = 1; i <= 6; i++)
         {
-            int tempID =(int)_data["weapon"+i];
+            int tempID =int.Parse((string)_data["weapon"+i]);
             if (tempID != -1)
             {
                 tempItemInfo.Add(i, tempID);

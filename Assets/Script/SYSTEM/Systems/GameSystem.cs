@@ -36,7 +36,9 @@ public class GameSystem : MonoBehaviour
         sceneStateController.SetState(new LoginSceneState(sceneStateController), -1);
     }
     void Start()
-    { }
+    { 
+         EventCenter.Broadcast(EventDefine.GetHeroInfo,"xd");
+    }
     void Update()
     {
         //sceneStateUpdate函数调用

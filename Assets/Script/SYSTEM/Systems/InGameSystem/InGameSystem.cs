@@ -33,6 +33,7 @@ public class InGameSystem
         //初始化系统
         heroSystem = new HeroSystem(this);
         synopsisSystem = new SynopsisSystem(this);
+        Init(heroSystem);
     }
     //英雄系统
     HeroSystem heroSystem;

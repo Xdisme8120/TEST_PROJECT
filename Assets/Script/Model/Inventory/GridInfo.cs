@@ -15,9 +15,10 @@
 using UnityEngine;
 using System.Collections;
 
-public class GridInfo  {
+public class GridInfo
+{
     //GridInfo初始化
-    public GridInfo(int _gridID,Item _item,int _itemCount)
+    public GridInfo(int _gridID, Item _item, int _itemCount)
     {
         gridID = _gridID;
         item = _item;
@@ -26,16 +27,19 @@ public class GridInfo  {
     //物品信息初始化
     public void Reset()
     {
-        item.ID = -1;
+
+        item = null;
         itemCount = 0;
     }
     //格子ID
     public int gridID;
     //物品ID
     public Item item;
-    //
-    //public Item item;
-
     //物品数量
-    public int itemCount; 
+    public int itemCount;
+    //获取物品ID
+    public int GetItemID()
+    {
+        return item.ID;
+    }
 }

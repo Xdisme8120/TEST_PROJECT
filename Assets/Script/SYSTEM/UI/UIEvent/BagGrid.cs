@@ -89,27 +89,27 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
             return;
         }
 
-        //如果检测到名字是饰品
-        if (tempGame.tag == "Item" || tempGame.name == "trinket")
+        if (item.ItemType == 2)
         {
-            transform.SetParent(tempGame.transform.parent);
-            tempGame.transform.SetParent(temp);
-            tempGame.transform.localPosition = new Vector2(70, -70);
-            transform.localPosition = new Vector2(70, -70);
-            image.raycastTarget = true;
-            offset = Vector2.zero;
-            return;
-        }
-        //如果检测到名字是武器
-        if (tempGame.tag == "Item" || tempGame.name == "weapon")
-        {
+            //如果检测到名字是饰品
+            if (tempGame.tag == "Item" || tempGame.name == "trinket")
+            {
+                Debug.Log("trinket");
+            }
+            //如果检测到名字是武器
+            if (tempGame.tag == "Item" || tempGame.name == "weapon")
+            {
+                Debug.Log("weapon");
 
-        }
-        //如果检测到名字是护甲
-        if (tempGame.tag == "Item" || tempGame.name == "armor")
-        {
+            }
+            //如果检测到名字是护甲
+            if (tempGame.tag == "Item" || tempGame.name == "armor")
+            {
+                Debug.Log("armor");
 
+            }
         }
+
 
         if (tempGame.tag == "Item"|| tempGame.name== "Item")
         {

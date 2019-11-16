@@ -187,6 +187,7 @@
      <Compile Include="Assets\RPG and MMO UI 6\Scripts\UI\Window\UIWindow.cs" />
      <Compile Include="Assets\RPG and MMO UI 6\Scripts\UI\Window\UIWindowID.cs" />
      <Compile Include="Assets\RPG and MMO UI 6\Scripts\UI\Window\UIWindowManager.cs" />
+     <Compile Include="Assets\Scenes\DragUI.cs" />
      <Compile Include="Assets\Script\CS_TEST.cs" />
      <Compile Include="Assets\Script\DL.cs" />
      <Compile Include="Assets\Script\DLTEST.cs" />
@@ -218,6 +219,7 @@
      <Compile Include="Assets\Script\SYSTEM\UI\InGame\InventoryPanel.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\InGame\MainPanel.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\InGame\QuestPanel.cs" />
+     <Compile Include="Assets\Script\SYSTEM\UI\InGame\UI_Item.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\Common\CharacterInfo.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\Common\Message.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\Common\PlayerInfo.cs" />
@@ -227,6 +229,8 @@
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\RegisterPanel.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\RetrievePanel.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\SelectHeroPanel.cs" />
+     <Compile Include="Assets\Script\SYSTEM\UI\UIEvent\BagGrid.cs" />
+     <Compile Include="Assets\Script\SYSTEM\UI\UIEvent\CardsMove.cs" />
      <Compile Include="Assets\Script\Tools\GAMETOOLS.cs" />
      <Compile Include="Assets\Script\UITEST.cs" />
      <Compile Include="Assets\SUIFW\BaseUIForm.cs" />
