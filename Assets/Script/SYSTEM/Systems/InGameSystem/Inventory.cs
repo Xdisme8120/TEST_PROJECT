@@ -28,7 +28,7 @@ public class Inventory
         inventoryInfo = new Dictionary<int, GridInfo>();
         for (int i = 1; i <= 8; i++)
         {
-            inventoryInfo.Add(i, new GridInfo(i, -1, 0));
+            //inventoryInfo.Add(i, new GridInfo(i, , 0));
         }
     }
     //背包数据赋值
@@ -36,7 +36,7 @@ public class Inventory
     {
         for (int i = 1; i <= 8; i++)
         {
-            if (_bagInfo[i].itemID != -1)
+            if (_bagInfo[i].item.ID != -1)
             {
                 inventoryInfo[i] = _bagInfo[i];
             }
@@ -50,12 +50,12 @@ public class Inventory
         for (int i = 0; i < inventoryInfo.Count; i++)
         {
             //保存第一个空格
-            if (t_grid == -1 && inventoryInfo[i].itemID == -1)
+            if (t_grid == -1 && inventoryInfo[i].item.ID == -1)
             {
                 t_grid = inventoryInfo[i].gridID;
             }
             //如果物品栏已存在相应物品则添加
-            if (inventoryInfo[i].itemID == _itemID)
+            if (inventoryInfo[i].item.ID == _itemID)
             {
                 inventoryInfo[i].itemCount += 1;
 
@@ -71,7 +71,7 @@ public class Inventory
         }
 
         //否则在新格子里添加
-        inventoryInfo[t_grid].itemID = _itemID;
+        inventoryInfo[t_grid].item.ID = _itemID;
         inventoryInfo[t_grid].itemCount += 1;
         //TODO提示获取物品并修改UI状态
     }
@@ -79,7 +79,7 @@ public class Inventory
     public void UseItem(int _itemGridID)
     {
         //判断物品是否存在
-        if (inventoryInfo[_itemGridID].itemID != -1)
+        if (inventoryInfo[_itemGridID].item.ID != -1)
         {
             inventoryInfo[_itemGridID].itemCount--;
             //如果物品耗尽
@@ -116,7 +116,7 @@ public class Inventory
     //设置个格子的信息
     void SetGridInfo(int _gridID, int _itemID, int _itemCount = 1)
     {
-        inventoryInfo[_gridID].itemID = _itemID;
+        inventoryInfo[_gridID].item.ID = _itemID;
         inventoryInfo[_gridID].itemCount = _itemCount; 
     }
 }

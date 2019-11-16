@@ -36,19 +36,19 @@ public class PlayerInventory : BaseUIForm
     // Use this for initialization
     private void Start()
     {
-        UI_SetBagInfo(3, 102, 100);
+        UI_SetBagInfo(5, 102, 100);
     }
     //给格子赋值
     public void UI_SetBagInfo(int bagID, int goodID, int goodCount)
     {
-        bagInfo[bagID].SetGoodInfo(goodID, goodCount);
+        bagInfo[bagID-1].SetGoodInfo(goodID, goodCount);
     }
     //开始游戏初始化背包
     public void InitBag(Dictionary<int, GridInfo> bagInfo)
     {
         for (int i = 1; i <= 8; i++)
         {
-            UI_SetBagInfo(i, bagInfo[i].itemID, bagInfo[i].itemCount);
+            UI_SetBagInfo(i, bagInfo[i].item.ID, bagInfo[i].itemCount);
         }
     }
     //开始游戏初始化背包

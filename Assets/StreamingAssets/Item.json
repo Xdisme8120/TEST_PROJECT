@@ -7,8 +7,8 @@
  "Equips":
 [
 {"ID":2001,"Path":"Equip","Name":"火之高兴","UseType":1,"ItemType":2,"Value":65,"Description":"啊！神剑增加65点伤害"},
-{"ID":2001,"Path":"Equip","Name":"霜之哀伤","UseType":1,"ItemType":2,"Value":45,"Description":"啊！神剑增加65点伤害"},
-{"ID":2002,"Path":"Equip","Name":"穷鬼盾","UseType":2,"ItemType":2,"Value":70,"Description":"啊！穷鬼盾，增加70点防御"}
+{"ID":2002,"Path":"Equip","Name":"霜之哀伤","UseType":1,"ItemType":2,"Value":45,"Description":"啊！神剑增加65点伤害"},
+{"ID":2003,"Path":"Equip","Name":"穷鬼盾","UseType":2,"ItemType":2,"Value":70,"Description":"啊！穷鬼盾，增加70点防御"}
 ],
 "Materials":
 [

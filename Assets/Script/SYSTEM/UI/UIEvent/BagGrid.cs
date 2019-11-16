@@ -7,14 +7,15 @@ using UnityEngine;
 public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
     //物品ID
-    public int goodId;
+    Item item;
     //物品数量
-    public int goodCount;
+    int goodCount;
 
     private RectTransform canvas;          //得到canvas的ugui坐标
     private RectTransform imgRect;        //得到图片的ugui坐标
     Vector2 offset = new Vector3();
     Image image;
+
 
     Text textCount;
 
@@ -32,6 +33,11 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
     //拖拽中
     public void OnDrag(PointerEventData eventData)
     {
+
+        Debug.Log(item.ID);
+        if (item.ID == -1)
+            return;
+
         tempGame = eventData.pointerCurrentRaycast.gameObject;
         Debug.Log(tempGame);
 
@@ -50,6 +56,7 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
     //鼠标按下
     public void OnPointerDown(PointerEventData eventData)
     {
+
 
         temp = transform.parent;
         image.raycastTarget = false;
@@ -74,7 +81,7 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
     {
         if (tempGame == null)
         {
-            Debug.Log("0000");
+            Debug.Log("1111");
             transform.SetParent(temp);
             transform.localPosition = new Vector2(90, -90);
             image.raycastTarget = true;
@@ -82,15 +89,37 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
             return;
         }
 
-        if (tempGame.tag == "Item")
+        //如果检测到名字是饰品
+        if (tempGame.tag == "Item" || tempGame.name == "trinket")
         {
+            transform.SetParent(tempGame.transform.parent);
+            tempGame.transform.SetParent(temp);
+            tempGame.transform.localPosition = new Vector2(70, -70);
+            transform.localPosition = new Vector2(70, -70);
+            image.raycastTarget = true;
+            offset = Vector2.zero;
+            return;
+        }
+        //如果检测到名字是武器
+        if (tempGame.tag == "Item" || tempGame.name == "weapon")
+        {
+
+        }
+        //如果检测到名字是护甲
+        if (tempGame.tag == "Item" || tempGame.name == "armor")
+        {
+
+        }
+
+        if (tempGame.tag == "Item"|| tempGame.name== "Item")
+        {
+            
             transform.SetParent(tempGame.transform.parent);
             tempGame.transform.SetParent(temp);
             tempGame.transform.localPosition = new Vector2(90, -90);
             transform.localPosition = new Vector2(90, -90);
             image.raycastTarget = true;
             offset = Vector2.zero;
-
         }
         else
         {
@@ -104,11 +133,11 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
 
     //设置物品ID,并通过ID拿到相应的图片
     //设置物品数量,并设置Text
-    public void SetGoodInfo(int ID,int Count)
+    public void SetGoodInfo(int ID, int Count)
     {
-        this.goodId = ID;
+        this.item.ID = ID;
         this.goodCount = Count;
         textCount.text = goodCount.ToString();
-        image.sprite = Resources.Load<Sprite>("Item/" + goodId.ToString());
+        image.sprite = Resources.Load<Sprite>("Item/" + item.ID.ToString());
     }
 }
