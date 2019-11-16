@@ -40,6 +40,7 @@ public class GridInfo
     //获取物品ID
     public int GetItemID()
     {
+        if (item == null) return -1;
         return item.ID;
     }
 }

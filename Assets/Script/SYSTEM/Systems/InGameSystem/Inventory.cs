@@ -39,8 +39,10 @@ public class Inventory
             if (_bagInfo[i].GetItemID() != -1)
             {
                 inventoryInfo[i] = _bagInfo[i];
+                Debug.Log(inventoryInfo[i].item.Name+"--"+inventoryInfo.Count);
             }
         }
+
     }
     //获得物品
     public void GetItem(int _itemID)
