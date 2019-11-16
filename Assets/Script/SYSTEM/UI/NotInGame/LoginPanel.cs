@@ -70,6 +70,8 @@ public class LoginPanel : BaseUIForm
         //关闭登陆界面
         UIManager.GetInstance().CloseUIForms("Login");
         Debug.Log("登陆");
-        EventCenter.Broadcast(EventDefine.Login, if_Username.text, if_Password.text);
+        
+        GameSystem.Instance.SetNewSceneState(new GameSceneState(GameSystem.Instance.sceneStateController),-1);
+        
     }
 }

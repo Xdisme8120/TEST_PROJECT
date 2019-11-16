@@ -14,7 +14,6 @@ public class HeroInfo
     HeroState heroState;
     //职业
     HeroType heroType;
-
     //初始化英雄信息
     public void InitHeroInfo(HeroState _heroState)
     {

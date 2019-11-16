@@ -51,13 +51,19 @@ public class Equips {
 
     //装上装备
     public void EuqipedEquip(int _gridID,int _equipID)
-    {}
+    {
+        OnEquiped(_gridID,_equipID);
+    }
 
     //装备装入时的回调
     void OnEquiped(int _gridID,int _equipID)
-    {}
+    {
+
+    }
 
     //装备卸下是的回调
     void OnUnEquiped(int _gridID,int _equipID)
-    {}
+    {
+
+    }
 }

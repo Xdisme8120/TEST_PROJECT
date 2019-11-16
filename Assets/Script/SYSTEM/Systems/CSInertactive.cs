@@ -36,6 +36,9 @@ public class CSInertactive : MonoBehaviour
         EventCenter.AddListener<string, string, string>(EventDefine.ChangePassword, ChangePassword);
 
     }
+    private void Start() {
+        // EventCenter.Broadcast(EventDefine.GetHeroInfo,"Test");
+    }
     //TODO 
     //1.获取英雄信息,并将英雄信息存入GamingData
     bool isLogined = false;
@@ -178,10 +181,10 @@ public class CSInertactive : MonoBehaviour
             Debug.Log(www.text);
         }
     }
-    //获取英雄信息////////////////////////////////////////
+    //获取英雄信息//////////////////////////////(//////////
     public void GetHeroInfo(string _nickName)
     {
-        StartCoroutine(_nickName);
+        StartCoroutine(EGetHeroInfo(_nickName));
     }
     IEnumerator EGetHeroInfo(string _nickName)
     {
@@ -191,7 +194,7 @@ public class CSInertactive : MonoBehaviour
         WWW www = new WWW("49.232.47.199/server/index.php", form);
         while (!www.isDone)
         {
-            Debug.Log("wait");
+//            Debug.Log("wait");
         }
         yield return www;
         if (www.error != null)
