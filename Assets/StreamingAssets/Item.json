@@ -12,8 +12,8 @@
 ],
 "Materials":
 [
-{"ID":3001,"Path":"Material","Name":"火狼的獠牙","UseType":-1,"ItemType:"3,"Value":"0","Description":"火狼的獠牙"},
-{"ID":3002,"Path":"Material","Name":"毒蝎的断尾","UseType":-1,"ItemType:"3,"Value":"0","Description":"毒蝎的断尾"},
-{"ID":3003,"Path":"Material","Name":"矿石","UseType":-1,"ItemType:"3,"Value":"0","Description":"矿石"}
+{"ID":3001,"Path":"Material","Name":"火狼的獠牙","UseType":-1,"ItemType":3,"Value":0,"Description":"火狼的獠牙"},
+{"ID":3002,"Path":"Material","Name":"毒蝎的断尾","UseType":-1,"ItemType":3,"Value":0,"Description":"毒蝎的断尾"},
+{"ID":3003,"Path":"Material","Name":"矿石","UseType":-1,"ItemType":3,"Value":0,"Description":"矿石"}
 ]
 }

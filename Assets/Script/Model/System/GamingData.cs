@@ -6,7 +6,8 @@ using LitJson;
 public enum ItemType
 {
     Consumables,//消耗品
-    Equip//装备
+    Equip,//装备
+    Material//材料
 }
 public class GamingData
 {
