@@ -64,7 +64,7 @@ public class LoginPanel : BaseUIForm
         //打开头像信息固定窗口
         UIManager.GetInstance().ShowUIForms("PlayerInfo");
         //打开人物信息固定窗口
-        UIManager.GetInstance().ShowUIForms("CharacterInfo");
+        //UIManager.GetInstance().ShowUIForms("CharacterInfo");
         //打开背包窗口
         UIManager.GetInstance().ShowUIForms("PlayerInventory");
         //关闭登陆界面

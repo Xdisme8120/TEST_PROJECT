@@ -7,18 +7,19 @@ using UnityEngine;
 public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
     //物品ID
-    public int goodId;
+    Item item = new Item();
     //物品数量
-    public int goodCount;
+    int goodCount;
 
     private RectTransform canvas;          //得到canvas的ugui坐标
     private RectTransform imgRect;        //得到图片的ugui坐标
     Vector2 offset = new Vector3();
     Image image;
 
+    Vector3 tempPos;
     Text textCount;
 
-    Transform temp;
+    public Transform temp;
     GameObject tempGame;
 
     private void Awake()
@@ -27,14 +28,16 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
         image = transform.GetComponent<Image>();
         canvas = transform.root.GetComponent<RectTransform>();
         imgRect = transform.GetComponent<RectTransform>();
+        item.ID = -1;
     }
 
     //拖拽中
     public void OnDrag(PointerEventData eventData)
     {
-        tempGame = eventData.pointerCurrentRaycast.gameObject;
-        Debug.Log(tempGame);
+        if (item.ID == -1)
+            return;
 
+        tempGame = eventData.pointerCurrentRaycast.gameObject;
         Vector2 mouseDrag = eventData.position;   //当鼠标拖动时的屏幕坐标
         Vector2 uguiPos = new Vector2();   //用来接收转换后的拖动坐标
                                            //和上面类似
@@ -50,10 +53,9 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
     //鼠标按下
     public void OnPointerDown(PointerEventData eventData)
     {
-
         temp = transform.parent;
         image.raycastTarget = false;
-        transform.SetParent(transform.parent.parent);
+        transform.SetParent(transform.parent.parent.parent.parent);
         transform.localScale = Vector3.one;
         Vector2 mouseDown = eventData.position;    //记录鼠标按下时的屏幕坐标
         Vector2 mouseUguiPos = new Vector2();   //定义一个接收返回的ugui坐标
@@ -72,43 +74,91 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
     //鼠标抬起
     public void OnPointerUp(PointerEventData eventData)
     {
+        
         if (tempGame == null)
         {
-            Debug.Log("0000");
-            transform.SetParent(temp);
-            transform.localPosition = new Vector2(90, -90);
-            image.raycastTarget = true;
-            offset = Vector2.zero;
+            NoExchange();
+            return;
+        }
+        if (tempGame == null && tempGame.name == "Slot")
+        {
+            NoExchange();
             return;
         }
 
-        if (tempGame.tag == "Item")
+        if (item.ItemType == 2)
         {
-            transform.SetParent(tempGame.transform.parent);
-            tempGame.transform.SetParent(temp);
-            tempGame.transform.localPosition = new Vector2(90, -90);
-            transform.localPosition = new Vector2(90, -90);
-            image.raycastTarget = true;
-            offset = Vector2.zero;
+            //如果检测到名字是饰品
+            if (tempGame.tag == "Item" && tempGame.transform.parent.name == "trinket"&&item.UseType==1)
+            {
+                Exchange();
+                Debug.Log("trinket");
+                return;
+            }
+            //如果检测到名字是武器
+            if (tempGame.tag == "Item" && tempGame.transform.parent.name == "weapon" && item.UseType == 2)
+            {
+                Exchange();
+                Debug.Log("weapon");
+                return;
 
+            }
+            //如果检测到名字是护甲
+            if (tempGame.tag == "Item" && tempGame.transform.parent.name == "armor" && item.UseType == 3)
+            {
+                Exchange();
+                Debug.Log("armor");
+                return;
+
+            }
+        }
+        if (tempGame.tag == "Item" && tempGame.transform.parent.name == "Slot")
+        {
+            Exchange();
         }
         else
         {
-            Debug.Log("0000");
-            transform.SetParent(temp);
-            transform.localPosition = new Vector2(90, -90);
-            image.raycastTarget = true;
-            offset = Vector2.zero;
+            NoExchange();
         }
     }
 
     //设置物品ID,并通过ID拿到相应的图片
     //设置物品数量,并设置Text
-    public void SetGoodInfo(int ID,int Count)
+    public void SetGoodInfo(Item item, int Count)
     {
-        this.goodId = ID;
+        this.item = item;
         this.goodCount = Count;
         textCount.text = goodCount.ToString();
-        image.sprite = Resources.Load<Sprite>("Item/" + goodId.ToString());
+        image.sprite = Resources.Load<Sprite>("Item/" + item.ID.ToString());
+    }
+    //重置父对象
+    public void SetTemp()
+    {
+        temp = transform.parent;
+    }
+    //格子内的物品交换方法
+    void Exchange()
+    {
+        transform.SetParent(tempGame.transform.parent);
+        tempGame.transform.SetParent(temp);
+        tempGame.GetComponent<BagGrid>().SetTemp();
+        tempGame.transform.localPosition = new Vector2(50, -50);
+        tempGame.transform.localScale = Vector3.one;
+        transform.localPosition = new Vector2(50, -50);
+        transform.localScale = Vector3.one;
+        image.raycastTarget = true;
+        offset = Vector2.zero;
+        SetTemp();
+        tempGame = null;
+        tempPos = transform.position;
+    }
+    //格子内物品不交换返回原有格子
+    void NoExchange()
+    {
+        transform.SetParent(temp);
+        transform.localPosition = new Vector2(50, -50);
+        transform.localScale = Vector3.one;
+        image.raycastTarget = true;
+        offset = Vector2.zero;
     }
 }
