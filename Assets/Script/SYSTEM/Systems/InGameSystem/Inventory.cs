@@ -17,6 +17,11 @@ using System.Collections;
 using System.Collections.Generic;
 public class Inventory
 {
+    //背包信息索引
+    public Dictionary<int,GridInfo> GetInventoryInfo
+    {
+        get{return inventoryInfo;}
+    }
     //TODO获取所有物品Json信息
     HeroSystem heroSystem;
     Dictionary<int, GridInfo> inventoryInfo;
@@ -25,10 +30,10 @@ public class Inventory
     {
         heroSystem = _heroSystem;
         //初始化背包字典
-        inventoryInfo =new Dictionary<int, GridInfo>();
+        inventoryInfo = new Dictionary<int, GridInfo>();
         for (int i = 1; i <= 8; i++)
         {
-            inventoryInfo.Add(i, null);
+            inventoryInfo.Add(i, new GridInfo(i,new Item(),0));
         }
     }
     //背包数据赋值
@@ -39,16 +44,15 @@ public class Inventory
             if (_bagInfo[i].GetItemID() != -1)
             {
                 inventoryInfo[i] = _bagInfo[i];
-                Debug.Log(inventoryInfo[i].item.Name+"--"+inventoryInfo.Count);
+                Debug.Log(inventoryInfo[i].item.Name + "--" + inventoryInfo[i].itemCount);
             }
         }
-
     }
     //获得物品
     public void GetItem(int _itemID)
     {
         int t_grid = -1;
-        for (int i = 1; i <=inventoryInfo.Count; i++)
+        for (int i = 1; i <= inventoryInfo.Count; i++)
         {
             //保存第一个空格
             if (t_grid == -1 && inventoryInfo[i] == null)
@@ -67,7 +71,6 @@ public class Inventory
         if (t_grid == -1)
         {
             //TODO 提示物品栏已满
-
             return;
         }
 
@@ -83,6 +86,8 @@ public class Inventory
         if (inventoryInfo[_itemGridID].GetItemID() != -1)
         {
             inventoryInfo[_itemGridID].itemCount--;
+            Item item = GamingData.GetItemByID(inventoryInfo[_itemGridID].GetItemID());
+            heroSystem.hill(item.UseType,item.Value);
             //如果物品耗尽
             if (inventoryInfo[_itemGridID].itemCount == 0)
             {
@@ -92,7 +97,7 @@ public class Inventory
             }
             else
             {
-
+                 
                 //TODO提示使用物品并实现效果
             }
 
@@ -101,6 +106,35 @@ public class Inventory
         {
             return;
         }
+    }
+    //批量上交材料
+    public void SendMaterial(int _itemID, int _count)
+    {
+        //判断物品是否存在
+        for (int i = 1; i <= 8; i++)
+        {
+            if (inventoryInfo[i].GetItemID() != -1)
+            {
+                if (inventoryInfo[i].GetItemID() == _itemID && inventoryInfo[i].itemCount >= _count)
+                {
+                    inventoryInfo[i].itemCount-=_count;
+                    //如果物品耗尽
+                    if (inventoryInfo[i].itemCount == 0)
+                    {
+
+                        ClearGridInfo(i);
+                        //TODO给UI发送消息                                             
+                    }
+                    //否则仅仅减少
+                    else
+                    {
+                        //TODO给UI发送消息
+                    }
+                }
+            }
+        }
+        //TODO提示物品数量不足
+
     }
     //交换格子信息
     public void SwitchItem(int _gridID1, int _gridID2)
@@ -121,10 +155,22 @@ public class Inventory
     void SetGridInfo(int _gridID, Item _item, int _itemCount = 1)
     {
         inventoryInfo[_gridID].item = _item;
-        inventoryInfo[_gridID].itemCount = _itemCount; 
+        inventoryInfo[_gridID].itemCount = _itemCount;
     }
     Item GetItemFromAll(int _itemID)
     {
         return GamingData.GetItemByID(_itemID);
+    }
+    //从UI获得背包信息并输入背包
+    public void SetBagInfoFromUI(Dictionary<int, GridInfo> _bagInfo)
+    {
+        for (int i = 1; i <= 8; i++)
+        {
+            if (_bagInfo[i].GetItemID() != -1)
+            {
+                inventoryInfo[i] = _bagInfo[i];
+                Debug.Log(inventoryInfo[i].item.Name + "--" + inventoryInfo.Count);
+            }
+        }
     }
 }

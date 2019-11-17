@@ -20,7 +20,7 @@ public class CS_TEST : MonoBehaviour
         //Register();
         //ChangePassword();
         // CreateHero("createHero","xdisyou");
-        StartCoroutine("EGetHeroInfo");
+        SaveHero();
     }
     IEnumerator EGetHeroInfo()
     {
@@ -218,11 +218,11 @@ public class CS_TEST : MonoBehaviour
         json.Add("Mp", 0);
         for (int i = 1; i <= 8; i++)
         {
-            json.Add("bagItem" + i, i + 10);
+            json.Add("bagItem" + i, -1);
         }
         for (int i = 1; i <= 6; i++)
         {
-            json.Add("weapon" + i, i + 10);
+            json.Add("weapon" + i, -1);
         }
 
         return json.ToString();

@@ -30,5 +30,6 @@ public class HeroInfo
     {
         get { return heroState; }
     }
-
+    //判断英雄是否死亡
+ 
 }

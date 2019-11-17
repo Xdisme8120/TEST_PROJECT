@@ -34,9 +34,11 @@ public class CSInertactive : MonoBehaviour
         EventCenter.AddListener<string, string>(EventDefine.CreateHero, CreateHero);
         EventCenter.AddListener<string, string, string>(EventDefine.Register, Register);
         EventCenter.AddListener<string, string, string>(EventDefine.ChangePassword, ChangePassword);
+        EventCenter.AddListener<HeroState, Dictionary<int, GridInfo>, Dictionary<int, int>>(EventDefine.SaveHeroInfo,SaveHeroInfo);
 
     }
-    private void Start() {
+    private void Start()
+    {
         // EventCenter.Broadcast(EventDefine.GetHeroInfo,"Test");
     }
     //TODO 
@@ -44,6 +46,7 @@ public class CSInertactive : MonoBehaviour
     bool isLogined = false;
     //当前用户名
     string currUsername;
+    //当前英雄昵称
     //登陆状态索引器
     public bool IsLogined
     {
@@ -85,7 +88,11 @@ public class CSInertactive : MonoBehaviour
         {
             int code = GetErrorCode(www.text);
             if (code != 0)
-                ShowMessageByCode("Login",code);
+                ShowMessageByCode("Login", code);
+            else
+            {
+                GameSystem.Instance.gamingDataController.SetUsername(_username);
+            }
         }
     }
     /////////////////////////////////////////////////////
@@ -194,7 +201,7 @@ public class CSInertactive : MonoBehaviour
         WWW www = new WWW("49.232.47.199/server/index.php", form);
         while (!www.isDone)
         {
-//            Debug.Log("wait");
+            //            Debug.Log("wait");
         }
         yield return www;
         if (www.error != null)
@@ -206,15 +213,55 @@ public class CSInertactive : MonoBehaviour
             Debug.Log(www.text);
             //将收到的英雄信息传给数据处理系统
             system.gamingDataController.InitData(JsonMapper.ToObject(www.text));
+            GameSystem.Instance.gamingDataController.SetNickname(_nickName);
         }
         yield return null;
     }
-    //对获取的英雄信息进行处理
-
-    /////////////////////////////////////////////////////
-
-    /////////////////////////////////////////////////////
-
+    //存储英雄信息到服务器////////////////////////////////////////////
+    public void SaveHeroInfo(HeroState _stateData, Dictionary<int, GridInfo> _invenData, Dictionary<int, int> _equipsData)
+    {
+        string json = SaveHeroJson( _stateData,_invenData,_equipsData);
+        Debug.Log("存储的Json"+json);
+        for (int i = 0; i < 3; i++)
+        {
+            switch (i)
+            {
+                case 0:
+                    StartCoroutine(POST("updateBagInfo", "bitch", json));
+                    break;
+                case 1:
+                    StartCoroutine(POST("updateCharInfo", "bitch", json));
+                    break;
+                case 2:
+                    StartCoroutine(POST("updateItemInfo", "bitch", json));
+                    break;
+            }
+        }
+    }
+    //英雄信息存储协程
+     IEnumerator POST(string _action, string _heroname, string _json)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("a", _action);
+        form.AddField("nikename", _heroname);
+        form.AddField("jsondata", _json);
+        WWW www = new WWW("49.232.47.199/server/index.php", form);
+        while (!www.isDone)
+        {
+            // Debug.Log("wait");
+        }
+        yield return www;
+        if (www.error != null)
+        {
+            Debug.Log("ERROR" + Time.time);
+        }
+        else
+        {
+            Debug.Log(www.text);
+        }
+    }
+    
+    /// ////////////////////////////////////////////////////////////
     //JSON
     // 创建英雄是存储的JSon
     public string CreateHeroJson(string _heroType, string _nickName)
@@ -226,23 +273,37 @@ public class CSInertactive : MonoBehaviour
         return json.ToString();
     }
 
-    // 存储英雄信息是生成的JSon
-    public string SaveHeroJson()
+    // 存储英雄信息时生成的JSon
+    public string SaveHeroJson(HeroState _stateData, Dictionary<int, GridInfo> _invenData, Dictionary<int, int> _equipsData)
     {
+        Dictionary<int, string> tempInvenInfo = new Dictionary<int, string>();
+        Dictionary<int, int> tempEquipInfo = new Dictionary<int, int>();
         JsonObject json = new JsonObject();
-        json.Add("level", 21);
-        json.Add("CurrExp", 41);
-        json.Add("Hp", 1);
-        json.Add("Mp", 0);
-        for (int i = 1; i <= 8; i++)
+        json.Add("level", _stateData.level);
+        json.Add("CurrExp", _stateData.cueeExp);
+        json.Add("Hp", (int)_stateData.hp);
+        json.Add("Mp", (int)_stateData.sp);
+        int index = 1;
+        foreach (var item in _invenData)
         {
-            json.Add("bagItem" + i, i + 10);
+            string tempItemInfo;
+            if (item.Value.GetItemID() != -1)
+            {
+                tempItemInfo = item.Value.item.ID + "|" + item.Value.itemCount;
+            }
+            else
+            {
+                tempItemInfo = "-1";
+            }
+            json.Add("bagItem" + index, tempItemInfo);
+            index++;
         }
-        for (int i = 1; i <= 6; i++)
+        index = 1;
+        foreach (var item in _equipsData)
         {
-            json.Add("weapon" + i, i + 10);
+            json.Add("weapon" + index, item.Value);
+            index++;
         }
-
         return json.ToString();
     }
 
