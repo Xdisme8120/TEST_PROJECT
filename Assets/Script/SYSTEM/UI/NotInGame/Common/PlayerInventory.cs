@@ -39,6 +39,9 @@ public class PlayerInventory : BaseUIForm
     {
         Item itemDemo = new Item();
         itemDemo.ID = 102;
+        itemDemo.Value = 10;
+        itemDemo.ItemType = 2;
+        itemDemo.UseType = 2;
         UI_SetBagInfo(5, itemDemo, 100);
     }
     //给格子赋值

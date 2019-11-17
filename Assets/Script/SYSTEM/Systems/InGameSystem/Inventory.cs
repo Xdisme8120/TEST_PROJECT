@@ -28,19 +28,22 @@ public class Inventory
         inventoryInfo =new Dictionary<int, GridInfo>();
         for (int i = 1; i <= 8; i++)
         {
-            inventoryInfo.Add(i, null);
+            inventoryInfo.Add(i, new GridInfo(-1,null,0));
         }
     }
     //背包数据赋值
     public void Init(Dictionary<int, GridInfo> _bagInfo)
     {
+        Debug.Log(_bagInfo.Count);
         for (int i = 1; i <= 8; i++)
         {
             if (_bagInfo[i].GetItemID() != -1)
             {
                 inventoryInfo[i] = _bagInfo[i];
+                Debug.Log(inventoryInfo[i].item.Name+"--"+inventoryInfo.Count);
             }
         }
+
     }
     //获得物品
     public void GetItem(int _itemID)
