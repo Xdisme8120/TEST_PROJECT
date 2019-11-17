@@ -50,9 +50,11 @@ public class InGameSystem
     {
         _system.Update();
     }
+    //状态结束
     public void Release(IMainGameSystem _system)
     {
         _system.Release();
+        
     }
 
 }

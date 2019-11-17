@@ -6,13 +6,17 @@ using LitJson;
 public enum ItemType
 {
     Consumables,//消耗品
-    Equip//装备
+    Equip,//装备
+    Material//材料
 }
 public class GamingData
 {
     //游戏数据单例
     static GamingData instance;
-
+    //用户名
+    public static string username;
+    //英雄昵称
+    public static string nickname;
     public static GamingData INSTANCE()
     {
         if (instance == null)
@@ -91,11 +95,12 @@ public class GamingData
             itemsInfo.Add(obj.ID, obj);
         }
     }
+
     //根据ID返回物品信息
     public static Item GetItemByID(int _ID)
     {
+        Debug.Log(_ID);
         return itemsInfo[_ID];
     }
-
 
 }

@@ -48,7 +48,7 @@ public class PlayerInventory : BaseUIForm
     {
         for (int i = 1; i <= 8; i++)
         {
-            UI_SetBagInfo(i, bagInfo[i].itemID, bagInfo[i].itemCount);
+           // UI_SetBagInfo(i, bagInfo[i].itemID, bagInfo[i].itemCount);
         }
     }
     //开始游戏初始化背包
