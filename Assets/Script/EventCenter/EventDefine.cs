@@ -7,6 +7,7 @@
     ChangePassword,
     CreateHero,
     GetHeroInfo,
+    SaveHeroInfo,
     //UI事件标识
     Message,
     //给格子赋值

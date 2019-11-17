@@ -77,11 +77,11 @@ public class HeroSystem : IMainGameSystem
     //对比用pv
     PhotonView contrastView;
     public HeroSystem(InGameSystem _inGameSystem) : base(_inGameSystem)
-    {}
+    { }
 
     //设置英雄信息
     public void SetHeroInfo(GamingData _data)
-    {}
+    { }
 
     //初始化英雄系统
     public override void Init()
@@ -92,6 +92,7 @@ public class HeroSystem : IMainGameSystem
         heroInfo.InitHeroInfo(GamingData.INSTANCE().HeroState);
         inventory.Init(GamingData.INSTANCE().InvenrotyInfo);
         equips.Init(GamingData.INSTANCE().EquipsInfo);
+        SaveData();
     }
     //英雄系统Update函数的调用
     public override void Update()
@@ -101,6 +102,58 @@ public class HeroSystem : IMainGameSystem
     //系统结束回调
     public override void Release()
     {
-        throw new System.NotImplementedException();
+        //TODO 玩家数据存入GamingData
+        GameSystem.Instance.gamingDataController.SaveData(heroInfo.HeroState, inventory.GetInventoryInfo, equips.GetItemInfo);
+
+    }
+    /// <summary>
+    /// 英雄信息存储TEST
+    /// </summary>
+    public void SaveData()
+    {
+        GameSystem.Instance.gamingDataController.SaveData(heroInfo.HeroState, inventory.GetInventoryInfo, equips.GetItemInfo);
+    }
+    //玩家数值修改
+    public void SetATK_DEF(int _type, int _value)
+    {
+        if (_type == 1)
+        {
+            heroInfo.HeroState.atk += _value;
+        }
+        else
+        {
+            heroInfo.HeroState.def += _value;
+        }
+    }
+    //玩家血量和蓝量的回复
+    public void hill(int _type, int _value)
+    {
+        if (_type == 1)
+        {
+            heroInfo.HeroState.hp += _value;
+        }
+        else
+        {
+            heroInfo.HeroState.sp += _value;
+        }
+    }
+    //玩家受伤并判断死亡
+    public void GetDamaged(float _damage)
+    {
+        heroInfo.HeroState.hp -= _damage;
+        if (heroInfo.HeroState.hp <= 0)
+        {
+            isDeath = true;
+        }
+    }
+    //玩家使用技能(此处只返回是否可以使用并且消耗蓝量)
+    public bool UseSkill(float _needValue)
+    {
+        if (heroInfo.HeroState.sp >= _needValue)
+        {
+            heroInfo.HeroState.sp -= _needValue;
+            return true;
+        }
+        return false;
     }
 }

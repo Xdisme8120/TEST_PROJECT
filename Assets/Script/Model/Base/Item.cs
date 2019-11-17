@@ -4,7 +4,7 @@ using UnityEngine;
 public class Item
 {
     //物品ID
-    public int ID;
+    public int ID = -1;
     //图片路径
     public string Path;
     //物品名称
