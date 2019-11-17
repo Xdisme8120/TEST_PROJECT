@@ -66,7 +66,7 @@ public class GamingDataController : BaseSystemController
             if (tempData != "-1")
             {
                 string[] arrays = tempData.Split('|');
-                //tempInventory.Add(i, new GridInfo(i, int.Parse(arrays[0]), int.Parse(arrays[1])));
+                tempInventory.Add(i, new GridInfo(i, GamingData.GetItemByID(int.Parse(arrays[0])), int.Parse(arrays[1])));
             }
             
             else

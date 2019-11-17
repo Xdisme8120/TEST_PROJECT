@@ -1,24 +1,16 @@
-﻿<Properties StartupConfiguration="{99B16E61-87CD-E74B-33EE-BC2DB79DDD27}|">
-  <MonoDevelop.Ide.ItemProperties.TEST__PROJECT PreferredExecutionTarget="02ea2089-d2a7-4315-9bab-4651c426ad56" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Model/System/GamingData.cs">
+﻿<Properties StartupConfiguration="{C2E4545A-CFD8-1C54-CC06-23208DF43373}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/SYSTEM/Systems/InGameSystem/Inventory.cs">
     <Files>
-      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/Common/PlayerInventory.cs" Line="47" Column="45" IsPinned="True" />
-      <File FileName="Assets/Script/EventCenter/EventCenter.cs" Line="24" Column="1" />
-      <File FileName="Assets/Script/SYSTEM/UI/UIEvent/BagGrid.cs" Line="97" Column="17" />
-      <File FileName="Assets/Script/SYSTEM/Systems/GameSystem.cs" Line="58" Column="1" />
-      <File FileName="Assets/Script/DL.cs" Line="1" Column="1" />
-      <File FileName="Assets/Script/EventCenter/EventDefine.cs" Line="21" Column="1" />
-      <File FileName="Assets/Script/DLTEST.cs" />
-      <File FileName="Assets/Script/SYSTEM/BaseClass&amp;Interface/SceneState.cs" />
-      <File FileName="Assets/Script/Model/Base/Item.cs" Line="15" Column="24" />
-      <File FileName="Assets/Script/Model/Inventory/GridInfo.cs" Line="21" Column="37" />
-      <File FileName="Assets/Script/SYSTEM/Systems/InGameSystem/Inventory.cs" Line="21" Column="1" />
-      <File FileName="Assets/Script/SYSTEM/Systems/GamingDataController.cs" Line="23" Column="11" />
-      <File FileName="Assets/Script/Model/System/GamingData.cs" Line="10" Column="9" />
+      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/Common/PlayerInventory.cs" Line="74" Column="1" IsPinned="True" />
+      <File FileName="Assets/Script/SYSTEM/UI/UIEvent/BagGrid.cs" />
+      <File FileName="Assets/Script/Model/Base/Item.cs" />
+      <File FileName="Assets/Script/SYSTEM/UI/UIEvent/CardsMove.cs" />
+      <File FileName="Assets/Script/SYSTEM/Systems/InGameSystem/Inventory.cs" Line="38" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.PhotonChat PreferredExecutionTarget="d2382078-8346-4b84-9b36-50952f497ae8" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
