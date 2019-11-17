@@ -27,6 +27,7 @@ public class GridInfo
     //物品信息初始化
     public void Reset()
     {
+
         item = null;
         itemCount = 0;
     }

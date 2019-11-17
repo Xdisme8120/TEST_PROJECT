@@ -68,6 +68,7 @@ public class GamingDataController : BaseSystemController
                 string[] arrays = tempData.Split('|');
                 tempInventory.Add(i, new GridInfo(i, GamingData.GetItemByID(int.Parse(arrays[0])), int.Parse(arrays[1])));
             }
+            
             else
             {
                 tempInventory.Add(i, new GridInfo(i, new Item(), 0));
