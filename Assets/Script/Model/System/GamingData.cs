@@ -17,6 +17,8 @@ public class GamingData
     public static string username;
     //英雄昵称
     public static string nickname;
+    //剧情数据
+    public static SynData synData;
     public static GamingData INSTANCE()
     {
         if (instance == null)
@@ -69,6 +71,16 @@ public class GamingData
     public void SetItemInfo(Dictionary<int, int> _equipsData)
     {
         data_EquipsInfo = _equipsData;
+    }
+       //设置剧情信息
+    public void SetSynData(SynData _synData)
+    {
+        synData = _synData;
+    }
+    //获得信息
+    public SynData SetItemInfo()
+    {
+        return synData;
     }
     //初始化物品和材料的信息
     public void GetIMInfo()
