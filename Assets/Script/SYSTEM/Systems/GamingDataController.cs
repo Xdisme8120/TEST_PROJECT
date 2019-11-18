@@ -36,7 +36,8 @@ public class GamingDataController : BaseSystemController
         data.SetInventoryInfo(GetInventoryData(JsonMapper.ToObject(json_bagInfo.ToJson())));
         JsonData json_itemInfo = _data["itemInfo"];
         data.SetItemInfo(GetItemData(JsonMapper.ToObject(json_itemInfo.ToJson())));
-
+        JsonData json_synData = _data["taskInfo"];
+        data.SetSynData(GetTaskInfo(JsonMapper.ToObject(json_synData.ToJson())));
     }
     //存储数据
     public void SaveData(HeroState _stateData, Dictionary<int, GridInfo> _invenData, Dictionary<int, int> _equipsData)
@@ -44,7 +45,7 @@ public class GamingDataController : BaseSystemController
         data.setHeroState(_stateData);
         data.SetInventoryInfo(_invenData);
         data.SetItemInfo(_equipsData);
-        EventCenter.Broadcast(EventDefine.SaveHeroInfo,data.HeroState,data.InvenrotyInfo,data.EquipsInfo);
+        EventCenter.Broadcast(EventDefine.SaveHeroInfo, data.HeroState, data.InvenrotyInfo, data.EquipsInfo);
     }
     //获取英雄状态数据
     public HeroState GetHeroStateData(JsonData _data)
@@ -68,7 +69,7 @@ public class GamingDataController : BaseSystemController
                 string[] arrays = tempData.Split('|');
                 tempInventory.Add(i, new GridInfo(i, GamingData.GetItemByID(int.Parse(arrays[0])), int.Parse(arrays[1])));
             }
-            
+
             else
             {
                 tempInventory.Add(i, new GridInfo(i, new Item(), 0));
@@ -94,6 +95,28 @@ public class GamingDataController : BaseSystemController
         }
         return tempItemInfo;
     }
+    //返回任务信息
+    public SynData GetTaskInfo(JsonData _data)
+    {
+        SynData synData = new SynData();
+        {
+            synData.taskID = int.Parse((string)_data["taskID"]);
+            synData.TaskName = (string)_data["taskName"];
+            synData.taskState = int.Parse((string)_data["taskState"]);
+            Dictionary<int, int> tempNpcIDState = new Dictionary<int, int>();
+            string[] tempNpcID = ((string)_data["npcID"]).Split('|');
+            string[] tempNpcState = ((string)_data["npcState"]).Split('|');
+            for (int i = 0; i < tempNpcID.Length; i++)
+            {
+                tempNpcIDState.Add(int.Parse(tempNpcID[i]),int.Parse(tempNpcState[i]));
+            }
+            synData.npcState = tempNpcIDState;
+        }
+        Debug.Log(synData.taskState+"'"+synData.taskID+"'"+synData.TaskName+"'"+synData.npcState.Count);
+        return synData;
+    }
+    //"taskInfo":{"heroName":"bitch","taskID":"11","taskName":"114345","taskState":"11544","npcID":"115445","npcState":"54445"}
+
     //设置用户名
     public void SetUsername(string _username)
     {
