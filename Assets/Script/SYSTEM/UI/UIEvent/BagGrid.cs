@@ -6,6 +6,14 @@ using UnityEngine;
 
 public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
+    public Item GetItem
+    {
+        get{return item;}
+    }
+    public int GetCount
+    {
+        get{return goodCount;}
+    }
     //物品ID
     Item item = new Item();
     //物品数量
@@ -130,6 +138,7 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
         this.goodCount = Count;
         textCount.text = goodCount.ToString();
         image.sprite = Resources.Load<Sprite>("Item/" + item.ID.ToString());
+        Debug.Log(item.ID);
     }
     //重置父对象
     public void SetTemp()

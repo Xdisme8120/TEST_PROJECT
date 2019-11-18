@@ -92,7 +92,8 @@ public class HeroSystem : IMainGameSystem
         heroInfo.InitHeroInfo(GamingData.INSTANCE().HeroState);
         inventory.Init(GamingData.INSTANCE().InvenrotyInfo);
         equips.Init(GamingData.INSTANCE().EquipsInfo);
-        SaveData();
+        EventCenter.Broadcast(EventDefine.InitBag,inventory.GetInventoryInfo);
+
     }
     //英雄系统Update函数的调用
     public override void Update()

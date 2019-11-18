@@ -48,6 +48,7 @@ public class Inventory
                 Debug.Log(inventoryInfo[i].item.Name + "--" + inventoryInfo[i].itemCount);
             }
         }
+        EventCenter.AddListener<Dictionary<int,GridInfo>>(EventDefine.UI_SendBagInfo,SetBagInfoFromUI);
     }
     //获得物品
     public void GetItem(int _itemID)
@@ -170,8 +171,15 @@ public class Inventory
             if (_bagInfo[i].GetItemID() != -1)
             {
                 inventoryInfo[i] = _bagInfo[i];
-                Debug.Log(inventoryInfo[i].item.Name + "--" + inventoryInfo.Count);
+            }
+            else
+            {
+                inventoryInfo[i] = new GridInfo(i,new Item(),0);
             }
         }
+
+        ///////测试存储
+        ////////
+        heroSystem.SaveData();
     }
 }
