@@ -99,7 +99,7 @@ public class GamingData
     //根据ID返回物品信息
     public static Item GetItemByID(int _ID)
     {
-        Debug.Log(_ID);
+        //Debug.Log(_ID);
         return itemsInfo[_ID];
     }
 

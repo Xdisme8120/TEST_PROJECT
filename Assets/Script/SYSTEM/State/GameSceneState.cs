@@ -13,6 +13,7 @@ public class GameSceneState : SceneState
     public override void StateBegin()
     {
         inGameSystem = new InGameSystem();
+        //inGameSystem.Init(inGameSystem.SynopsisSystem);
     }
     //子系统类Update函数调用
     public override void StateUpdate()

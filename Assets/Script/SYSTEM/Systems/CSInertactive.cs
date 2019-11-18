@@ -28,7 +28,7 @@ public class CSInertactive : MonoBehaviour
         system = GameSystem.Instance;
         //将功能注册进事件系统
         //注册 登陆 修改密码 创建英雄 获取英雄信息
-        Debug.Log("事件注册");
+        //Debug.Log("事件注册");
         EventCenter.AddListener<string>(EventDefine.GetHeroInfo, GetHeroInfo);
         EventCenter.AddListener<string, string>(EventDefine.Login, Login);
         EventCenter.AddListener<string, string>(EventDefine.CreateHero, CreateHero);
@@ -147,16 +147,16 @@ public class CSInertactive : MonoBehaviour
         WWW www = new WWW("49.232.47.199/server/index.php", form);
         while (!www.isDone)
         {
-            Debug.Log("wait");
+            //Debug.Log("wait");
         }
         yield return www;
         if (www.error != null)
         {
-            Debug.Log(www.error);
+            //Debug.Log(www.error);
         }
         else
         {
-            Debug.Log(www.text);
+            //Debug.Log(www.text);
         }
     }
     /////////////////////////////////////////////////////
@@ -176,16 +176,16 @@ public class CSInertactive : MonoBehaviour
         WWW www = new WWW("49.232.47.199/server/index.php", form);
         while (!www.isDone)
         {
-            Debug.Log("wait");
+            //Debug.Log("wait");
         }
         yield return www;
         if (www.error != null)
         {
-            Debug.Log(www.error);
+            //Debug.Log(www.error);
         }
         else
         {
-            Debug.Log(www.text);
+            //Debug.Log(www.text);
         }
     }
     //获取英雄信息//////////////////////////////(//////////
@@ -206,11 +206,11 @@ public class CSInertactive : MonoBehaviour
         yield return www;
         if (www.error != null)
         {
-            Debug.Log(www.error);
+            //Debug.Log(www.error);
         }
         else
         {
-            Debug.Log(www.text);
+            //Debug.Log(www.text);
             //将收到的英雄信息传给数据处理系统
             system.gamingDataController.InitData(JsonMapper.ToObject(www.text));
             GameSystem.Instance.gamingDataController.SetNickname(_nickName);
@@ -248,16 +248,16 @@ public class CSInertactive : MonoBehaviour
         WWW www = new WWW("49.232.47.199/server/index.php", form);
         while (!www.isDone)
         {
-            // Debug.Log("wait");
+            //Debug.Log("wait");
         }
         yield return www;
         if (www.error != null)
         {
-            Debug.Log("ERROR" + Time.time);
+            //Debug.Log("ERROR" + Time.time);
         }
         else
         {
-            Debug.Log(www.text);
+            //Debug.Log(www.text);
         }
     }
     

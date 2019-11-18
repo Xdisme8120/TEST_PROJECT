@@ -29,7 +29,7 @@ public class GamingDataController : BaseSystemController
     //初始化数据
     public void InitData(JsonData _data)
     {
-        Debug.Log(Time.time);
+        //Debug.Log(Time.time);
         JsonData json_HeroState = _data["charInfo"];
         data.setHeroState(GetHeroStateData(JsonMapper.ToObject(json_HeroState.ToJson())));
         JsonData json_bagInfo = _data["bagInfo"];
