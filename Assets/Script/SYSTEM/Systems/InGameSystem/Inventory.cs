@@ -51,7 +51,7 @@ public class Inventory
         EventCenter.AddListener<Dictionary<int,GridInfo>>(EventDefine.UI_SendBagInfo,SetBagInfoFromUI);
     }
     //获得物品
-    public void GetItem(int _itemID)
+    public void GetItem(int _itemID,int _count = 1)
     {
         int t_grid = -1;
         for (int i = 1; i <= inventoryInfo.Count; i++)
@@ -81,6 +81,7 @@ public class Inventory
         inventoryInfo[t_grid].itemCount += 1;
         //TODO提示获取物品并修改UI状态
     }
+
     //使用物品
     public void UseItem(int _itemGridID)
     {
@@ -136,7 +137,6 @@ public class Inventory
             }
         }
         //TODO提示物品数量不足
-
     }
     //交换格子信息
     public void SwitchItem(int _gridID1, int _gridID2)
@@ -177,9 +177,21 @@ public class Inventory
                 inventoryInfo[i] = new GridInfo(i,new Item(),0);
             }
         }
-
-        ///////测试存储
-        ////////
-        heroSystem.SaveData();
+    }
+    //根据Dic获得物品
+    public void GetItems(Dictionary<string,int> _items)
+    {
+        foreach(var item in _items.Keys)
+        {
+            GetItem(GamingData.GetItemIDByName(item),_items[item]);
+        }
+    }
+    //根据Dic上交物品
+    public void SendItems(Dictionary<string,int> _items)
+    {
+        foreach(var item in _items.Keys)
+        {
+            SendMaterial(GamingData.GetItemIDByName(item),_items[item]);
+        }
     }
 }

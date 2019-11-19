@@ -20,4 +20,6 @@ public class HeroState
     public int level;
     //当前经验值
     public int cueeExp;
+    //当前升级所需经验
+    public int levelUpExp;
 }

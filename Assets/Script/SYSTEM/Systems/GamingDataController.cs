@@ -45,7 +45,7 @@ public class GamingDataController : BaseSystemController
         data.setHeroState(_stateData);
         data.SetInventoryInfo(_invenData);
         data.SetItemInfo(_equipsData);
-        EventCenter.Broadcast(EventDefine.SaveHeroInfo, data.HeroState, data.InvenrotyInfo, data.EquipsInfo);
+        EventCenter.Broadcast(EventDefine.SaveHeroInfo, data.HeroState, data.InvenrotyInfo, data.EquipsInfo,data.SynData);
     }
     //获取英雄状态数据
     public HeroState GetHeroStateData(JsonData _data)
@@ -126,6 +126,16 @@ public class GamingDataController : BaseSystemController
     public void SetNickname(string _nickname)
     {
         GamingData.nickname = _nickname;
+    }
+    //设置英雄昵称列表
+    public void SetHeroList(JsonData _data)
+    {
+        GamingData.heroLT.Clear();
+        GamingData.heroList[0] = (string)_data["tank"];
+        GamingData.heroList[1] = (string)_data["swordman"];
+        GamingData.heroLT.Add(GamingData.heroList[0],0);
+        GamingData.heroLT.Add(GamingData.heroList[1],1);
+
     }
 }
 /*
