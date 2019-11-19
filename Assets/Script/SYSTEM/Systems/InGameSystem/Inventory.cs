@@ -80,6 +80,9 @@ public class Inventory
         inventoryInfo[t_grid].item = GetItemFromAll(_itemID);
         inventoryInfo[t_grid].itemCount += 1;
         //TODO提示获取物品并修改UI状态
+
+        //向任务系统发送物品信息
+        heroSystem.SendGridInfo2S();
     }
 
     //使用物品

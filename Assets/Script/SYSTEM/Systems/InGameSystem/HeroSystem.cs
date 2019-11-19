@@ -14,6 +14,7 @@
 #endregion
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Photon.Pun;
 //英雄系统_存储实时英雄信息
 public class HeroSystem : IMainGameSystem
@@ -81,7 +82,9 @@ public class HeroSystem : IMainGameSystem
 
     //设置英雄信息
     public void SetHeroInfo(GamingData _data)
-    { }
+    { 
+
+    }
 
     //初始化英雄系统
     public override void Init()
@@ -177,6 +180,11 @@ public class HeroSystem : IMainGameSystem
     {
         GetExp(_questRewards.experience);
         inventory.GetItems(_questRewards.Equip);
+    }
+    //将背包信息发送给剧情系统
+    public void SendGridInfo2S()
+    {
+    
     }
 
 }
