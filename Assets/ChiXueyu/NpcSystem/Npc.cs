@@ -91,8 +91,8 @@ public class Npc : MonoBehaviour
     /// </summary>
     /// <param name="other"></param>
     private void OnTriggerStay(Collider other)
-    {
-        if (Input.GetKeyDown(KeyCode.E))
+    {      
+        if (Input.GetKeyDown(KeyCode.T))
         {
             EventCenter.Broadcast(EventDefine.ShowTalkTextC);
         }

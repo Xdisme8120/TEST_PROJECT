@@ -13,7 +13,11 @@ public class GameSceneState : SceneState
     public override void StateBegin()
     {
         inGameSystem = new InGameSystem();
-        //inGameSystem.Init(inGameSystem.SynopsisSystem);
+        inGameSystem.Init(inGameSystem.SynopsisSystem);
+        //Debug.Log(GamingData.synData.npcState.Count);
+        //Debug.Log((NpcState)GamingData.synData.npcState[1]);
+        //Debug.Log((NpcState)GamingData.synData.npcState[2]);
+        //Debug.Log((TaskState)GamingData.synData.taskState);        
     }
     //子系统类Update函数调用
     public override void StateUpdate()

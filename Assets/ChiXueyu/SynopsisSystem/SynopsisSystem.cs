@@ -29,6 +29,7 @@ public class SynopsisSystem : IMainGameSystem
     public NpcSystem npcSystem;
     public TalkSystem talkSystem;
     public InGameSystem _inGameSystem { get; set; }
+    public static bool isFirst = true;
     
     //对话状态
     private TalkState talkState = TalkState.Normal;
@@ -171,6 +172,7 @@ public class SynopsisSystem : IMainGameSystem
     /// </summary>
     public void ShowUI()
     {
+        //Debug.Log(0);
         EventCenter.Broadcast(EventDefine.ShowUI,taskSystem);        
     }
 
@@ -219,8 +221,9 @@ public class SynopsisSystem : IMainGameSystem
     /// </summary>
     public void ShowProgress()
     {
-        Debug.Log(currentTask.tp.taskComplete["情报贩子"]);
+        Debug.Log(currentTask.taskState);
     }
+
 
     #endregion
 
@@ -228,20 +231,15 @@ public class SynopsisSystem : IMainGameSystem
 
     /// <summary>
     /// 剧情系统的初始化
-    /// </summary>
-    public void InitC(Dictionary<int,int> npcState,int taskID,int taskState, Dictionary<int, GridInfo> dic)
+    /// </summary> 
+    public override void Init()
     {
-        npcSystem.InitNpcSystem(npcState);
-        taskSystem.InitTaskSystem(taskID,taskState,dic);
+        npcSystem.InitNpcSystem(GamingData.synData.npcState);
+        taskSystem.InitTaskSystem(GamingData.synData.taskID, GamingData.synData.taskState, GamingData.INSTANCE().InvenrotyInfo);
         ShowMiniTaskPanel();
         //TODO 任务系统初始化  
         //拿到当前的任务编号，拿到当前任务，将当前任务的初值赋值进去，根据任务编号初始化npc状态
         //TODO 对话系统初始化
-    }
-
-    public override void Init()
-    {
-        //throw new System.NotImplementedException();
     }
 
     public override void Update()

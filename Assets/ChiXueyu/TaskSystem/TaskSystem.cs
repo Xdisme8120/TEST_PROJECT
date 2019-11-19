@@ -136,6 +136,7 @@ public class TaskSystem
             //未提交状态
             //Debug.Log("Complete but no submit");
             SetTaskState(TaskState.UnSubmit);
+            Debug.Log(sy.currentTask.taskState);
         }
         else
         {
@@ -183,7 +184,8 @@ public class TaskSystem
         //设置当前任务状态
         sy.currentTask.taskState = (TaskState)_taskState;
         //设置当前任务的进度
-        CheckOtherTask(dic);
+        SetProgress(dic);
+        Debug.Log(sy.currentTask.taskState);
     }
 
     /// <summary>
@@ -194,16 +196,17 @@ public class TaskSystem
         //如果是对话任务
         if(sy.currentTask.taskType == TaskType.Dialogue)
         {
-            //Debug.Log("进入正常");
+            Debug.Log("进入正常");
             //当前进入的npc为对话的npc
            if(sy.currentNpc.npcName == sy.currentTask.prop[0])
             {
-                //Debug.Log("进入正常");
+                Debug.Log("进入正常");
                 progress.Clear();
                 //设置对话任务的进度
                 progress.Add(sy.currentNpc.npcName, 1);
                 SetChangeAndCheck(progress);
-                EventCenter.Broadcast(EventDefine.MiniTaskShowC);       
+                EventCenter.Broadcast(EventDefine.MiniTaskShowC);
+                Debug.Log("结束正常");
             }
         } 
     }
@@ -214,12 +217,25 @@ public class TaskSystem
     /// <param name="dic"></param>
     public void CheckOtherTask(Dictionary<int, GridInfo> dic)
     {
-        for (int i = 1; i <= dic.Count; i++)
-        {
-            sy.currentTask.tp.taskComplete[dic[i].item.Name] = dic[i].itemCount;
-        }
+        SetProgress(dic);
         CheckTask();
     }
 
+    /// <summary>
+    /// 设置进度
+    /// </summary>
+    /// <param name="dic"></param>
+    public void SetProgress(Dictionary<int, GridInfo> dic)
+    {
+        for (int i = 1; i <= dic.Count; i++)
+        {
+            if (dic[i].GetItemID() == -1)
+                continue;
+            if (sy.currentTask.tp.taskComplete.ContainsKey(dic[i].item.Name))
+            {
+                sy.currentTask.tp.taskComplete[dic[i].item.Name] = dic[i].itemCount;
+            }
+        }
+    }
     #endregion
 }

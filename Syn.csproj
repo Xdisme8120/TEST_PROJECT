@@ -313,11 +313,11 @@
     <Compile Include="Assets\ChiXueyu\TalkSystem\TalkSystem.cs" />
     <Compile Include="Assets\ChiXueyu\TalkSystem\TalkTxt.cs" />
     <Compile Include="Assets\ChiXueyu\TaskSystem\ButtonClick.cs" />
+    <Compile Include="Assets\ChiXueyu\TaskSystem\MainTaskShow.cs" />
     <Compile Include="Assets\ChiXueyu\TaskSystem\QuestRewards.cs" />
     <Compile Include="Assets\ChiXueyu\TaskSystem\ShowUI.cs" />
     <Compile Include="Assets\ChiXueyu\TaskSystem\Task.cs" />
     <Compile Include="Assets\ChiXueyu\TaskSystem\TaskDemand.cs" />
-    <Compile Include="Assets\ChiXueyu\TaskSystem\TaskPanelShow.cs" />
     <Compile Include="Assets\ChiXueyu\TaskSystem\TaskProgress.cs" />
     <Compile Include="Assets\ChiXueyu\TaskSystem\TaskShow.cs" />
     <Compile Include="Assets\ChiXueyu\TaskSystem\TaskState.cs" />
@@ -521,6 +521,7 @@
     <Compile Include="Assets\SUIFW\Test\Test.cs" />
     <Compile Include="Assets\SUIFW\UIManager.cs" />
     <Compile Include="Assets\SUIFW\UIType.cs" />
+    <Compile Include="Assets\TaskShowController.cs" />
     <Compile Include="Assets\Test_Image.cs" />
   </ItemGroup>
   <ItemGroup>

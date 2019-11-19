@@ -44,6 +44,10 @@
         {
             "Key": "CharacterInfo",
             "Value": "UIPB\\COMMON\\CharacterInfo"
+        },
+        {
+            "Key": "MainTaskShow",
+            "Value": "UIPB\\COMMON\\MainTaskShow"
         }
     ]
 }

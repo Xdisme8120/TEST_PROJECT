@@ -46,7 +46,7 @@ public class NpcSystem
         _npcState.Add(1,1);
         _npcState.Add(2,0);
         _npcState.Add(3,0);
-        InitNpcSystem(_npcState);
+        //InitNpcSystem(_npcState);
     }
     
     /// <summary>

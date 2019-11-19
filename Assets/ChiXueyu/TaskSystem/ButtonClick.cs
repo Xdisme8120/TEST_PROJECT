@@ -15,6 +15,8 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using SUIFW;
+
 public class ButtonClick
 {
     #region 属性和字段
@@ -26,13 +28,16 @@ public class ButtonClick
         if (taskSystem.sy.currentTask.taskType != TaskType.Dialogue)
         {
             //TODO 执行遍历背包然后更改进度值的方法
+            Debug.Log("未做1");
         }
         taskSystem.SetTaskState(TaskState.Tasking);
         EventCenter.Broadcast(EventDefine.MiniTaskShowC);
-        bg.SetActive(false);     
+        UIManager.GetInstance().CloseUIForms("MainTaskShow");
+        SynopsisSystem.isFirst = true;
     }
     public void SubmitTask(TaskSystem taskSystem,GameObject bg)
     {
+        //Debug.Log("进行方法绑定");
         taskSystem.sy.SetTalkState(TalkState.Normal);
         //设置当前进入npc状态为普通状态
         taskSystem.sy.currentNpc.SetState(NpcState.Normal);
@@ -53,17 +58,21 @@ public class ButtonClick
         }
         //获取奖励的方法
 
-
-        bg.SetActive(false);
+        Debug.Log("未做2");
+        
+        UIManager.GetInstance().CloseUIForms("MainTaskShow");
+        SynopsisSystem.isFirst = true;
         taskSystem.sy.SetTalkState(TalkState.Normal);
         //进行下一个任务的方法
         taskSystem.taskNum += 1;
+        Debug.Log(1);
         //点击变成任务刷新状态
         taskSystem.SetTaskState(TaskState.Refresh);
+        Debug.Log("刷新完成");
         //taskSystem.SetTaskState(TaskState.PickUp);
         EventCenter.Broadcast(EventDefine.ShowUI,taskSystem);
         EventCenter.Broadcast(EventDefine.MiniTaskShowC);
-
+        Debug.Log("面板重置完成");
         //小面板显示的替换
     }
     #endregion
