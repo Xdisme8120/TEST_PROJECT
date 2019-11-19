@@ -1,2 +1,8 @@
 Base path: /Applications/2017.4.32c2/Unity.app/Contents
 Cmd: initializeCompiler
+Cmd: preprocess
+  insize=3062 outsize=941 ok=1
+Cmd: preprocess
+  insize=2014 outsize=1016 ok=1
+Cmd: preprocess
+  insize=3769 outsize=915 ok=1

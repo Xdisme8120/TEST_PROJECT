@@ -40,7 +40,6 @@ public class CSInertactive : MonoBehaviour
     }
     private void Start()
     {
-        // EventCenter.Broadcast(EventDefine.GetHeroInfo,"Test");
     }
     //TODO 
     //1.获取英雄信息,并将英雄信息存入GamingData
@@ -302,9 +301,9 @@ public class CSInertactive : MonoBehaviour
     //存储英雄信息到服务器////////////////////////////////////////////
     public void SaveHeroInfo(HeroState _stateData, Dictionary<int, GridInfo> _invenData, Dictionary<int, int> _equipsData)
     {
-        string json = SaveHeroJson(_stateData, _invenData, _equipsData);
+        string json = SaveHeroJson(_stateData, _invenData, _equipsData,GamingData.synData);
         Debug.Log("存储的Json" + json);
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             switch (i)
             {
@@ -317,91 +316,109 @@ public class CSInertactive : MonoBehaviour
                 case 2:
                     StartCoroutine(POST("updateItemInfo", "bitch", json));
                     break;
-            }
-        }
+                case 3:
+                    StartCoroutine(POST("updateTaskInfo", "bitch",json));
+                    break;
+    }
+}
     }
     //英雄信息存储协程
-    IEnumerator POST(string _action, string _heroname, string _json)
+     IEnumerator POST(string _action, string _heroname, string _json)
+{
+    WWWForm form = new WWWForm();
+    form.AddField("a", _action);
+    form.AddField("nikename", _heroname);
+    form.AddField("jsondata", _json);
+    WWW www = new WWW("49.232.47.199/server/index.php", form);
+    while (!www.isDone)
     {
-        WWWForm form = new WWWForm();
-        form.AddField("a", _action);
-        form.AddField("nikename", _heroname);
-        form.AddField("jsondata", _json);
-        WWW www = new WWW("49.232.47.199/server/index.php", form);
-        while (!www.isDone)
+        // Debug.Log("wait");
+    }
+    yield return www;
+    if (www.error != null)
+    {
+        Debug.Log("ERROR" + Time.time);
+    }
+    else
+    {
+        Debug.Log(www.text);
+    }
+}
+
+/// ////////////////////////////////////////////////////////////
+//JSON
+// 创建英雄是存储的JSon
+public string CreateHeroJson(string _heroType, string _nickName)
+{
+
+    JsonObject json = new JsonObject();
+    json.Add(_heroType, _nickName);
+    json.Add("heroName", _nickName);
+    return json.ToString();
+}
+
+// 存储英雄信息时生成的JSon
+public string SaveHeroJson(HeroState _stateData, Dictionary<int, GridInfo> _invenData, Dictionary<int, int> _equipsData,SynData _synData)
+{
+    Dictionary<int, string> tempInvenInfo = new Dictionary<int, string>();
+    Dictionary<int, int> tempEquipInfo = new Dictionary<int, int>();
+    JsonObject json = new JsonObject();
+    // 英雄数据存储
+    json.Add("level", _stateData.level);
+    json.Add("CurrExp", _stateData.cueeExp);
+    json.Add("Hp", (int)_stateData.hp);
+    json.Add("Mp", (int)_stateData.sp);
+    //背包数据存储
+    int index = 1;
+    foreach (var item in _invenData)
+    {
+        string tempItemInfo;
+        if (item.Value.GetItemID() != -1)
         {
-            // Debug.Log("wait");
-        }
-        yield return www;
-        if (www.error != null)
-        {
-            Debug.Log("ERROR" + Time.time);
+            tempItemInfo = item.Value.item.ID + "|" + item.Value.itemCount;
         }
         else
         {
-            Debug.Log(www.text);
+            tempItemInfo = "-1";
         }
+        json.Add("bagItem" + index, tempItemInfo);
+        index++;
     }
+    //装备栏存储
+    index = 1;
+    foreach (var item in _equipsData)
+    {
+        json.Add("weapon" + index, item.Value);
+        index++;
+    }
+    //任务信息存储 
+    json.Add("taskID",_synData.taskID);
+    json.Add("taskName",_synData.TaskName);
+    json.Add("taskState",_synData.taskState);
+    index = 1;
+    string tempNpcID = "";
+    string tempNpcState = "";
+    foreach(var item in _synData.npcState.Keys)
+    {
+        tempNpcID += (item.ToString()+((index==_synData.npcState.Count)?"":"|"));
+        tempNpcState += (_synData.npcState[item].ToString()+((index==_synData.npcState.Count)?"":"|"));
+        index++;
+    }
+    return json.ToString();
+}
 
-    /// ////////////////////////////////////////////////////////////
-    //JSON
-    // 创建英雄是存储的JSon
-    public string CreateHeroJson(string _heroType, string _nickName)
-    {
-        Debug.Log(_heroType);
-        Debug.Log(_nickName);
-        JsonObject json = new JsonObject();
-        json.Add(_heroType, _nickName);
-        json.Add("heroName", _nickName);
-        return json.ToString();
-    }
-
-    // 存储英雄信息时生成的JSon
-    public string SaveHeroJson(HeroState _stateData, Dictionary<int, GridInfo> _invenData, Dictionary<int, int> _equipsData)
-    {
-        Dictionary<int, string> tempInvenInfo = new Dictionary<int, string>();
-        Dictionary<int, int> tempEquipInfo = new Dictionary<int, int>();
-        JsonObject json = new JsonObject();
-        json.Add("level", _stateData.level);
-        json.Add("CurrExp", _stateData.cueeExp);
-        json.Add("Hp", (int)_stateData.hp);
-        json.Add("Mp", (int)_stateData.sp);
-        int index = 1;
-        foreach (var item in _invenData)
-        {
-            string tempItemInfo;
-            if (item.Value.GetItemID() != -1)
-            {
-                tempItemInfo = item.Value.item.ID + "|" + item.Value.itemCount;
-            }
-            else
-            {
-                tempItemInfo = "-1";
-            }
-            json.Add("bagItem" + index, tempItemInfo);
-            index++;
-        }
-        index = 1;
-        foreach (var item in _equipsData)
-        {
-            json.Add("weapon" + index, item.Value);
-            index++;
-        }
-        return json.ToString();
-    }
-
-    //弹出消息框
-    public void ShowMessageByCode(string _type, int _code)
-    {
-        string message = messageInfos.GetField("MSG_" + _type + "_" + _code).GetValue(null).ToString();
-        UIManager.GetInstance().ShowMessage(message);
-    }
-    //处理ERRORCODE
-    int GetErrorCode(string _jsonText)
-    {
-        JsonData data = JsonMapper.ToObject(_jsonText);
-        return (int)data["errorcode"];
-    }
+//弹出消息框
+public void ShowMessageByCode(string _type, int _code)
+{
+    string message = messageInfos.GetField("MSG_" + _type + "_" + _code).GetValue(null).ToString();
+    UIManager.GetInstance().ShowMessage(message);
+}
+//处理ERRORCODE
+int GetErrorCode(string _jsonText)
+{
+    JsonData data = JsonMapper.ToObject(_jsonText);
+    return (int)data["errorcode"];
+}
 }
 
 

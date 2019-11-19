@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 114279785530516474}
   - component: {fileID: 114428851398925544}
   m_Layer: 5
-  m_Name: Character(List)(Clone)
+  m_Name: Character(List)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

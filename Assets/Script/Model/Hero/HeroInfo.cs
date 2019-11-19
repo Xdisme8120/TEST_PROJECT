@@ -12,8 +12,6 @@ public class HeroInfo
     }
     //基本状态
     HeroState heroState;
-    //职业
-    HeroType heroType;
     //初始化英雄信息
     public void InitHeroInfo(HeroState _heroState)
     {
@@ -24,6 +22,7 @@ public class HeroInfo
         heroState.level = _heroState.level;
         heroState.atk = _heroState.atk;
         heroState.def = _heroState.def;
+        heroState.levelUpExp = _heroState.levelUpExp*100;
     }
     //返回英雄状态信息
     public HeroState HeroState
