@@ -138,6 +138,7 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
         this.goodCount = Count;
         textCount.text = goodCount.ToString();
         image.sprite = Resources.Load<Sprite>("Item/" + item.ID.ToString());
+
     }
     //重置父对象
     public void SetTemp()

@@ -260,6 +260,7 @@ public class CSInertactive : MonoBehaviour
             //Debug.Log(www.text);
             //将收到的英雄信息传给数据处理系统
             system.gamingDataController.InitData(JsonMapper.ToObject(www.text));
+            GameSystem.Instance.SetNewSceneState(new GameSceneState(GameSystem.Instance.sceneStateController), 0);
 
         }
         yield return null;

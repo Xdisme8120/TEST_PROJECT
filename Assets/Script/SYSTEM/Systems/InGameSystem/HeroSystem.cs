@@ -14,6 +14,7 @@
 #endregion
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Photon.Pun;
 //英雄系统_存储实时英雄信息
 public class HeroSystem : IMainGameSystem
@@ -77,11 +78,15 @@ public class HeroSystem : IMainGameSystem
     //对比用pv
     PhotonView contrastView;
     public HeroSystem(InGameSystem _inGameSystem) : base(_inGameSystem)
-    { }
+    {
+        
+    }
 
     //设置英雄信息
     public void SetHeroInfo(GamingData _data)
-    { }
+    { 
+
+    }
 
     //初始化英雄系统
     public override void Init()
@@ -92,6 +97,8 @@ public class HeroSystem : IMainGameSystem
         heroInfo.InitHeroInfo(GamingData.INSTANCE().HeroState);
         inventory.Init(GamingData.INSTANCE().InvenrotyInfo);
         equips.Init(GamingData.INSTANCE().EquipsInfo);
+        EventCenter.AddListener(EventDefine.FinishTaskDelete, DeleteItems);
+        EventCenter.AddListener(EventDefine.FinishTaskGet,GetItems);
         EventCenter.Broadcast(EventDefine.InitBag, inventory.GetInventoryInfo);
     }
     //英雄系统Update函数的调用
@@ -179,4 +186,19 @@ public class HeroSystem : IMainGameSystem
         inventory.GetItems(_questRewards.Equip);
     }
 
+    //将背包信息发送给剧情系统
+    public void SendGridInfo2S()
+    {
+        inGameSystem.SynopsisSystem.taskSystem.SetProgress(inventory.GetInventoryInfo);
+    }
+    //通知背包批量删除
+    public void DeleteItems()
+    {
+        inventory.SendItems(inGameSystem.SynopsisSystem.currentTask.td.taskNeed);
+    }
+
+    public void GetItems()
+    {
+        inventory.GetItems(inGameSystem.SynopsisSystem.currentTask.qr.Equip);
+    }
 }

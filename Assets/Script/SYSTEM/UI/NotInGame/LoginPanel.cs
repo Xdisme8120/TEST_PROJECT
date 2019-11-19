@@ -72,10 +72,15 @@ public class LoginPanel : BaseUIForm
         //打开背包窗口
         //UIManager.GetInstance().ShowUIForms("PlayerInventory");
         //关闭登陆界面
-        //UIManager.GetInstance().CloseUIForms("Login");
+        //Debug.Log("登陆");
+        UIManager.GetInstance().ShowUIForms("MainTaskShow");
+        UIManager.GetInstance().CloseUIForms("MainTaskShow");
+
+
         Debug.Log("登陆");
         
-        GameSystem.Instance.SetNewSceneState(new GameSceneState(GameSystem.Instance.sceneStateController),-1);
+
+       
         
     }
 }

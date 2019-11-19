@@ -39,9 +39,19 @@ public class SelectHeroPanel : BaseUIForm
 
     private void PlayGame()
     {
+        if (GamingData.nickname == "" || GamingData.nickname == "-1" || GamingData.nickname == null)
+        {
+            UIManager.GetInstance().ShowMessage("请先选择一个角色");
+            return;
+        }
         //进入游戏主页面
         //关闭当前页面
         UIManager.GetInstance().CloseUIForms("SelectHero");
+        //打开头像信息固定窗口
+        UIManager.GetInstance().ShowUIForms("PlayerInfo");
+
+        EventCenter.Broadcast(EventDefine.GetHeroInfo, GamingData.nickname);
+
         Debug.Log(GamingData.nickname);
         Debug.Log("跳转场景");
     }

@@ -1,0 +1,131 @@
+{
+    "1": {
+        "npcID": 1,
+
+        "taskType": 1,
+        "description": "去寻找森林里的情报贩子吧，他那里也许有你想要的东西",
+        "prop": [ "情报贩子" ],
+        "name": "初识异世界",
+        "qr": {
+            "coinCounts": 50,
+            "experience": 5,
+            "Equip": { "宝剑": 1 }
+        },
+
+        "td": { "情报贩子": 1 },
+        "tp": { "情报贩子": 0 }
+    },
+
+    "2": {
+        "npcID": 2,
+
+        "taskType": 1,
+        "description": "村里有一位强大的骑士长，去向他问一下情况吧",
+        "prop": [ "骑士长" ],
+        "name": "寻找骑士长",
+        "qr": {
+            "coinCounts": 50,
+            "experience": 5,
+            "Equip": { "骑士长的信物": 1 }
+        },
+
+        "td": { "骑士长": 1 },
+        "tp": { "骑士长": 0 }
+    },
+
+    "3": {
+        "npcID": 3,
+
+        "taskType": 0,
+        "description": "找到手艺人，去寻找下一个线索",
+        "prop": [ "手艺人" ],
+        "name": "拜访手艺人",
+        "qr": {
+            "coinCounts": 50,
+            "experience": 5,
+            "Equip": {}
+        },
+
+        "td": { "骑士长": 1 },
+        "tp": { "骑士长": 0 }
+    },
+
+
+    "4": {
+        "npcID": 4,
+
+        "taskType": 0,
+        "description": "讨伐三头火狼，拔下他们的獠牙",
+        "prop": [ "火狼的獠牙" ],
+        "name": "讨伐恶狼",
+        "qr": {
+            "coinCounts": 50,
+            "experience": 5,
+            "Equip": { "火神伏尔坎的祝福": 1 }
+        },
+
+        "td": { "火狼的獠牙": 5 },
+        "tp": { "火狼的獠牙": 0 }
+    },
+
+    "5": {
+        "npcID": 4,
+
+        "taskType": 1,
+        "description": "去铁匠那里寻找线索",
+        "prop": [ "铁匠" ],
+        "name": "锻铁之人",
+        "qr": {
+            "coinCounts": 50,
+            "experience": 5,
+            "Equip": {}
+        },
+
+        "td": { "铁匠": 1 },
+        "tp": { "铁匠": 0 }
+    },
+
+    "6": {
+        "npcID": 5,
+
+        "taskType": 2,
+        "description": "去讨伐狂暴毒蝎与石头人获取制剑的原材料，锻造武器",
+        "prop": [ "毒蝎的断尾", "精钢" ],
+        "name": "锻造武器",
+        "qr": {
+            "coinCounts": 50,
+            "experience": 5,
+            "Equip": { "霜之哀伤": 1 }
+        },
+
+        "td": {
+            "毒蝎的断尾": 5,
+            "精钢": 5
+        },
+        "tp": {
+            "毒蝎的断尾": 0,
+            "精钢": 0
+        }
+    },
+
+    "7": {
+        "npcID": 4,
+
+        "taskType": 1,
+        "description": " 讨伐Boss地狱领主",
+        "prop": [ "地狱领主"],
+        "name": "最终之战",
+        "qr": {
+            "coinCounts": 50,
+            "experience": 5,
+            "Equip": { "火之高兴": 1 }
+        },
+
+        "td": {
+            "地狱领主": 1
+        },
+        "tp": {
+            "地狱领主": 0
+        }
+    }
+}
