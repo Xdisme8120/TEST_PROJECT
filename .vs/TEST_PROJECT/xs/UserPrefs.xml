@@ -1,13 +1,26 @@
 ﻿<Properties StartupConfiguration="{C2E4545A-CFD8-1C54-CC06-23208DF43373}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/SYSTEM/UI/NotInGame/SelectHeroPanel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/SYSTEM/Systems/CSInertactive.cs">
     <Files>
-      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/SelectHeroPanel.cs" Line="45" Column="1" />
-      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/SelectHeroPanel.cs" Line="1" Column="1" />
+      <File FileName="Assets/Script/SYSTEM/Systems/CSInertactive.cs" Line="247" Column="36" IsPinned="True" />
+      <File FileName="Assets/Script/SYSTEM/Systems/GamingDataController.cs" IsPinned="True" />
+      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/SelectHeroPanel.cs" />
+      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/LoginPanel.cs" />
+      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/Common/PlayerInfo.cs" />
+      <File FileName="Assets/Script/SYSTEM/Systems/GameSystem.cs" />
+      <File FileName="Assets/RPG and MMO UI 6/Scripts/Test Scripts/Test_UIProgressBar.cs" />
+      <File FileName="Assets/Script/Model/Hero/HeroInfo.cs" />
+      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/CharacterCreatePanel.cs" />
+      <File FileName="Assets/Script/Model/System/GamingData.cs" />
+      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/Common/PlayerInventory.cs" />
+      <File FileName="Assets/RPG and MMO UI 6/Scripts/UI/Icon Slot System/UITalentSlot.cs" />
+      <File FileName="Assets/Script/SYSTEM/Systems/InGameSystem/HeroSystem.cs" />
+      <File FileName="Assets/Script/EventCenter/EventCenter.cs" />
+      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/Common/CharacterInfo.cs" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.PhotonChat PreferredExecutionTarget="9359bc7f-e8d1-4369-b3ad-84fe0041d0cb" />
+  <MonoDevelop.Ide.ItemProperties.PhotonChat PreferredExecutionTarget="eb8e2b5c-d787-4a82-8ffe-9252a66e69b9" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

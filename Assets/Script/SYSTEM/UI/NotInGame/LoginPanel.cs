@@ -78,9 +78,6 @@ public class LoginPanel : BaseUIForm
 
 
         Debug.Log("登陆");
-        
-
        
-        
     }
 }
