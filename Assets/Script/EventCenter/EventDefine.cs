@@ -20,6 +20,41 @@
     //开始游戏初始化背包
     InitBag,
     //Sned,
-    Test_GetImage
+    Test_GetImage,
+
+    //**************************
+    //设置npc状态
+    ChangeNpcState,
+    //展示对话
+    ShowTalkText,
+    ShowTalkTextC,
+    //展示task面板的button
+    ShowTaskButton,
+    ShowTaskButtonC,
+    Init,
+    //展示TaksUI面板
+    ShowUI,
+    ShowUIC,
+    //设置当前npc
+    SetCurrentNpc,
+    SetCurrentNpcNull,
+    //激活task面板
+    SetTaskPanel,
+    SetTaskPanelC,
+    //对话结束时展示任务面板
+    SetTaskPanelEndTalk,
+    //改变任务进度
+    ChangeDialogueTask,
+    ChangeOtherTask,
+    //展示小任务面板进度
+    MiniTaskShow,
+    MiniTaskShowC,
+    //完成任务
+    FinishTaskDelete,
+    FinishTaskGet,
+    //第一次检查任务
+    FirstCheck,
+    //Test
+    Test,
     ////////////////////////////////////
 }

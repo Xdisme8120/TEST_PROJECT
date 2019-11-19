@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2017_4_20;UNITY_2017_4;UNITY_2017;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_4_6;DEVELOPMENT_BUILD;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;PHOTON_UNITY_NETWORKING;PUN_2_0_OR_NEWER;PUN_2_OR_NEWER</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2017_4_20;UNITY_2017_4;UNITY_2017;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_4_6;DEVELOPMENT_BUILD;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;PHOTON_UNITY_NETWORKING;PUN_2_0_OR_NEWER;PUN_2_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -51,6 +51,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ChiXueyu\NpcSystem\Npc.cs" />
+     <Compile Include="Assets\ChiXueyu\NpcSystem\NpcState.cs" />
+     <Compile Include="Assets\ChiXueyu\NpcSystem\NpcSystem.cs" />
+     <Compile Include="Assets\ChiXueyu\SynopsisSystem\SynopsisSystem.cs" />
+     <Compile Include="Assets\ChiXueyu\TalkSystem\SaveTalkTxt.cs" />
+     <Compile Include="Assets\ChiXueyu\TalkSystem\ShowTxt.cs" />
+     <Compile Include="Assets\ChiXueyu\TalkSystem\TalkCallBack.cs" />
+     <Compile Include="Assets\ChiXueyu\TalkSystem\TalkState.cs" />
+     <Compile Include="Assets\ChiXueyu\TalkSystem\TalkSystem.cs" />
+     <Compile Include="Assets\ChiXueyu\TalkSystem\TalkTxt.cs" />
+     <Compile Include="Assets\ChiXueyu\TaskSystem\ButtonClick.cs" />
+     <Compile Include="Assets\ChiXueyu\TaskSystem\MainTaskShow.cs" />
+     <Compile Include="Assets\ChiXueyu\TaskSystem\QuestRewards.cs" />
+     <Compile Include="Assets\ChiXueyu\TaskSystem\ShowUI.cs" />
+     <Compile Include="Assets\ChiXueyu\TaskSystem\Task.cs" />
+     <Compile Include="Assets\ChiXueyu\TaskSystem\TaskDemand.cs" />
+     <Compile Include="Assets\ChiXueyu\TaskSystem\TaskProgress.cs" />
+     <Compile Include="Assets\ChiXueyu\TaskSystem\TaskShow.cs" />
+     <Compile Include="Assets\ChiXueyu\TaskSystem\TaskState.cs" />
+     <Compile Include="Assets\ChiXueyu\TaskSystem\TaskSystem.cs" />
+     <Compile Include="Assets\ChiXueyu\TaskSystem\TaskType.cs" />
+     <Compile Include="Assets\ChiXueyu\Test\MoveTxt.cs" />
+     <Compile Include="Assets\Json\JsonReader.cs" />
      <Compile Include="Assets\RPG and MMO UI 6\Scripts\Attributes\BitMaskAttribute.cs" />
      <Compile Include="Assets\RPG and MMO UI 6\Scripts\Attributes\ResourcePathAttribute.cs" />
      <Compile Include="Assets\RPG and MMO UI 6\Scripts\Color Scheme\ColorScheme.cs" />
@@ -199,7 +222,6 @@
      <Compile Include="Assets\Script\Model\Hero\HeroState.cs" />
      <Compile Include="Assets\Script\Model\Inventory\GridInfo.cs" />
      <Compile Include="Assets\Script\Model\System\GamingData.cs" />
-     <Compile Include="Assets\Script\Model\System\QuestRewards.cs" />
      <Compile Include="Assets\Script\Model\System\SynData.cs" />
      <Compile Include="Assets\Script\SYSTEM\BaseClass&amp;Interface\BaseSystemController.cs" />
      <Compile Include="Assets\Script\SYSTEM\BaseClass&amp;Interface\IMainGameSystem.cs" />
@@ -213,7 +235,6 @@
      <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\HeroSystem.cs" />
      <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\InGameSystem.cs" />
      <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\Inventory.cs" />
-     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynopsisSystem.cs" />
      <Compile Include="Assets\Script\SYSTEM\Systems\SceneStateController.cs" />
      <Compile Include="Assets\Script\SYSTEM\Tags&amp;Message\CS_MESSAGE.cs" />
      <Compile Include="Assets\Script\SYSTEM\Tags&amp;Message\HeroType.cs" />
@@ -249,6 +270,7 @@
      <Compile Include="Assets\SUIFW\Test\Test.cs" />
      <Compile Include="Assets\SUIFW\UIManager.cs" />
      <Compile Include="Assets\SUIFW\UIType.cs" />
+     <Compile Include="Assets\TaskShowController.cs" />
      <Compile Include="Assets\Test_Image.cs" />
      <None Include="Assets\RPG and MMO UI 6\Readme.txt" />
      <None Include="Assets\RPG and MMO UI 6\Shaders\UITribalEffect.shader" />
@@ -438,10 +460,10 @@
  <HintPath>D:/Git_PROJECT/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
  <Reference Include="LitJson">
- <HintPath>D:/Git_PROJECT/Assets/Plugins/LitJson.dll</HintPath>
+ <HintPath>D:/Git_PROJECT/Assets/Plugin/LitJson.dll</HintPath>
  </Reference>
  <Reference Include="System.Json">
- <HintPath>D:/Git_PROJECT/Assets/Plugins/System.Json.dll</HintPath>
+ <HintPath>D:/Git_PROJECT/Assets/Plugin/System.Json.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
  <HintPath>C:/Users/Xdisme/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>

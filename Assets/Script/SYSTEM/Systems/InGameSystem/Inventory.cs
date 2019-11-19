@@ -45,7 +45,7 @@ public class Inventory
             if (_bagInfo[i].GetItemID() != -1)
             {
                 inventoryInfo[i] = _bagInfo[i];
-                Debug.Log(inventoryInfo[i].item.Name + "--" + inventoryInfo[i].itemCount);
+                //Debug.Log(inventoryInfo[i].item.Name + "--" + inventoryInfo[i].itemCount);
             }
         }
         EventCenter.AddListener<Dictionary<int,GridInfo>>(EventDefine.UI_SendBagInfo,SetBagInfoFromUI);
@@ -64,7 +64,8 @@ public class Inventory
             //如果物品栏已存在相应物品则添加
             if (inventoryInfo[i].GetItemID() == _itemID)
             {
-                inventoryInfo[i].itemCount += 1;
+                
+                inventoryInfo[i].itemCount += _count;
 
                 //TODO提示获取物品并发送消息修改UI
                 return;
