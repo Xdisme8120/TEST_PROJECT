@@ -29,7 +29,6 @@ public class GamingDataController : BaseSystemController
     //初始化数据
     public void InitData(JsonData _data)
     {
-        //Debug.Log(Time.time);
         JsonData json_HeroState = _data["charInfo"];
         data.setHeroState(GetHeroStateData(JsonMapper.ToObject(json_HeroState.ToJson())));
         JsonData json_bagInfo = _data["bagInfo"];
@@ -116,7 +115,6 @@ public class GamingDataController : BaseSystemController
         return synData;
     }
     //"taskInfo":{"heroName":"bitch","taskID":"11","taskName":"114345","taskState":"11544","npcID":"115445","npcState":"54445"}
-
     //设置用户名
     public void SetUsername(string _username)
     {
@@ -138,7 +136,6 @@ public class GamingDataController : BaseSystemController
     }
     void AddHeroLT(string _nickName,int _type)
     {
-        Debug.Log(_nickName);
         if(GamingData.heroLT.ContainsKey(_nickName))
         {
             return;

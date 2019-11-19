@@ -243,10 +243,10 @@
       <HintPath>/Applications/2017.4.32c2/Unity.app/Contents/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="System.Json">
-      <HintPath>Assets/Plugins/System.Json.dll</HintPath>
+      <HintPath>Assets/Plugin/System.Json.dll</HintPath>
     </Reference>
     <Reference Include="LitJson">
-      <HintPath>Assets/Plugins/LitJson.dll</HintPath>
+      <HintPath>Assets/Plugin/LitJson.dll</HintPath>
     </Reference>
     <Reference Include="Photon3Unity3D">
       <HintPath>Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
@@ -299,6 +299,29 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ChiXueyu\NpcSystem\Npc.cs" />
+    <Compile Include="Assets\ChiXueyu\NpcSystem\NpcState.cs" />
+    <Compile Include="Assets\ChiXueyu\NpcSystem\NpcSystem.cs" />
+    <Compile Include="Assets\ChiXueyu\SynopsisSystem\SynopsisSystem.cs" />
+    <Compile Include="Assets\ChiXueyu\TalkSystem\SaveTalkTxt.cs" />
+    <Compile Include="Assets\ChiXueyu\TalkSystem\ShowTxt.cs" />
+    <Compile Include="Assets\ChiXueyu\TalkSystem\TalkCallBack.cs" />
+    <Compile Include="Assets\ChiXueyu\TalkSystem\TalkState.cs" />
+    <Compile Include="Assets\ChiXueyu\TalkSystem\TalkSystem.cs" />
+    <Compile Include="Assets\ChiXueyu\TalkSystem\TalkTxt.cs" />
+    <Compile Include="Assets\ChiXueyu\TaskSystem\ButtonClick.cs" />
+    <Compile Include="Assets\ChiXueyu\TaskSystem\MainTaskShow.cs" />
+    <Compile Include="Assets\ChiXueyu\TaskSystem\QuestRewards.cs" />
+    <Compile Include="Assets\ChiXueyu\TaskSystem\ShowUI.cs" />
+    <Compile Include="Assets\ChiXueyu\TaskSystem\Task.cs" />
+    <Compile Include="Assets\ChiXueyu\TaskSystem\TaskDemand.cs" />
+    <Compile Include="Assets\ChiXueyu\TaskSystem\TaskProgress.cs" />
+    <Compile Include="Assets\ChiXueyu\TaskSystem\TaskShow.cs" />
+    <Compile Include="Assets\ChiXueyu\TaskSystem\TaskState.cs" />
+    <Compile Include="Assets\ChiXueyu\TaskSystem\TaskSystem.cs" />
+    <Compile Include="Assets\ChiXueyu\TaskSystem\TaskType.cs" />
+    <Compile Include="Assets\ChiXueyu\Test\MoveTxt.cs" />
+    <Compile Include="Assets\Json\JsonReader.cs" />
     <Compile Include="Assets\RPG and MMO UI 6\Scripts\Attributes\BitMaskAttribute.cs" />
     <Compile Include="Assets\RPG and MMO UI 6\Scripts\Attributes\ResourcePathAttribute.cs" />
     <Compile Include="Assets\RPG and MMO UI 6\Scripts\Color Scheme\ColorScheme.cs" />
@@ -447,6 +470,7 @@
     <Compile Include="Assets\Script\Model\Hero\HeroState.cs" />
     <Compile Include="Assets\Script\Model\Inventory\GridInfo.cs" />
     <Compile Include="Assets\Script\Model\System\GamingData.cs" />
+    <Compile Include="Assets\Script\Model\System\SynData.cs" />
     <Compile Include="Assets\Script\SYSTEM\BaseClass&amp;Interface\BaseSystemController.cs" />
     <Compile Include="Assets\Script\SYSTEM\BaseClass&amp;Interface\IMainGameSystem.cs" />
     <Compile Include="Assets\Script\SYSTEM\BaseClass&amp;Interface\SceneState.cs" />
@@ -459,7 +483,6 @@
     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\HeroSystem.cs" />
     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\InGameSystem.cs" />
     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\Inventory.cs" />
-    <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynopsisSystem.cs" />
     <Compile Include="Assets\Script\SYSTEM\Systems\SceneStateController.cs" />
     <Compile Include="Assets\Script\SYSTEM\Tags&amp;Message\CS_MESSAGE.cs" />
     <Compile Include="Assets\Script\SYSTEM\Tags&amp;Message\HeroType.cs" />
@@ -495,6 +518,7 @@
     <Compile Include="Assets\SUIFW\Test\Test.cs" />
     <Compile Include="Assets\SUIFW\UIManager.cs" />
     <Compile Include="Assets\SUIFW\UIType.cs" />
+    <Compile Include="Assets\TaskShowController.cs" />
     <Compile Include="Assets\Test_Image.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -73,6 +73,8 @@ public class GamingData
     public void setHeroState(HeroState _stateData)
     {
         data_HeroState = _stateData;
+        Debug.Log("gjkgjhfvhjfhjfhj" + data_HeroState.hp);
+
     }
     //设置背包信息
     public void SetInventoryInfo(Dictionary<int, GridInfo> _invenData)

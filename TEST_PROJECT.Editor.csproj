@@ -282,10 +282,10 @@
       <HintPath>/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="System.Json">
-      <HintPath>Assets/Plugins/System.Json.dll</HintPath>
+      <HintPath>Assets/Plugin/System.Json.dll</HintPath>
     </Reference>
     <Reference Include="LitJson">
-      <HintPath>Assets/Plugins/LitJson.dll</HintPath>
+      <HintPath>Assets/Plugin/LitJson.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Assets/Photon/PhotonUnityNetworking/Code/Editor/Newtonsoft.Json.dll</HintPath>

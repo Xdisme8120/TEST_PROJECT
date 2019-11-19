@@ -244,7 +244,7 @@ public class CSInertactive : MonoBehaviour
     {
         WWWForm form = new WWWForm();
         form.AddField("a", "getAllHero");
-        form.AddField("heroName", "bitch");
+        form.AddField("heroName", _nickName);
         WWW www = new WWW("49.232.47.199/server/index.php", form);
         while (!www.isDone)
         {
@@ -261,7 +261,6 @@ public class CSInertactive : MonoBehaviour
             //将收到的英雄信息传给数据处理系统
             system.gamingDataController.InitData(JsonMapper.ToObject(www.text));
             GameSystem.Instance.SetNewSceneState(new GameSceneState(GameSystem.Instance.sceneStateController), 0);
-
         }
         yield return null;
     }

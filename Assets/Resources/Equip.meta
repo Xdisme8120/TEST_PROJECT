@@ -1,8 +1,14 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Resources/Equip.meta
 guid: c949aa1053cf72d48b05a64b5a87663f
 folderAsset: yes
 DefaultImporter:
+=======
+guid: 599763b117e894409a6a78fb2280800d
+NativeFormatImporter:
+>>>>>>> 41f568184be002113174d27932bc223d79e0a216:Assets/Experience Bar 2.prefab.meta
   externalObjects: {}
+  mainObjectFileID: 100100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
