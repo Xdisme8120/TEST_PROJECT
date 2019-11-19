@@ -34,7 +34,7 @@ public class MainTaskShow : BaseUIForm
     ShowUI showUI;
     ButtonClick buttonClick;  
     //测试
-    SynopsisSystem syn;
+    //SynopsisSystem syn;
 
     #endregion
 
@@ -43,6 +43,7 @@ public class MainTaskShow : BaseUIForm
     private void Awake()
     {
         CurrentUIType.UIForms_ShowMode = UIFormShowMode.Normal;
+        #region abandon
         //测试     
         //bg = transform.Find("Bg").gameObject;
         //nameTxt = transform.Find("Bg/Text/name").GetComponent<Text>();
@@ -51,6 +52,8 @@ public class MainTaskShow : BaseUIForm
         //need = transform.Find("Bg/Text/needbig").GetComponent<Text>();
         //button = transform.Find("Bg/Text/Button").GetComponent<Button>();
         //header = transform.Find("Bg/Text/header").GetComponent<Text>();
+        #endregion
+
         bg = this.gameObject;
         nameTxt = UnityHelper.FindTheChildNode(gameObject, "NameText").GetComponent<Text>();
         description = UnityHelper.FindTheChildNode(gameObject, "Description Text").GetComponent<Text>();
@@ -74,7 +77,7 @@ public class MainTaskShow : BaseUIForm
 
     private void Start()
     {
-        Debug.Log(nameTxt.gameObject.name);
+        //Debug.Log(nameTxt.gameObject.name);
         //测试代码
         InitButton();
         RigisterButtonObjectEvent("Exit", p => 
@@ -86,16 +89,18 @@ public class MainTaskShow : BaseUIForm
 
     private void OnDisable()
     {
-
+        #region abandon
         //EventCenter.RemoveListener<TaskSystem,NpcSystem,TalkSystem>(EventDefine.ShowTaskButton, ShowButtonAndState);     
         //EventCenter.RemoveListener(EventDefine.Init, InitButton);
         //EventCenter.RemoveListener<TaskSystem>(EventDefine.ShowUI, ShowPanel);
         //EventCenter.RemoveListener<SynopsisSystem>(EventDefine.SetTaskPanel, SetTaskPanel);
         //EventCenter.RemoveListener<SynopsisSystem, TalkSystem>(EventDefine.SetTaskPanelEndTalk, ShowTaskPanel);
+        #endregion
     }
 
     private void Update()
     {
+        #region abandon
         //Debug.Log(bg.activeSelf + "/" + isFirst);
         //if (Input.GetKeyDown(KeyCode.Tab))
         //{
@@ -105,6 +110,8 @@ public class MainTaskShow : BaseUIForm
         //}      
         //Debug.Log(bg.activeSelf);
         //Debug.Log(isFirst);
+        #endregion
+
         //当任务面板打开时，进行UI显示
         if (bg.activeSelf && SynopsisSystem.isFirst)
         {
@@ -142,8 +149,7 @@ public class MainTaskShow : BaseUIForm
         }
         //展示任务进度UI
         showUI.ShowNeeds(need, taskSystem);
-        //为按钮添加点击事件
-        
+        //为按钮添加点击事件        
         SetButton(taskSystem);        
     }
 

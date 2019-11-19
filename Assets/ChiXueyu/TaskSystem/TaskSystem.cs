@@ -45,6 +45,8 @@ public class TaskSystem
         progress = new Dictionary<string, int>();
         EventCenter.AddListener(EventDefine.ChangeDialogueTask,ChangeDialogueTaskState);
         EventCenter.AddListener<Dictionary<string,int>>(EventDefine.ChangeOtherTask,SetChangeAndCheck);
+        EventCenter.AddListener(EventDefine.FirstCheck,CheckOtherTask);
+
     }
 
     /// <summary>
@@ -215,9 +217,9 @@ public class TaskSystem
     /// 第一次接取采集类型的任务时进行判断
     /// </summary>
     /// <param name="dic"></param>
-    public void CheckOtherTask(Dictionary<int, GridInfo> dic)
+    public void CheckOtherTask()
     {
-        SetProgress(dic);
+        sy._inGameSystem.HeroSystem.SendGridInfo2S();
         CheckTask();
     }
 
@@ -236,6 +238,11 @@ public class TaskSystem
                 sy.currentTask.tp.taskComplete[dic[i].item.Name] = dic[i].itemCount;
             }
         }
+    }
+
+    public void SendNeed()
+    {
+
     }
     #endregion
 }

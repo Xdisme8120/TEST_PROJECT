@@ -49,6 +49,11 @@
     //展示小任务面板进度
     MiniTaskShow,
     MiniTaskShowC,
+    //完成任务
+    FinishTaskDelete,
+    FinishTaskGet,
+    //第一次检查任务
+    FirstCheck,
     //Test
     Test,
     ////////////////////////////////////

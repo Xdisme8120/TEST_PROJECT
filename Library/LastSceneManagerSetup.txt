@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/ChiXueyu/Test/lll.unity
+- path: Assets/1.unity
   isLoaded: 1
   isActive: 1

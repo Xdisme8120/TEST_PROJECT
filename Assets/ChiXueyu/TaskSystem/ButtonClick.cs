@@ -23,18 +23,31 @@ public class ButtonClick
     #endregion
 
     #region 方法
+
+    /// <summary>
+    /// 接受任务按钮点击事件
+    /// </summary>
+    /// <param name="taskSystem"></param>
+    /// <param name="bg"></param>
     public void PickUpTask(TaskSystem taskSystem, GameObject bg)
     {
         if (taskSystem.sy.currentTask.taskType != TaskType.Dialogue)
         {
             //TODO 执行遍历背包然后更改进度值的方法
-            Debug.Log("未做1");
+            Debug.Log("待调试");
+            EventCenter.Broadcast(EventDefine.FirstCheck);
         }
         taskSystem.SetTaskState(TaskState.Tasking);
         EventCenter.Broadcast(EventDefine.MiniTaskShowC);
         UIManager.GetInstance().CloseUIForms("MainTaskShow");
         SynopsisSystem.isFirst = true;
     }
+
+    /// <summary>
+    /// 完成任务按钮点击事件
+    /// </summary>
+    /// <param name="taskSystem"></param>
+    /// <param name="bg"></param>
     public void SubmitTask(TaskSystem taskSystem,GameObject bg)
     {
         //Debug.Log("进行方法绑定");
@@ -56,24 +69,33 @@ public class ButtonClick
                 }
             }
         }
-        //获取奖励的方法
+        else
+        {
+            //不是对话任务移除采集的道具
+            EventCenter.Broadcast(EventDefine.FinishTaskDelete);
+        }
+        //获取奖励的方法     
+        EventCenter.Broadcast(EventDefine.FinishTaskGet);
+        //获取经验和金币
+        Debug.Log("获取经验和金币待做");
 
-        Debug.Log("未做2");
+        Debug.Log("待调试");
         
         UIManager.GetInstance().CloseUIForms("MainTaskShow");
         SynopsisSystem.isFirst = true;
         taskSystem.sy.SetTalkState(TalkState.Normal);
         //进行下一个任务的方法
         taskSystem.taskNum += 1;
-        Debug.Log(1);
+      
         //点击变成任务刷新状态
         taskSystem.SetTaskState(TaskState.Refresh);
-        Debug.Log("刷新完成");
+        
         //taskSystem.SetTaskState(TaskState.PickUp);
         EventCenter.Broadcast(EventDefine.ShowUI,taskSystem);
         EventCenter.Broadcast(EventDefine.MiniTaskShowC);
         Debug.Log("面板重置完成");
         //小面板显示的替换
     }
+
     #endregion
 }

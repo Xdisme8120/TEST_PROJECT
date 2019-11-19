@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/ChiXueyu/NpcSystem/Npc.cs.meta
 guid: 6adb93d098b298b49a1fe101a56f9acc
+=======
+guid: 794d451797dc44747b059588af909479
+>>>>>>> 139eb3325dade2355267aa02aca3d3bc77789ee4:Assets/Script/Model/System/QuestRewards.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

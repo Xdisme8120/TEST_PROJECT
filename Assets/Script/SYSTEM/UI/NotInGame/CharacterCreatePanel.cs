@@ -1,3 +1,5 @@
+
+
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +14,7 @@ public class CharacterCreatePanel : BaseUIForm
     //类型
     string heroType = "swordman";
     //昵称
+
     string nikeNaem;
     //
     InputField Ipt_name;
@@ -107,5 +110,7 @@ public class CharacterCreatePanel : BaseUIForm
     private void Button_Underdevelopment()
     {
         UIManager.GetInstance().ShowMessage("该角色未开发");
+
     }
 }
+

@@ -47,6 +47,7 @@ public class SceneStateController:BaseSystemController
     //切换场景
     void LoadScene(int sceneIndex)
     {
+        Debug.Log("套套");
         if (sceneIndex == -1)
             return;
         currSceneIndex = sceneIndex;

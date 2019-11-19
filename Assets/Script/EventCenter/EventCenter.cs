@@ -21,7 +21,7 @@ public class EventCenter
         }
         else
         {
-            //Debug.Log("注册成功");
+
         }
     }
     private static void OnListenerRemoving(EventDefine eventType, Delegate callBack)
