@@ -29,7 +29,7 @@ public class GamingDataController : BaseSystemController
     //初始化数据
     public void InitData(JsonData _data)
     {
-        Debug.Log(Time.time);
+        //Debug.Log(Time.time);
         JsonData json_HeroState = _data["charInfo"];
         data.setHeroState(GetHeroStateData(JsonMapper.ToObject(json_HeroState.ToJson())));
         JsonData json_bagInfo = _data["bagInfo"];
@@ -45,7 +45,7 @@ public class GamingDataController : BaseSystemController
         data.setHeroState(_stateData);
         data.SetInventoryInfo(_invenData);
         data.SetItemInfo(_equipsData);
-        EventCenter.Broadcast(EventDefine.SaveHeroInfo, data.HeroState, data.InvenrotyInfo, data.EquipsInfo,data.SynData);
+        EventCenter.Broadcast(EventDefine.SaveHeroInfo, data.HeroState, data.InvenrotyInfo, data.EquipsInfo);
     }
     //获取英雄状态数据
     public HeroState GetHeroStateData(JsonData _data)
@@ -133,9 +133,17 @@ public class GamingDataController : BaseSystemController
         GamingData.heroLT.Clear();
         GamingData.heroList[0] = (string)_data["tank"];
         GamingData.heroList[1] = (string)_data["swordman"];
-        GamingData.heroLT.Add(GamingData.heroList[0],0);
-        GamingData.heroLT.Add(GamingData.heroList[1],1);
-
+        AddHeroLT(GamingData.heroList[0],0);
+        AddHeroLT(GamingData.heroList[1],1);
+    }
+    void AddHeroLT(string _nickName,int _type)
+    {
+        Debug.Log(_nickName);
+        if(GamingData.heroLT.ContainsKey(_nickName))
+        {
+            return;
+        } 
+        GamingData.heroLT.Add(_nickName,_type);
     }
 }
 /*

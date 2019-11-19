@@ -25,6 +25,7 @@ public class GamingData
     public static string[] heroList;
     //英雄-类型字典
     public static Dictionary<string,int> heroLT;
+
     public static GamingData INSTANCE()
     {
         if (instance == null)
@@ -122,7 +123,7 @@ public class GamingData
     //根据ID返回物品信息
     public static Item GetItemByID(int _ID)
     {
-        Debug.Log(_ID);
+        //Debug.Log(_ID);
         return itemsInfo[_ID];
     }
     public static int GetItemIDByName(string _string)

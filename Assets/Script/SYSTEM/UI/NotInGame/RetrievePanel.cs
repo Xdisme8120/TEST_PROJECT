@@ -21,36 +21,31 @@ using System;
 public class RetrievePanel : BaseUIForm
 {
 
-    //登陆按钮
-    Button btn_Login;
-    //注册按钮
-    Button btn_Register;
-    //修改密码按钮
-    Button btn_ChangePassword;
     //用户名输入
     InputField if_Username;
+    //密码输入
+    InputField if_Password_Old;
     //密码输入
     InputField if_Password;
     //TODO登陆界面的初始化
     private void Awake()
     {
+        if_Username = UnityHelper.FindTheChildNode(gameObject, "InputField(Username)").GetComponent<InputField>();
+        if_Password_Old = UnityHelper.FindTheChildNode(gameObject, "InputField(Password)").GetComponent<InputField>();
+        if_Password = UnityHelper.FindTheChildNode(gameObject, "InputField(Password)(1)").GetComponent<InputField>();
+
         CurrentUIType.UIForms_ShowMode = UIFormShowMode.ReverseChange;
         RigisterButtonObjectEvent("Button(Change)", p => Change());
         RigisterButtonObjectEvent("Button(Return)", p => Return());
-        //RigisterButtonObjectEvent("Button(Retrieve)", p => Retrieve());
-
     }
     //修改密码事件
     private void Change()
     {
-        Debug.Log("忘记密码");
-        //throw new NotImplementedException();
+        EventCenter.Broadcast(EventDefine.ChangePassword, if_Username.text, if_Password_Old.text, if_Password.text);
     }
     //返回登陆页面
     private void Return()
     {
         UIManager.GetInstance().CloseUIForms("Retrieve");
-        Debug.Log("返回");
-        //throw new NotImplementedException();
     }
 }

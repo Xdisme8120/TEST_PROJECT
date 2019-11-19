@@ -39,7 +39,7 @@ public class Inventory
     //背包数据赋值
     public void Init(Dictionary<int, GridInfo> _bagInfo)
     {
-        Debug.Log(_bagInfo.Count);
+        //Debug.Log(_bagInfo.Count);
         for (int i = 1; i <= 8; i++)
         {
             if (_bagInfo[i].GetItemID() != -1)

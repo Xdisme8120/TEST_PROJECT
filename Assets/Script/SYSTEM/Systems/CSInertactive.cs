@@ -30,6 +30,7 @@ public class CSInertactive : MonoBehaviour
         //注册 登陆 修改密码 创建英雄 获取英雄信息
         Debug.Log("事件注册");
         EventCenter.AddListener<string>(EventDefine.GetHeroInfo, GetHeroInfo);
+        EventCenter.AddListener<string>(EventDefine.GetHeroListInfo, GetHeroListInfo);
         EventCenter.AddListener<string, string>(EventDefine.Login, Login);
         EventCenter.AddListener<string, string>(EventDefine.CreateHero, CreateHero);
         EventCenter.AddListener<string, string, string>(EventDefine.Register, Register);
@@ -62,6 +63,7 @@ public class CSInertactive : MonoBehaviour
     {
         if (_username.Length <= 0 || _password.Length <= 0)
         {
+            UIManager.GetInstance().ShowMessage("请输入用户名密码");
             //TODO提示信息 信息不完整
             return;
         }
@@ -81,16 +83,30 @@ public class CSInertactive : MonoBehaviour
         yield return www;
         if (www.error != null)
         {
+            UIManager.GetInstance().ShowMessage("服务器未响应");
             Debug.Log(www.error);
         }
         else
         {
             int code = GetErrorCode(www.text);
             if (code != 0)
-                ShowMessageByCode("Login", code);
+            {
+                UIManager.GetInstance().ShowMessage("登陆失败");
+                //ShowMessageByCode("Login", code);
+            }
             else
             {
                 GameSystem.Instance.gamingDataController.SetUsername(_username);
+                //获取list列表
+                EventCenter.Broadcast(EventDefine.GetHeroListInfo, GamingData.username);
+                //TODO:去GamingData内设置heroList数组
+
+
+                UIManager.GetInstance().CloseUIForms("Login");
+
+                //登陆成功
+                UIManager.GetInstance().ShowMessage("登陆成功");
+
             }
         }
     }
@@ -101,6 +117,7 @@ public class CSInertactive : MonoBehaviour
     {
         if (_password != _checkPassword)
         {
+            UIManager.GetInstance().ShowMessage("两次密码不一样");
             //TODO 提示信息两次密码不一样
             return;
         }
@@ -108,6 +125,8 @@ public class CSInertactive : MonoBehaviour
     }
     IEnumerator ERigister(string _username, string _password)
     {
+        //Debug.Log(_username);
+        //Debug.Log(_password);
         WWWForm form = new WWWForm();
         form.AddField("a", "register");
         form.AddField("username", _username);
@@ -120,10 +139,19 @@ public class CSInertactive : MonoBehaviour
         yield return www;
         if (www.error != null)
         {
+            UIManager.GetInstance().ShowMessage("连接服务器失败");
             Debug.Log(www.error);
         }
         else
         {
+            if (GetErrorCode(www.text) == 2)
+            {
+                UIManager.GetInstance().ShowMessage("用户已存在");
+            }
+            if (GetErrorCode(www.text) == 0)
+            {
+                UIManager.GetInstance().ShowMessage("创建用户成功");
+            }
             Debug.Log(www.text);
         }
     }
@@ -155,6 +183,14 @@ public class CSInertactive : MonoBehaviour
         }
         else
         {
+            if (GetErrorCode(www.text) == 1)
+            {
+                UIManager.GetInstance().ShowMessage("原密码输入错误");
+            }
+            if (GetErrorCode(www.text) == 0)
+            {
+                UIManager.GetInstance().ShowMessage("密码修改成功");
+            }
             Debug.Log(www.text);
         }
     }
@@ -163,6 +199,7 @@ public class CSInertactive : MonoBehaviour
     //创建新英雄//////////////////////////////////////////
     public void CreateHero(string _heroType, string _nickName)
     {
+        //Debug.Log(_nickName);
         StartCoroutine(ECreaterHero(_heroType, _nickName));
     }
 
@@ -170,20 +207,31 @@ public class CSInertactive : MonoBehaviour
     {
         WWWForm form = new WWWForm();
         form.AddField("a", "createHero");
-        form.AddField("username", currUsername);
+        form.AddField("username", GamingData.username);
         form.AddField("nikename", CreateHeroJson(_heroType, _nickName));
         WWW www = new WWW("49.232.47.199/server/index.php", form);
         while (!www.isDone)
         {
+
             Debug.Log("wait");
         }
         yield return www;
         if (www.error != null)
         {
+            UIManager.GetInstance().ShowMessage("相同英雄已存在");
             Debug.Log(www.error);
         }
         else
         {
+
+            if (GetErrorCode(www.text) == 1)
+            {
+                UIManager.GetInstance().ShowMessage("英雄昵称已存在");
+            }
+            if (GetErrorCode(www.text) == 0)
+            {
+                UIManager.GetInstance().ShowMessage("创建英雄成功");
+            }
             Debug.Log(www.text);
         }
     }
@@ -209,13 +257,47 @@ public class CSInertactive : MonoBehaviour
         }
         else
         {
-            Debug.Log(www.text);
+            //Debug.Log(www.text);
             //将收到的英雄信息传给数据处理系统
             system.gamingDataController.InitData(JsonMapper.ToObject(www.text));
-            GameSystem.Instance.gamingDataController.SetNickname(_nickName);
+
         }
         yield return null;
     }
+
+    //获取已有英雄List列表信息//////////////////////////////(//////////
+    public void GetHeroListInfo(string userName)
+    {
+        StartCoroutine(EGetHeroListInfo(userName));
+    }
+    IEnumerator EGetHeroListInfo(string userName)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("a", "getsUserInfo");
+        form.AddField("username", userName);
+        WWW www = new WWW("49.232.47.199/server/index.php", form);
+        while (!www.isDone)
+        {
+            //            Debug.Log("wait");
+        }
+        yield return www;
+        if (www.error != null)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            //TODO:处理通过username返回的英雄list列表
+            GameSystem.Instance.gamingDataController.SetHeroList
+                (JsonMapper.ToObject(JsonMapper.ToObject(www.text)["result"].ToJson()));
+            UIManager.GetInstance().ShowUIForms("SelectHero");
+            //将收到的英雄信息传给数据处理系统
+            //system.gamingDataController.InitData(JsonMapper.ToObject(www.text));
+            //GameSystem.Instance.gamingDataController.SetNickname(_nickName);
+        }
+        yield return null;
+    }
+
     //存储英雄信息到服务器////////////////////////////////////////////
     public void SaveHeroInfo(HeroState _stateData, Dictionary<int, GridInfo> _invenData, Dictionary<int, int> _equipsData)
     {

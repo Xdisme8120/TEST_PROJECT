@@ -1,16 +1,13 @@
 ﻿<Properties StartupConfiguration="{C2E4545A-CFD8-1C54-CC06-23208DF43373}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/SYSTEM/Systems/InGameSystem/Inventory.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/SYSTEM/UI/NotInGame/SelectHeroPanel.cs">
     <Files>
-      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/Common/PlayerInventory.cs" Line="74" Column="1" IsPinned="True" />
-      <File FileName="Assets/Script/SYSTEM/UI/UIEvent/BagGrid.cs" />
-      <File FileName="Assets/Script/Model/Base/Item.cs" />
-      <File FileName="Assets/Script/SYSTEM/UI/UIEvent/CardsMove.cs" />
-      <File FileName="Assets/Script/SYSTEM/Systems/InGameSystem/Inventory.cs" Line="38" Column="1" />
+      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/SelectHeroPanel.cs" Line="45" Column="1" />
+      <File FileName="Assets/Script/SYSTEM/UI/NotInGame/SelectHeroPanel.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.PhotonChat PreferredExecutionTarget="d2382078-8346-4b84-9b36-50952f497ae8" />
+  <MonoDevelop.Ide.ItemProperties.PhotonChat PreferredExecutionTarget="9359bc7f-e8d1-4369-b3ad-84fe0041d0cb" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

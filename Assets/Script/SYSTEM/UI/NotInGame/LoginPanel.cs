@@ -20,12 +20,6 @@ using System;
 //登陆界面
 public class LoginPanel : BaseUIForm
 {
-    //登陆按钮
-    Button btn_Login;
-    //注册按钮
-    Button btn_Register;
-    //修改密码按钮
-    Button btn_ChangePassword;
     //用户名输入
     InputField if_Username;
     //密码输入
@@ -33,12 +27,16 @@ public class LoginPanel : BaseUIForm
     //TODO登陆界面的初始化
     private void Awake()
     {
+        //if_Username = GameObject.Find("InputField(Username)").GetComponent<InputField>();
+        //if_Password = GameObject.Find("InputField(Password)").GetComponent<InputField>();
+
+
         CurrentUIType.UIForms_ShowMode = UIFormShowMode.Normal;
         RigisterButtonObjectEvent("Button(Login)", p => Login());
         RigisterButtonObjectEvent("Button(Register)", p => Register());
         RigisterButtonObjectEvent("Button(Retrieve)", p => Retrieve());
-        if_Username = UnityHelper.FindTheChildNode(gameObject,"Input Field (Username)").GetComponent<InputField>();
-        if_Password = UnityHelper.FindTheChildNode(gameObject,"Input Field (Password)").GetComponent<InputField>();
+        if_Username = UnityHelper.FindTheChildNode(gameObject, "InputField(Username)").GetComponent<InputField>();
+        if_Password = UnityHelper.FindTheChildNode(gameObject, "InputField(Password)").GetComponent<InputField>();
 
     }
     private void Start()
@@ -61,14 +59,20 @@ public class LoginPanel : BaseUIForm
     //登陆事件
     private void Login()
     {
+        EventCenter.Broadcast(EventDefine.Login, if_Username.text, if_Password.text);
+
+        //打开选择英雄按钮
+        //UIManager.GetInstance().ShowUIForms("SelectHero");
+        //打开创建英雄按钮
+        //UIManager.GetInstance().ShowUIForms("CharacterCreate");
         //打开头像信息固定窗口
-        UIManager.GetInstance().ShowUIForms("PlayerInfo");
+        //UIManager.GetInstance().ShowUIForms("PlayerInfo");
         //打开人物信息固定窗口
         //UIManager.GetInstance().ShowUIForms("CharacterInfo");
         //打开背包窗口
-        UIManager.GetInstance().ShowUIForms("PlayerInventory");
+        //UIManager.GetInstance().ShowUIForms("PlayerInventory");
         //关闭登陆界面
-        UIManager.GetInstance().CloseUIForms("Login");
+        //UIManager.GetInstance().CloseUIForms("Login");
         Debug.Log("登陆");
         
         GameSystem.Instance.SetNewSceneState(new GameSceneState(GameSystem.Instance.sceneStateController),-1);
