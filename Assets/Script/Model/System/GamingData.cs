@@ -13,6 +13,16 @@ public class GamingData
 {
     //游戏数据单例
     static GamingData instance;
+    //用户名
+    public static string username;
+    //英雄昵称
+    public static string nickname;
+    //英雄List昵称
+    public static string[] heroList;
+    //英雄类型
+    public static int heroType;
+    //英雄-类型字典
+    public static Dictionary<string, int> heroLT;
 
     public static GamingData INSTANCE()
     {
@@ -26,6 +36,8 @@ public class GamingData
     public GamingData()
     {
         GetIMInfo();
+        heroList = new string[2];
+        heroLT = new Dictionary<string, int>();
     }
     //数据获取索引器
     public HeroState HeroState
@@ -92,11 +104,13 @@ public class GamingData
             itemsInfo.Add(obj.ID, obj);
         }
     }
+
     //根据ID返回物品信息
     public static Item GetItemByID(int _ID)
     {
+        //Debug.Log(_ID);
         return itemsInfo[_ID];
     }
 
-
+    
 }

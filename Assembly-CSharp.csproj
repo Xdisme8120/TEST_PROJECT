@@ -187,7 +187,6 @@
      <Compile Include="Assets\RPG and MMO UI 6\Scripts\UI\Window\UIWindow.cs" />
      <Compile Include="Assets\RPG and MMO UI 6\Scripts\UI\Window\UIWindowID.cs" />
      <Compile Include="Assets\RPG and MMO UI 6\Scripts\UI\Window\UIWindowManager.cs" />
-     <Compile Include="Assets\Scenes\DragUI.cs" />
      <Compile Include="Assets\Script\CS_TEST.cs" />
      <Compile Include="Assets\Script\DL.cs" />
      <Compile Include="Assets\Script\DLTEST.cs" />

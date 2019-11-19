@@ -8,6 +8,10 @@ public class HeroState
     public float hp;
     //蓝量
     public float sp;
+    //最大血量
+    public float maxHp;
+    //最大蓝量
+    public float maxMp;
     //攻击
     public float atk;
     //防御

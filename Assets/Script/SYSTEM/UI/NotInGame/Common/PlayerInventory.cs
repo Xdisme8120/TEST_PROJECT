@@ -16,13 +16,13 @@ public class PlayerInventory : BaseUIForm
         RigisterButtonObjectEvent("Btn_CloseInv", p => ClosePlayerInventory());
 
         rectTransforms = UnityHelper.FindTheChildNode(gameObject, "SlotsGrid").GetComponentsInChildren<BagGrid>();
-        for (int i = 0; i < rectTransforms.Length - 1; i++)
+        for (int i = 1; i <= rectTransforms.Length; i++)
         {
-            bagInfo.Add(i + 1, rectTransforms[i + 1]);
+            bagInfo.Add(i, rectTransforms[i - 1]);
 
         }
         //注册给格子赋值方法
-        EventCenter.AddListener<int,Item,int>(EventDefine.UI_SetBagInfo,
+        EventCenter.AddListener<int, Item, int>(EventDefine.UI_SetBagInfo,
             UI_SetBagInfo);
         //注册初始化背包方法
         EventCenter.AddListener<Dictionary<int, GridInfo>>(EventDefine.InitBag,
@@ -32,22 +32,15 @@ public class PlayerInventory : BaseUIForm
     private void ClosePlayerInventory()
     {
         UIManager.GetInstance().CloseUIForms("PlayerInventory");
+        SendBagInfo();
     }
 
     // Use this for initialization
-    private void Start()
-    {
-        Item itemDemo = new Item();
-        itemDemo.ID = 102;
-        itemDemo.Value = 10;
-        itemDemo.ItemType = 2;
-        itemDemo.UseType = 2;
-        UI_SetBagInfo(5, itemDemo, 100);
-    }
+
     //给格子赋值
     public void UI_SetBagInfo(int bagID, Item goodID, int goodCount)
     {
-        bagInfo[bagID-1].SetGoodInfo(goodID, goodCount);
+        bagInfo[bagID].SetGoodInfo(goodID, goodCount);
     }
     //开始游戏初始化背包
     public void InitBag(Dictionary<int, GridInfo> bagInfo)
@@ -62,12 +55,13 @@ public class PlayerInventory : BaseUIForm
     {
         //更新Bag信息
         rectTransforms = UnityHelper.FindTheChildNode(gameObject, "SlotsGrid").GetComponentsInChildren<BagGrid>();
-        for (int i = 0; i < rectTransforms.Length - 1; i++)
+        Dictionary<int, GridInfo> message = new Dictionary<int, GridInfo>();
+        for (int i = 0; i < rectTransforms.Length ; i++)
         {
-            bagInfo.Add(i + 1, rectTransforms[i + 1]);
+            message.Add(i+1,new GridInfo(i+1,rectTransforms[i].GetItem,rectTransforms[i].GetCount));
         }
         //广播更新bagInfo
-        EventCenter.Broadcast(EventDefine.SetBagInfo, bagInfo);
+        EventCenter.Broadcast(EventDefine.UI_SendBagInfo, message);
     }
 
 }

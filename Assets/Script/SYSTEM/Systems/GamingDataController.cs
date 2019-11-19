@@ -29,7 +29,7 @@ public class GamingDataController : BaseSystemController
     //初始化数据
     public void InitData(JsonData _data)
     {
-        Debug.Log(Time.time);
+        //Debug.Log(Time.time);
         JsonData json_HeroState = _data["charInfo"];
         data.setHeroState(GetHeroStateData(JsonMapper.ToObject(json_HeroState.ToJson())));
         JsonData json_bagInfo = _data["bagInfo"];
@@ -39,19 +39,22 @@ public class GamingDataController : BaseSystemController
 
     }
     //存储数据
-    public void SaveData()
-    { }
+    public void SaveData(HeroState _stateData, Dictionary<int, GridInfo> _invenData, Dictionary<int, int> _equipsData)
+    {
+        data.setHeroState(_stateData);
+        data.SetInventoryInfo(_invenData);
+        data.SetItemInfo(_equipsData);
+        EventCenter.Broadcast(EventDefine.SaveHeroInfo,data.HeroState,data.InvenrotyInfo,data.EquipsInfo);
+    }
     //获取英雄状态数据
     public HeroState GetHeroStateData(JsonData _data)
     {
-        
         HeroState tempState = new HeroState();
         tempState.hp = int.Parse((string)_data["Hp"]);
         tempState.sp = int.Parse((string)_data["Mp"]);
         tempState.cueeExp = int.Parse((string)_data["CurrExp"]);
         tempState.level = int.Parse((string)_data["level"]);
         return tempState;
-
     }
     //返回背包信息
     public Dictionary<int, GridInfo> GetInventoryData(JsonData _data)
@@ -68,7 +71,7 @@ public class GamingDataController : BaseSystemController
             
             else
             {
-                tempInventory.Add(i, new GridInfo(i, null, 0));
+                tempInventory.Add(i, new GridInfo(i, new Item(), 0));
             }
         }
         return tempInventory;
@@ -79,7 +82,7 @@ public class GamingDataController : BaseSystemController
         Dictionary<int, int> tempItemInfo = new Dictionary<int, int>();
         for (int i = 1; i <= 6; i++)
         {
-            int tempID =int.Parse((string)_data["weapon"+i]);
+            int tempID = int.Parse((string)_data["weapon" + i]);
             if (tempID != -1)
             {
                 tempItemInfo.Add(i, tempID);
@@ -91,6 +94,18 @@ public class GamingDataController : BaseSystemController
         }
         return tempItemInfo;
     }
+    //设置用户名
+    public void SetUsername(string _username)
+    {
+        GamingData.username = _username;
+    }
+    //设置英雄昵称
+    public void SetNickname(string _nickname)
+    {
+        GamingData.nickname = _nickname;
+    }
+    //设置英雄昵称列表
+    public void SetHeroList(JsonData _data)    {        GamingData.heroLT.Clear();        GamingData.heroList[0] = (string)_data["tank"];        GamingData.heroList[1] = (string)_data["swordman"];        GamingData.heroLT.Add(GamingData.heroList[0], 0);        GamingData.heroLT.Add(GamingData.heroList[1], 1);    }
 }
 /*
 {
