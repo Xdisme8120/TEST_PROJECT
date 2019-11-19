@@ -75,7 +75,6 @@ public class LoginPanel : BaseUIForm
         //UIManager.GetInstance().CloseUIForms("Login");
         Debug.Log("登陆");
         
-        GameSystem.Instance.SetNewSceneState(new GameSceneState(GameSystem.Instance.sceneStateController),-1);
         
     }
 }

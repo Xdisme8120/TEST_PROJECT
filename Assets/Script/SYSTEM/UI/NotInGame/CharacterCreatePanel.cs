@@ -34,30 +34,22 @@ public class CharacterCreatePanel : BaseUIForm
         RigisterButtonObjectEvent("Button(Back)", p => Button_Back());
         RigisterButtonObjectEvent("Button(Create)", p => Button_Create());
         selected_Button_06.gameObject.SetActive(false);
-
-        Debug.Log("heroType1:" + heroType);
-        Debug.Log("nikeNaem1:" + nikeNaem);
     }
 
     private void Button_Create()
     {
-        Debug.Log("nikeNaem2:" + nikeNaem);
-
-        Debug.Log("heroType2:" + heroType);
-        Debug.Log(GamingData.heroList[0]);
-        Debug.Log(GamingData.heroList[1]);
         nikeNaem = Ipt_name.text;
         if (nikeNaem == null || nikeNaem == "")
         {
             UIManager.GetInstance().ShowMessage("英雄名称不能为空");
             return;
         }
-        else if (heroType == "swordman" && GamingData.heroList[0] != "" && GamingData.heroList[0] != "-1")
+        else if (heroType == "swordman" && GamingData.heroList[1] != "" && GamingData.heroList[1] != "-1")
         {
             UIManager.GetInstance().ShowMessage("男性角色已存在 请不要重复创建");
             return;
         }
-        else if (heroType == "tank" && GamingData.heroList[1] != "" && GamingData.heroList[1] != "-1")
+        else if (heroType == "tank" && GamingData.heroList[0] != "" && GamingData.heroList[0] != "-1")
         {
             UIManager.GetInstance().ShowMessage("女性角色已存在 请不要重复创建");
             return;
@@ -70,7 +62,6 @@ public class CharacterCreatePanel : BaseUIForm
         {
             nikeNaem = nikeNaem + 0;
         }
-
         EventCenter.Broadcast(EventDefine.CreateHero, heroType, nikeNaem);
         EventCenter.Broadcast(EventDefine.GetHeroListInfo,GamingData.username);
     }

@@ -37,7 +37,7 @@ public class GameSystem : MonoBehaviour
     }
     void Start()
     { 
-         EventCenter.Broadcast(EventDefine.GetHeroInfo,"xd");
+         //EventCenter.Broadcast(EventDefine.GetHeroInfo,"xd");
     }
     void Update()
     {

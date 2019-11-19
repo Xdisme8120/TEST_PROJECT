@@ -24,13 +24,21 @@ public class SelectHeroPanel : BaseUIForm
     Transform selectCharacter;
     Image image;
 
+    Sprite sprite0;
+    Sprite sprite1;
+
+    Image ExampleCharacterShade;
     private void Awake()
     {
+        sprite0 = Resources.Load<Sprite>("Item/0");
+        sprite1 = Resources.Load<Sprite>("Item/1");
+        ExampleCharacterShade = UnityHelper.FindTheChildNode(gameObject, "ExampleCharacterShade").GetComponent<Image>();
+        selectCharacter = UnityHelper.FindTheChildNode(gameObject, "Characters").GetComponent<Transform>();
+        image = UnityHelper.FindTheChildNode(gameObject, "ImageHeroSelect").GetComponent<Image>();
+
         CurrentUIType.UIForms_ShowMode = UIFormShowMode.Normal;
         RigisterButtonObjectEvent("Button (Create)", p => CreateHero());
         RigisterButtonObjectEvent("Button (Play)", p => PlayGame());
-        selectCharacter = UnityHelper.FindTheChildNode(gameObject, "Characters").GetComponent<Transform>();
-        image = UnityHelper.FindTheChildNode(gameObject, "ImageHeroSelect").GetComponent<Image>();
         UpdateHeroList();
         image.gameObject.SetActive(false);
         EventCenter.AddListener(EventDefine.UpdateHeroList, UpdateHeroList);
@@ -39,10 +47,20 @@ public class SelectHeroPanel : BaseUIForm
 
     private void PlayGame()
     {
+        if (GamingData.nickname == "" || GamingData.nickname == "-1" || GamingData.nickname == null)
+        {
+            UIManager.GetInstance().ShowMessage("请先选择一个角色");
+            return;
+        }
         //进入游戏主页面
         //关闭当前页面
         UIManager.GetInstance().CloseUIForms("SelectHero");
-        Debug.Log(GamingData.nickname);
+        //打开头像信息固定窗口
+        UIManager.GetInstance().ShowUIForms("PlayerInfo");
+
+        EventCenter.Broadcast(EventDefine.GetHeroInfo, GamingData.nickname);
+
+        //Debug.Log(GamingData.nickname);
         Debug.Log("跳转场景");
     }
 
@@ -67,7 +85,7 @@ public class SelectHeroPanel : BaseUIForm
                     objTemp.name = GamingData.heroList[i];
                     objTemp.transform.GetChild(0).GetComponent<Text>().text = GamingData.heroList[i];
                     objTemp.transform.GetChild(3).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/102");
-                    if (GamingData.heroLT[GamingData.heroList[i]]==0)
+                    if (GamingData.heroLT[GamingData.heroList[i]] == 0)
                     {
                         objTemp.transform.GetChild(4).GetComponent<Text>().text = "女性角色";
                     }
@@ -75,17 +93,29 @@ public class SelectHeroPanel : BaseUIForm
                     {
                         objTemp.transform.GetChild(4).GetComponent<Text>().text = "男性角色";
                     }
-
                     RigisterButtonObjectEvent(GamingData.heroList[i], p =>
                     {
+                        GameSystem.Instance.gamingDataController.SetNickname(objTemp.name);
+                        GamingData.heroType = GamingData.heroLT[GamingData.nickname];
+                        SetSprite(GamingData.heroType);
                         image.transform.SetParent(objTemp.transform);
                         image.gameObject.SetActive(true);
                         image.rectTransform.localPosition = new Vector3(400, -50, 0);
-                        GameSystem.Instance.gamingDataController.SetNickname(objTemp.name);
                     }
                     );
                 }
             }
+        }
+    }
+    void SetSprite(int i)
+    {
+        if (i == 0)
+        {
+            ExampleCharacterShade.sprite = sprite0;
+        }
+        if (i == 1)
+        {
+            ExampleCharacterShade.sprite = sprite1;
         }
     }
 }
