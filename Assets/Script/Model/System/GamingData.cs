@@ -9,7 +9,7 @@ public enum ItemType
     Equip,//装备
     Material//材料
 }
-public class GamingData
+public class  GamingData
 {
     //游戏数据单例
     static GamingData instance;

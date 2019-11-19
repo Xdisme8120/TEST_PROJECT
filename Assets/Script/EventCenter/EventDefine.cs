@@ -21,6 +21,8 @@
     InitBag,
     //Sned,
     Test_GetImage,
+    //设置英雄信息
+    UI_SetHeroInfo,
 
     //**************************
     //设置npc状态

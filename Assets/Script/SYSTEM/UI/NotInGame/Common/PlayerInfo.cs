@@ -44,6 +44,7 @@ public class PlayerInfo : BaseUIForm
         nikeName_Text = UnityHelper.FindTheChildNode(gameObject, "Text_nikeName").GetComponent<Text>();
 
         UIManager.GetInstance().CloseUIForms("PlayerInfo");
+        EventCenter.AddListener<HeroState>(EventDefine.UI_SetHeroInfo,SetPlayerInfo);
         CurrentUIType.UIForms_Type = UIFormType.Fixed;
     }
 
@@ -103,5 +104,10 @@ public class PlayerInfo : BaseUIForm
 
         level_Text.text = GamingData.INSTANCE().HeroState.level.ToString();
         nikeName_Text.text = GamingData.nickname;
+    }
+    public void SetPlayerInfo(HeroState _heroState)
+    {
+        Debug.Log(_heroState.cueeExp+"''"+_heroState.levelUpExp);
+        ep_Fill.fillAmount = (float)_heroState.cueeExp/_heroState.levelUpExp;
     }
 }

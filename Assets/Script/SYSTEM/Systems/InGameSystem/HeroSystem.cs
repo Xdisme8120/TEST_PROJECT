@@ -104,7 +104,7 @@ public class HeroSystem : IMainGameSystem
     //英雄系统Update函数的调用
     public override void Update()
     {
-        //
+        EventCenter.Broadcast(EventDefine.UI_SetHeroInfo,heroInfo.HeroState);
     }
     //系统结束回调
     public override void Release()
@@ -112,13 +112,6 @@ public class HeroSystem : IMainGameSystem
         //TODO 玩家数据存入GamingData
         GameSystem.Instance.gamingDataController.SaveData(heroInfo.HeroState, inventory.GetInventoryInfo, equips.GetItemInfo);
 
-    }
-    /// <summary>
-    /// 英雄信息存储TEST
-    /// </summary>
-    public void SaveData()
-    {
-        GameSystem.Instance.gamingDataController.SaveData(heroInfo.HeroState, inventory.GetInventoryInfo, equips.GetItemInfo);
     }
     //玩家数值修改
     public void SetATK_DEF(int _type, int _value)
@@ -166,6 +159,7 @@ public class HeroSystem : IMainGameSystem
     //获得经验
     public void GetExp(int _exp)
     {
+        Debug.Log("获得经验"+_exp);
         if (heroInfo.HeroState.cueeExp + _exp > heroInfo.HeroState.levelUpExp)
         {
             heroInfo.HeroState.level++;
@@ -199,6 +193,6 @@ public class HeroSystem : IMainGameSystem
 
     public void GetItems()
     {
-        inventory.GetItems(inGameSystem.SynopsisSystem.currentTask.qr.Equip);
+        SetTaskReward(inGameSystem.SynopsisSystem.currentTask.qr);
     }
 }
