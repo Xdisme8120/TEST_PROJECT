@@ -127,6 +127,24 @@ public class GamingDataController : BaseSystemController
     {
         GamingData.nickname = _nickname;
     }
+    //设置英雄昵称列表
+    public void SetHeroList(JsonData _data)
+    {
+        GamingData.heroLT.Clear();
+        GamingData.heroList[0] = (string)_data["tank"];
+        GamingData.heroList[1] = (string)_data["swordman"];
+        AddHeroLT(GamingData.heroList[0],0);
+        AddHeroLT(GamingData.heroList[1],1);
+    }
+    void AddHeroLT(string _nickName,int _type)
+    {
+        Debug.Log(_nickName);
+        if(GamingData.heroLT.ContainsKey(_nickName))
+        {
+            return;
+        } 
+        GamingData.heroLT.Add(_nickName,_type);
+    }
 }
 /*
 {

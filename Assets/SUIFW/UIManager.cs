@@ -84,6 +84,7 @@ namespace SUIFW
         //弹出消息框
         public void ShowMessage(string _message)
         {
+
             ShowUIForms("Message");
             EventCenter.Broadcast(EventDefine.Message,_message);
         }

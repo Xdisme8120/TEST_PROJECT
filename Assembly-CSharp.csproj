@@ -199,6 +199,7 @@
      <Compile Include="Assets\Script\Model\Hero\HeroState.cs" />
      <Compile Include="Assets\Script\Model\Inventory\GridInfo.cs" />
      <Compile Include="Assets\Script\Model\System\GamingData.cs" />
+     <Compile Include="Assets\Script\Model\System\QuestRewards.cs" />
      <Compile Include="Assets\Script\Model\System\SynData.cs" />
      <Compile Include="Assets\Script\SYSTEM\BaseClass&amp;Interface\BaseSystemController.cs" />
      <Compile Include="Assets\Script\SYSTEM\BaseClass&amp;Interface\IMainGameSystem.cs" />
@@ -220,11 +221,11 @@
      <Compile Include="Assets\Script\SYSTEM\UI\InGame\MainPanel.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\InGame\QuestPanel.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\InGame\UI_Item.cs" />
+     <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\CharacterCreatePanel.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\Common\CharacterInfo.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\Common\Message.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\Common\PlayerInfo.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\Common\PlayerInventory.cs" />
-     <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\CreateHeroPanel.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\LoginPanel.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\RegisterPanel.cs" />
      <Compile Include="Assets\Script\SYSTEM\UI\NotInGame\RetrievePanel.cs" />

@@ -92,8 +92,7 @@ public class HeroSystem : IMainGameSystem
         heroInfo.InitHeroInfo(GamingData.INSTANCE().HeroState);
         inventory.Init(GamingData.INSTANCE().InvenrotyInfo);
         equips.Init(GamingData.INSTANCE().EquipsInfo);
-        EventCenter.Broadcast(EventDefine.InitBag,inventory.GetInventoryInfo);
-
+        EventCenter.Broadcast(EventDefine.InitBag, inventory.GetInventoryInfo);
     }
     //英雄系统Update函数的调用
     public override void Update()
@@ -157,4 +156,27 @@ public class HeroSystem : IMainGameSystem
         }
         return false;
     }
+    //获得经验
+    public void GetExp(int _exp)
+    {
+        if (heroInfo.HeroState.cueeExp + _exp > heroInfo.HeroState.levelUpExp)
+        {
+            heroInfo.HeroState.level++;
+            _exp -= (heroInfo.HeroState.levelUpExp - heroInfo.HeroState.cueeExp);
+            heroInfo.HeroState.levelUpExp = heroInfo.HeroState.level * 100;
+            GetExp(_exp);
+        }
+        else
+        {
+            heroInfo.HeroState.cueeExp = _exp;
+        }
+
+    }
+    //任务完成是物品奖励处理
+    public void SetTaskReward(QuestRewards _questRewards)
+    {
+        GetExp(_questRewards.experience);
+        inventory.GetItems(_questRewards.Equip);
+    }
+
 }

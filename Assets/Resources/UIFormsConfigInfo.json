@@ -14,8 +14,8 @@
             "Value": "UIPB\\RetrievePanel"
         },
         {
-            "Key": "CreateHero",
-            "Value": "UIPB\\CreateHeroPanel"
+            "Key": "CharacterCreate",
+            "Value": "UIPB\\CharacterCreate"
         },
         {
             "Key": "SelectHero",

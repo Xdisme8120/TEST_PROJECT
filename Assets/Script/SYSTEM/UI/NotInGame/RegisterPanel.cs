@@ -20,40 +20,33 @@ using System;
 //登陆界面
 public class RegisterPanel : BaseUIForm
 {
-
-    //登陆按钮
-    Button btn_Login;
-    //注册按钮
-    Button btn_Register;
-    //修改密码按钮
-    Button btn_ChangePassword;
     //用户名输入
     InputField if_Username;
     //密码输入
     InputField if_Password;
+    InputField if_Password_two;
+
     //TODO登陆界面的初始化
     private void Awake()
     {
+        
+        if_Username = UnityHelper.FindTheChildNode(gameObject, "InputField(Username)").GetComponent<InputField>();
+        if_Password = UnityHelper.FindTheChildNode(gameObject, "InputField(Password)_1").GetComponent<InputField>();
+        if_Password_two = UnityHelper.FindTheChildNode(gameObject, "InputField(Password)_2").GetComponent<InputField>();
+
         CurrentUIType.UIForms_ShowMode = UIFormShowMode.ReverseChange;
         RigisterButtonObjectEvent("Button(Register)", p => Register());
         RigisterButtonObjectEvent("Button(Return)", p => Return());
-
-
     }
-    
 
     //返回登陆页面
     private void Return()
     {
         UIManager.GetInstance().CloseUIForms("Register");
-        Debug.Log("返回");
-        //throw new NotImplementedException();
     }
     //注册事件
     private void Register()
     {
-        UIManager.GetInstance().ShowUIForms("Message");
-        Debug.Log("注册");
-        //throw new NotImplementedException();
+        EventCenter.Broadcast(EventDefine.Register, if_Username.text, if_Password.text, if_Password_two.text);
     }
 }
