@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ChiXueyu/Test/lll.unity
-    guid: 774c07935c45c4442ab6b2ae8a00260c
-  - enabled: 1
     path: Assets/1.unity
     guid: 6264031cc47c74f4f978a79640897d7f
+  - enabled: 1
+    path: Assets/Script/SYSTEM/Systems/InGameSystem/SynosisSystem/Test/lll.unity
+    guid: 774c07935c45c4442ab6b2ae8a00260c

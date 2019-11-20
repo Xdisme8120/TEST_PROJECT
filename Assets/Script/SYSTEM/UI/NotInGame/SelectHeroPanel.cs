@@ -59,8 +59,6 @@ public class SelectHeroPanel : BaseUIForm
         UIManager.GetInstance().ShowUIForms("PlayerInfo");
 
         EventCenter.Broadcast(EventDefine.GetHeroInfo, GamingData.nickname);
-
-        Debug.Log("跳转场景");
     }
 
     private void CreateHero()

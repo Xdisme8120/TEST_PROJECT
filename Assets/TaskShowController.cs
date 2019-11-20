@@ -19,7 +19,8 @@ using SUIFW;
 public class TaskShowController : MonoBehaviour
 {
     public static int index = 0;
-
+    public static int inventoryIndex = 0;
+    bool isFristOpenInventory;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -35,8 +36,26 @@ public class TaskShowController : MonoBehaviour
             {
                 UIManager.GetInstance().ShowUIForms("MainTaskShow");
             }
-
-
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if(!isFristOpenInventory)
+            {
+                EventCenter.Broadcast(EventDefine.InitEquipC);
+                isFristOpenInventory = true;
+            }
+            inventoryIndex++;
+            if (inventoryIndex % 2 == 0)
+            {
+                UIManager.GetInstance().CloseUIForms("PlayerInventory");
+            }
+            else
+            {
+                UIManager.GetInstance().ShowUIForms("PlayerInventory");
+                //发送背包信息给UI的一系列
+                EventCenter.Broadcast(EventDefine.UI_SetInventoryC);
+                EventCenter.Broadcast(EventDefine.UI_SetPlayerInfo2InvenC);
+            }
         }
     }
 

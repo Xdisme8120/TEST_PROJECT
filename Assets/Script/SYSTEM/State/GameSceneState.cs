@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using SUIFW;
 public class GameSceneState : SceneState
 {
     //游戏内部系统
@@ -13,11 +13,7 @@ public class GameSceneState : SceneState
     public override void StateBegin()
     {
         inGameSystem = new InGameSystem();
-        inGameSystem.Init(inGameSystem.SynopsisSystem);
-        //Debug.Log(GamingData.synData.npcState.Count);
-        //Debug.Log((NpcState)GamingData.synData.npcState[1]);
-        //Debug.Log((NpcState)GamingData.synData.npcState[2]);
-        //Debug.Log((TaskState)GamingData.synData.taskState);        
+        inGameSystem.Init(inGameSystem.SynopsisSystem);      
     }
     //子系统类Update函数调用
     public override void StateUpdate()
@@ -28,8 +24,13 @@ public class GameSceneState : SceneState
     //游戏状态结束
     public override void StateEnd()
     {
-        inGameSystem.Release(inGameSystem.HeroSystem);
         inGameSystem.Release(inGameSystem.SynopsisSystem);
+        inGameSystem.Release(inGameSystem.HeroSystem);
+        UIManager.GetInstance().CloseUIForms("PlayerInventory");
+        UIManager.GetInstance().CloseUIForms("Quest");
+        UIManager.GetInstance().CloseUIForms("Message");
+        UIManager.GetInstance().CloseUIForms("PlayerInfo");
+        UIManager.GetInstance().CloseUIForms("MainTaskShow");
     }
     //初始化子系统
 }

@@ -39,13 +39,11 @@ public class Inventory
     //背包数据赋值
     public void Init(Dictionary<int, GridInfo> _bagInfo)
     {
-        //Debug.Log(_bagInfo.Count);
         for (int i = 1; i <= 8; i++)
         {
             if (_bagInfo[i].GetItemID() != -1)
             {
                 inventoryInfo[i] = _bagInfo[i];
-                //Debug.Log(inventoryInfo[i].item.Name + "--" + inventoryInfo[i].itemCount);
             }
         }
         EventCenter.AddListener<Dictionary<int,GridInfo>>(EventDefine.UI_SendBagInfo,SetBagInfoFromUI);
@@ -57,7 +55,7 @@ public class Inventory
         for (int i = 1; i <= inventoryInfo.Count; i++)
         {
             //保存第一个空格
-            if (t_grid == -1 && inventoryInfo[i] == null)
+            if (t_grid == -1 && inventoryInfo[i].GetItemID()==-1)
             {
                 t_grid = i;
             }
@@ -80,6 +78,7 @@ public class Inventory
         //否则在新格子里添加
         inventoryInfo[t_grid].item = GetItemFromAll(_itemID);
         inventoryInfo[t_grid].itemCount += 1;
+        Debug.Log(inventoryInfo[t_grid].item.Name+"物品获得"+t_grid);
         //TODO提示获取物品并修改UI状态
 
         //向任务系统发送物品信息
@@ -142,16 +141,7 @@ public class Inventory
         }
         //TODO提示物品数量不足
     }
-    //交换格子信息
-    public void SwitchItem(int _gridID1, int _gridID2)
-    {
-        Item tempItem = inventoryInfo[_gridID1].item;
-        int tempCount = inventoryInfo[_gridID1].itemCount;
-        inventoryInfo[_gridID1].item = inventoryInfo[_gridID2].item;
-        inventoryInfo[_gridID1].itemCount = inventoryInfo[_gridID2].itemCount;
-        inventoryInfo[_gridID2].item = tempItem;
-        inventoryInfo[_gridID2].itemCount = tempCount;
-    }
+
     //清空格子信息
     void ClearGridInfo(int _gridID)
     {
@@ -172,6 +162,7 @@ public class Inventory
     {
         for (int i = 1; i <= 8; i++)
         {
+
             if (_bagInfo[i].GetItemID() != -1)
             {
                 inventoryInfo[i] = _bagInfo[i];
@@ -187,6 +178,7 @@ public class Inventory
     {
         foreach(var item in _items.Keys)
         {
+            Debug.Log("获得物品");
             GetItem(GamingData.GetItemIDByName(item),_items[item]);
         }
     }

@@ -22,7 +22,9 @@ public class HeroInfo
         heroState.level = _heroState.level;
         heroState.atk = _heroState.atk;
         heroState.def = _heroState.def;
-        heroState.levelUpExp = _heroState.levelUpExp*100;
+        heroState.levelUpExp = _heroState.level*100;
+        heroState.maxHp = _heroState.level*100;
+        heroState.maxMp = _heroState.level*100;
     }
     //返回英雄状态信息
     public HeroState HeroState

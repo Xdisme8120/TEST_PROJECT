@@ -255,7 +255,6 @@ namespace SUIFW
         /// <param name="uiFormName">UI窗体名称</param>
 	    private BaseUIForm LoadUIForm(string uiFormName)
         {
-            Debug.Log(uiFormName);
             string strUIFormPaths = null;                   //UI窗体路径
             GameObject goCloneUIPrefabs = null;             //创建的UI克隆体预设
             BaseUIForm baseUiForm=null;                     //窗体基类
@@ -263,7 +262,6 @@ namespace SUIFW
 
             //根据UI窗体名称，得到对应的加载路径
             _DicFormsPaths.TryGetValue(uiFormName, out strUIFormPaths);
-            Debug.Log(strUIFormPaths);
             //根据“UI窗体名称”，加载“预设克隆体”
             if (!string.IsNullOrEmpty(strUIFormPaths))
             {

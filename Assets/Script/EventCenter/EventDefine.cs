@@ -23,7 +23,23 @@
     Test_GetImage,
     //设置英雄信息
     UI_SetHeroInfo,
-
+    //C层发送背包信息
+    UI_SetInventoryC,
+    //C层发送玩家信息到背包界面
+    UI_SetPlayerInfo2InvenC,
+    //C层发送玩家信息到背包界面
+    UI_SetPlayerInfo2Inven,
+    //给装备栏赋值
+    UI_SetEquipInfo,
+    //拿到装备栏信息
+    UI_SendEquipInfo,
+    //开始游戏初始化装备
+    InitEquip,
+    //开始游戏初始化装备C
+    InitEquipC,
+    //UI发送装备信息到系统
+    UI_SendEquipInfoV,
+    //UI
     //**************************
     //设置npc状态
     ChangeNpcState,
@@ -59,4 +75,7 @@
     //Test
     Test,
     ////////////////////////////////////
+    //玩家系统交互事件
+    GetDamage,
+    Player_GetPlayerInfo
 }

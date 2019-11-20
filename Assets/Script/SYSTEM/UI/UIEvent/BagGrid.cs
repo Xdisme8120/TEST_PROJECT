@@ -8,11 +8,11 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
 {
     public Item GetItem
     {
-        get{return item;}
+        get { return item; }
     }
     public int GetCount
     {
-        get{return goodCount;}
+        get { return goodCount; }
     }
     //物品ID
     Item item = new Item();
@@ -38,7 +38,6 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
         imgRect = transform.GetComponent<RectTransform>();
         item.ID = -1;
     }
-
     //拖拽中
     public void OnDrag(PointerEventData eventData)
     {
@@ -82,7 +81,7 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
     //鼠标抬起
     public void OnPointerUp(PointerEventData eventData)
     {
-        
+
         if (tempGame == null)
         {
             NoExchange();
@@ -97,17 +96,17 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
         if (item.ItemType == 2)
         {
             //如果检测到名字是饰品
-            if (tempGame.tag == "Item" && tempGame.transform.parent.name == "trinket"&&item.UseType==1)
+            if (tempGame.tag == "Item" && tempGame.transform.parent.name == "trinket" && item.UseType == 1)
             {
                 Exchange();
-                Debug.Log("trinket");
+                EventCenter.Broadcast(EventDefine.UI_SendEquipInfoV);
                 return;
             }
             //如果检测到名字是武器
             if (tempGame.tag == "Item" && tempGame.transform.parent.name == "weapon" && item.UseType == 2)
             {
                 Exchange();
-                Debug.Log("weapon");
+                EventCenter.Broadcast(EventDefine.UI_SendEquipInfoV);     
                 return;
 
             }
@@ -115,14 +114,14 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
             if (tempGame.tag == "Item" && tempGame.transform.parent.name == "armor" && item.UseType == 3)
             {
                 Exchange();
-                Debug.Log("armor");
+                EventCenter.Broadcast(EventDefine.UI_SendEquipInfoV);
                 return;
-
             }
         }
         if (tempGame.tag == "Item" && tempGame.transform.parent.name == "Slot")
-        {
+        {   
             Exchange();
+            EventCenter.Broadcast(EventDefine.UI_SendEquipInfoV); 
         }
         else
         {
@@ -136,8 +135,15 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
     {
         this.item = item;
         this.goodCount = Count;
-        textCount.text = goodCount.ToString();
         image.sprite = Resources.Load<Sprite>("Item/" + item.ID.ToString());
+        if (Count==0 || Count == 1)
+        {
+            textCount.text = "";
+        }
+        else
+        {
+            textCount.text = goodCount.ToString();
+        }
 
     }
     //重置父对象
@@ -169,5 +175,10 @@ public class BagGrid : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerD
         transform.localScale = Vector3.one;
         image.raycastTarget = true;
         offset = Vector2.zero;
+    }
+    public void SetEquipInfo(Item item)
+    {
+        this.item = item;
+        image.sprite = Resources.Load<Sprite>("Item/" + item.ID.ToString());
     }
 }

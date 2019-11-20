@@ -75,9 +75,6 @@ public class LoginPanel : BaseUIForm
         //Debug.Log("登陆");
         UIManager.GetInstance().ShowUIForms("MainTaskShow");
         UIManager.GetInstance().CloseUIForms("MainTaskShow");
-
-
-        Debug.Log("登陆");
        
     }
 }

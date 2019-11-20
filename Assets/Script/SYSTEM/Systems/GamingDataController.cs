@@ -111,7 +111,6 @@ public class GamingDataController : BaseSystemController
             }
             synData.npcState = tempNpcIDState;
         }
-        Debug.Log(synData.taskState+"'"+synData.taskID+"'"+synData.TaskName+"'"+synData.npcState.Count);
         return synData;
     }
     //"taskInfo":{"heroName":"bitch","taskID":"11","taskName":"114345","taskState":"11544","npcID":"115445","npcState":"54445"}

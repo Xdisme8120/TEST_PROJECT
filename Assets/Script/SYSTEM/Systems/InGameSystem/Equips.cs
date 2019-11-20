@@ -18,13 +18,18 @@ using System.Collections.Generic;
 
 public class Equips
 {
-    public Dictionary<int,int> GetItemInfo
+    public Dictionary<int, int> GetItemInfo
     {
-        get{return itemInfo;}
+        get { return itemInfo; }
+    }
+    public Dictionary<int, GridInfo> GetEquipsInfo
+    {
+        get { return EquipInfo; }
     }
     HeroSystem heroSystem;
     //装备信息
     Dictionary<int, int> itemInfo;
+    Dictionary<int, GridInfo> EquipInfo;
     //装备构造
     public Equips(HeroSystem _heroSystem)
     {
@@ -41,11 +46,43 @@ public class Equips
     {
         for (int i = 1; i <= 6; i++)
         {
-            if (_itemInfo[i] != -1)
+            //如果当前装备栏有装备
+            if (itemInfo[i] != -1)
             {
+                //如果装备相同
+                if (itemInfo[i] == _itemInfo[i])
+                {
+                    continue;
+                }
+                //如果装备不同
+                //如果现在该格子没有装备
+                if (_itemInfo[i] == -1)
+                {
+
+                    RemoveEquips(i);
+                    continue;
+                }
+                //否则移除就装备装入新装备
+                RemoveEquips(i);
                 itemInfo[i] = _itemInfo[i];
-                OnEquiped(i, _itemInfo[i]);
+                EuqipedEquip(i, _itemInfo[i]);
             }
+            //如果没有装备
+            else
+            {
+                //如果现在的格子有装备
+                if (_itemInfo[i] != -1)
+                {
+                    //装上改装备
+                    EuqipedEquip(i, _itemInfo[i]);
+                    continue;
+                }
+                //如果现在的格子没有装备
+                {
+                    continue;
+                }
+            }
+
         }
     }
     //移除装备
@@ -53,6 +90,7 @@ public class Equips
     {
         OnUnEquiped(_gridID, itemInfo[_gridID]);
         itemInfo[_gridID] = -1;
+        Debug.Log(_gridID + "___" + itemInfo[_gridID]);
     }
 
     //装上装备
@@ -60,6 +98,7 @@ public class Equips
     {
         OnEquiped(_gridID, _equipID);
         itemInfo[_gridID] = _equipID;
+        Debug.Log(_gridID + "___" + itemInfo[_gridID]);
     }
 
     //装备装入时的回调
@@ -74,5 +113,23 @@ public class Equips
     {
         Item item = GamingData.GetItemByID(_equipID);
         heroSystem.SetATK_DEF(item.UseType, -item.Value);
+    }
+
+    //获得当前装备信息并同步给UI(仅仅在初始化的时候调用)
+    public void GetEquipInfo()
+    {
+        EquipInfo = new Dictionary<int, GridInfo>();
+        for (int i = 1; i <= 6; i++)
+        {
+            if (itemInfo[i] != -1)
+            {
+                EquipInfo.Add(i, new GridInfo(i, GamingData.GetItemByID(itemInfo[i]), 1));
+            }
+            else
+            {
+                EquipInfo.Add(i, new GridInfo(i, new Item(), 1));
+            }
+        }
+        EventCenter.Broadcast(EventDefine.InitEquip, EquipInfo);
     }
 }

@@ -44,7 +44,8 @@ public class PlayerInfo : BaseUIForm
         nikeName_Text = UnityHelper.FindTheChildNode(gameObject, "Text_nikeName").GetComponent<Text>();
 
         UIManager.GetInstance().CloseUIForms("PlayerInfo");
-        EventCenter.AddListener<HeroState>(EventDefine.UI_SetHeroInfo,SetPlayerInfo);
+        EventCenter.AddListener<HeroState>(EventDefine.UI_SetHeroInfo, SetPlayerInfo);
+        EventCenter.AddListener<HeroState>(EventDefine.UI_SetPlayerInfo2Inven, SetPlayerInfo);
         CurrentUIType.UIForms_Type = UIFormType.Fixed;
     }
 
@@ -78,7 +79,7 @@ public class PlayerInfo : BaseUIForm
 
     IEnumerator InitPlayerInfo()
     {
-        while (GamingData.INSTANCE().HeroState==null)
+        while (GamingData.INSTANCE().HeroState == null)
         {
             yield return null;
         }
@@ -93,7 +94,7 @@ public class PlayerInfo : BaseUIForm
         hp_Text.text = ((int)((GamingData.INSTANCE().HeroState.hp / GamingData.INSTANCE().HeroState.maxHp) * 100f)).ToString() + "%";
         mp_Text.text = ((int)((GamingData.INSTANCE().HeroState.sp / GamingData.INSTANCE().HeroState.maxMp) * 100f)).ToString() + "%";
 
-        if (GamingData.heroType==0)
+        if (GamingData.heroType == 0)
         {
             avatar_Img.sprite = Resources.Load<Sprite>("Item/00");
         }
@@ -105,9 +106,15 @@ public class PlayerInfo : BaseUIForm
         level_Text.text = GamingData.INSTANCE().HeroState.level.ToString();
         nikeName_Text.text = GamingData.nickname;
     }
+    //实时同步玩家信息
     public void SetPlayerInfo(HeroState _heroState)
     {
-        Debug.Log(_heroState.cueeExp+"''"+_heroState.levelUpExp);
-        ep_Fill.fillAmount = (float)_heroState.cueeExp/_heroState.levelUpExp;
+        ep_Fill.fillAmount = (float)_heroState.cueeExp / _heroState.levelUpExp;
+        level_Text.text = _heroState.level.ToString();
+        hp_Fill.fillAmount = _heroState.hp / _heroState.maxHp;
+        mp_Fill.fillAmount = _heroState.sp / _heroState.maxMp;
+        hp_Text.text = ((hp_Fill.fillAmount * 100f)).ToString() + "%";
+        mp_Text.text = ((mp_Fill.fillAmount * 100f)).ToString() + "%";
     }
+
 }

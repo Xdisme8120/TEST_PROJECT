@@ -16,6 +16,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
+using SUIFW;
 //英雄系统_存储实时英雄信息
 public class HeroSystem : IMainGameSystem
 {
@@ -71,6 +72,8 @@ public class HeroSystem : IMainGameSystem
     bool isLeader;
     //是否在队伍中
     bool inLeady;
+    //是否打开背包
+    bool isOpenInventory;
     //玩家自己的photonView
     PhotonView photonView;
     //接收用pv
@@ -78,16 +81,10 @@ public class HeroSystem : IMainGameSystem
     //对比用pv
     PhotonView contrastView;
     public HeroSystem(InGameSystem _inGameSystem) : base(_inGameSystem)
-    {
-        
-    }
-
+    { }
     //设置英雄信息
     public void SetHeroInfo(GamingData _data)
-    { 
-
-    }
-
+    { }
     //初始化英雄系统
     public override void Init()
     {
@@ -98,20 +95,28 @@ public class HeroSystem : IMainGameSystem
         inventory.Init(GamingData.INSTANCE().InvenrotyInfo);
         equips.Init(GamingData.INSTANCE().EquipsInfo);
         EventCenter.AddListener(EventDefine.FinishTaskDelete, DeleteItems);
-        EventCenter.AddListener(EventDefine.FinishTaskGet,GetItems);
+        EventCenter.AddListener(EventDefine.FinishTaskGet, GetItems);
+
+        EventCenter.AddListener(EventDefine.UI_SetInventoryC, SetInventoryUI);
+        EventCenter.AddListener(EventDefine.UI_SetPlayerInfo2InvenC, SetPlayerInfo2Inven);
+
+        EventCenter.AddListener(EventDefine.InitEquipC, SetEquipInfo2Inven);
+        EventCenter.AddListener<Dictionary<int, int>>(EventDefine.UI_SendEquipInfo, GetEquips);
         EventCenter.Broadcast(EventDefine.InitBag, inventory.GetInventoryInfo);
+
+        UIManager.GetInstance().ShowUIForms("PlayerInventory");
+        UIManager.GetInstance().CloseUIForms("PlayerInventory");
     }
     //英雄系统Update函数的调用
     public override void Update()
     {
-        EventCenter.Broadcast(EventDefine.UI_SetHeroInfo,heroInfo.HeroState);
+        EventCenter.Broadcast(EventDefine.UI_SetHeroInfo, heroInfo.HeroState);
     }
     //系统结束回调
     public override void Release()
     {
         //TODO 玩家数据存入GamingData
         GameSystem.Instance.gamingDataController.SaveData(heroInfo.HeroState, inventory.GetInventoryInfo, equips.GetItemInfo);
-
     }
     //玩家数值修改
     public void SetATK_DEF(int _type, int _value)
@@ -124,6 +129,7 @@ public class HeroSystem : IMainGameSystem
         {
             heroInfo.HeroState.def += _value;
         }
+        SetPlayerInfo2Inven();
     }
     //玩家血量和蓝量的回复
     public void hill(int _type, int _value)
@@ -136,11 +142,13 @@ public class HeroSystem : IMainGameSystem
         {
             heroInfo.HeroState.sp += _value;
         }
+        SetPlayerInfo2Inven();
     }
     //玩家受伤并判断死亡
     public void GetDamaged(float _damage)
     {
         heroInfo.HeroState.hp -= _damage;
+        SetPlayerInfo2Inven();
         if (heroInfo.HeroState.hp <= 0)
         {
             isDeath = true;
@@ -152,6 +160,7 @@ public class HeroSystem : IMainGameSystem
         if (heroInfo.HeroState.sp >= _needValue)
         {
             heroInfo.HeroState.sp -= _needValue;
+            SetPlayerInfo2Inven();
             return true;
         }
         return false;
@@ -159,19 +168,22 @@ public class HeroSystem : IMainGameSystem
     //获得经验
     public void GetExp(int _exp)
     {
-        Debug.Log("获得经验"+_exp);
+        Debug.Log(heroInfo.HeroState.level);
         if (heroInfo.HeroState.cueeExp + _exp > heroInfo.HeroState.levelUpExp)
         {
             heroInfo.HeroState.level++;
             _exp -= (heroInfo.HeroState.levelUpExp - heroInfo.HeroState.cueeExp);
             heroInfo.HeroState.levelUpExp = heroInfo.HeroState.level * 100;
+            heroInfo.HeroState.maxHp = heroInfo.HeroState.level * 100;
+            heroInfo.HeroState.maxMp = heroInfo.HeroState.level * 100;
+            heroInfo.HeroState.cueeExp = 0;
             GetExp(_exp);
         }
         else
         {
             heroInfo.HeroState.cueeExp = _exp;
         }
-
+        SetPlayerInfo2Inven();
     }
     //任务完成是物品奖励处理
     public void SetTaskReward(QuestRewards _questRewards)
@@ -179,7 +191,6 @@ public class HeroSystem : IMainGameSystem
         GetExp(_questRewards.experience);
         inventory.GetItems(_questRewards.Equip);
     }
-
     //将背包信息发送给剧情系统
     public void SendGridInfo2S()
     {
@@ -190,9 +201,31 @@ public class HeroSystem : IMainGameSystem
     {
         inventory.SendItems(inGameSystem.SynopsisSystem.currentTask.td.taskNeed);
     }
-
+    //批量获得物品
     public void GetItems()
     {
         SetTaskReward(inGameSystem.SynopsisSystem.currentTask.qr);
     }
+    //显示背包物品
+    public void SetInventoryUI()
+    {
+        EventCenter.Broadcast(EventDefine.InitBag, inventory.GetInventoryInfo);
+    }
+    //在背包显示玩家装备
+    public void SetEquipInfo2Inven()
+    {
+        equips.GetEquipInfo();
+    }
+    //在背包显示玩家属性
+    public void SetPlayerInfo2Inven()
+    {
+        EventCenter.Broadcast(EventDefine.UI_SetPlayerInfo2Inven, heroInfo.HeroState);
+    }
+    //获取装备信息
+    public void GetEquips(Dictionary<int, int> _equips)
+    {
+        equips.Init(_equips);
+        SetPlayerInfo2Inven();
+    }
+
 }

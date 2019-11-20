@@ -51,28 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ChiXueyu\NpcSystem\Npc.cs" />
-     <Compile Include="Assets\ChiXueyu\NpcSystem\NpcState.cs" />
-     <Compile Include="Assets\ChiXueyu\NpcSystem\NpcSystem.cs" />
-     <Compile Include="Assets\ChiXueyu\SynopsisSystem\SynopsisSystem.cs" />
-     <Compile Include="Assets\ChiXueyu\TalkSystem\SaveTalkTxt.cs" />
-     <Compile Include="Assets\ChiXueyu\TalkSystem\ShowTxt.cs" />
-     <Compile Include="Assets\ChiXueyu\TalkSystem\TalkCallBack.cs" />
-     <Compile Include="Assets\ChiXueyu\TalkSystem\TalkState.cs" />
-     <Compile Include="Assets\ChiXueyu\TalkSystem\TalkSystem.cs" />
-     <Compile Include="Assets\ChiXueyu\TalkSystem\TalkTxt.cs" />
-     <Compile Include="Assets\ChiXueyu\TaskSystem\ButtonClick.cs" />
-     <Compile Include="Assets\ChiXueyu\TaskSystem\MainTaskShow.cs" />
-     <Compile Include="Assets\ChiXueyu\TaskSystem\QuestRewards.cs" />
-     <Compile Include="Assets\ChiXueyu\TaskSystem\ShowUI.cs" />
-     <Compile Include="Assets\ChiXueyu\TaskSystem\Task.cs" />
-     <Compile Include="Assets\ChiXueyu\TaskSystem\TaskDemand.cs" />
-     <Compile Include="Assets\ChiXueyu\TaskSystem\TaskProgress.cs" />
-     <Compile Include="Assets\ChiXueyu\TaskSystem\TaskShow.cs" />
-     <Compile Include="Assets\ChiXueyu\TaskSystem\TaskState.cs" />
-     <Compile Include="Assets\ChiXueyu\TaskSystem\TaskSystem.cs" />
-     <Compile Include="Assets\ChiXueyu\TaskSystem\TaskType.cs" />
-     <Compile Include="Assets\ChiXueyu\Test\MoveTxt.cs" />
      <Compile Include="Assets\Json\JsonReader.cs" />
      <Compile Include="Assets\RPG and MMO UI 6\Scripts\Attributes\BitMaskAttribute.cs" />
      <Compile Include="Assets\RPG and MMO UI 6\Scripts\Attributes\ResourcePathAttribute.cs" />
@@ -235,6 +213,28 @@
      <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\HeroSystem.cs" />
      <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\InGameSystem.cs" />
      <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\Inventory.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\NpcSystem\Npc.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\NpcSystem\NpcState.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\NpcSystem\NpcSystem.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\SynopsisSystem\SynopsisSystem.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\TalkSystem\SaveTalkTxt.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\TalkSystem\ShowTxt.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\TalkSystem\TalkCallBack.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\TalkSystem\TalkState.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\TalkSystem\TalkSystem.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\TalkSystem\TalkTxt.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\TaskSystem\ButtonClick.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\TaskSystem\MainTaskShow.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\TaskSystem\QuestRewards.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\TaskSystem\ShowUI.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\TaskSystem\Task.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\TaskSystem\TaskDemand.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\TaskSystem\TaskProgress.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\TaskSystem\TaskShow.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\TaskSystem\TaskState.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\TaskSystem\TaskSystem.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\TaskSystem\TaskType.cs" />
+     <Compile Include="Assets\Script\SYSTEM\Systems\InGameSystem\SynosisSystem\Test\MoveTxt.cs" />
      <Compile Include="Assets\Script\SYSTEM\Systems\SceneStateController.cs" />
      <Compile Include="Assets\Script\SYSTEM\Tags&amp;Message\CS_MESSAGE.cs" />
      <Compile Include="Assets\Script\SYSTEM\Tags&amp;Message\HeroType.cs" />
@@ -272,6 +272,7 @@
      <Compile Include="Assets\SUIFW\UIType.cs" />
      <Compile Include="Assets\TaskShowController.cs" />
      <Compile Include="Assets\Test_Image.cs" />
+     <Compile Include="Assets\TestQuit.cs" />
      <None Include="Assets\RPG and MMO UI 6\Readme.txt" />
      <None Include="Assets\RPG and MMO UI 6\Shaders\UITribalEffect.shader" />
      <None Include="Assets\Photon\PhotonUnityNetworking\link.xml" />
