@@ -39,6 +39,8 @@
     InitEquipC,
     //UI发送装备信息到系统
     UI_SendEquipInfoV,
+    //使用物品
+    UI_UseItem,
     //UI
     //**************************
     //设置npc状态

@@ -34,7 +34,7 @@ public class PlayerInventory : BaseUIForm
         {
             equipInfo.Add(i, equipArray[i - 1]);
         }
-
+         Debug.Log(equipArray.Length);
         ///////////////////////////////////////////////////////////////////////////////////////////////////////
         Hp = UnityHelper.FindTheChildNode(gameObject, "Value_Hp").GetComponent<Text>();
         Mp = UnityHelper.FindTheChildNode(gameObject, "Value_Sp").GetComponent<Text>();
@@ -85,7 +85,7 @@ public class PlayerInventory : BaseUIForm
         bagInfo.Clear();
         for (int i = 1; i <= bagArray.Length; i++)
         {
-            bagInfo.Add(i,bagArray[i-1]);
+            bagInfo.Add(i, bagArray[i - 1]);
         }
         for (int i = 1; i <= 8; i++)
         {
@@ -111,6 +111,7 @@ public class PlayerInventory : BaseUIForm
     //给装备赋值
     public void UI_SetEquipInfo(int equipID, Item goodID)
     {
+        Debug.Log(equipInfo[equipID]);
         equipInfo[equipID].SetEquipInfo(goodID);
     }
 

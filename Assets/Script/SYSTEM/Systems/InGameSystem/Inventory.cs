@@ -86,32 +86,19 @@ public class Inventory
     }
 
     //使用物品
-    public void UseItem(int _itemGridID)
+    public void UseItem(int _itemID)
     {
-        //判断物品是否存在
-        if (inventoryInfo[_itemGridID].GetItemID() != -1)
+        for(int i=1;i<=8;i++)
         {
-            inventoryInfo[_itemGridID].itemCount--;
-            Item item = GamingData.GetItemByID(inventoryInfo[_itemGridID].GetItemID());
-            heroSystem.hill(item.UseType,item.Value);
-            //如果物品耗尽
-            if (inventoryInfo[_itemGridID].itemCount == 0)
+            if(inventoryInfo[i].GetItemID()==_itemID)
             {
-
-                ClearGridInfo(_itemGridID);
-                //TODO给UI发送消息                                             
+                inventoryInfo[i].itemCount--;
+                Item item = GamingData.GetItemByID(_itemID);
+                heroSystem.hill(item.UseType,item.Value);
+                break;
             }
-            else
-            {
-                 
-                //TODO提示使用物品并实现效果
-            }
-
         }
-        else
-        {
-            return;
-        }
+        EventCenter.Broadcast(EventDefine.InitBag,inventoryInfo);
     }
     //批量上交材料
     public void SendMaterial(int _itemID, int _count)
@@ -133,9 +120,10 @@ public class Inventory
                     }
                     //否则仅仅减少
                     else
-                    {
+                    {   
                         //TODO给UI发送消息
                     }
+                  
                 }
             }
         }
