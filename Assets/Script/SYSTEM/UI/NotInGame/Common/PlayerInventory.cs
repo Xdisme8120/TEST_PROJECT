@@ -134,12 +134,12 @@ public class PlayerInventory : BaseUIForm
     {
         //更新Bag信息
         bagArray = UnityHelper.FindTheChildNode(gameObject, "SlotsGrid").GetComponentsInChildren<BagGrid>();
-        Dictionary<int, GridInfo> message = new Dictionary<int, GridInfo>();
+        Dictionary<int, GridInfo> bagMessage = new Dictionary<int, GridInfo>();
         for (int i = 0; i < bagArray.Length; i++)
         {
-            message.Add(i + 1, new GridInfo(i + 1, bagArray[i].GetItem, bagArray[i].GetCount));
+            bagMessage.Add(i + 1, new GridInfo(i + 1, bagArray[i].GetItem, bagArray[i].GetCount));
         }
         //广播更新bagInfo
-        EventCenter.Broadcast(EventDefine.UI_SendBagInfo, message);
+        EventCenter.Broadcast(EventDefine.UI_SendBagInfo, bagMessage);
     }
 }

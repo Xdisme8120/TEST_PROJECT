@@ -247,7 +247,7 @@ public class SynopsisSystem : IMainGameSystem
     public void SaveSynData()
     {
         SynData synData = new SynData();
-        synData.taskID = currentTask.taskID;
+        synData.taskID = taskSystem.taskNum;
         Debug.Log(currentTask.taskID+"sdadad");
         synData.TaskName = currentTask.name;
         synData.taskState = (int)currentTask.taskState;
