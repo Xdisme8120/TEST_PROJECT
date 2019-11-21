@@ -409,8 +409,8 @@ public class CSInertactive : MonoBehaviour
             tempNpcState += (_synData.npcState[item].ToString() + ((index == _synData.npcState.Count) ? "" : "|"));
             index++;
         }
-        json.Add("tempNpcID", tempNpcID);
-        json.Add("tempNpcState", tempNpcState);
+        json.Add("NpcID", tempNpcID);
+        json.Add("NpcState", tempNpcState);
         return json.ToString();
     }
 
